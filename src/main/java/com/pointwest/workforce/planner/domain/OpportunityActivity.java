@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class OpportunityActivity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="opportunity_activity_id")
-	private int opportunityActivityId;
+	private Long opportunityActivityId;
 	
 	@OneToOne
 	@JoinColumn(name="activity_id")
@@ -33,7 +34,7 @@ public class OpportunityActivity {
 	
 	//@ManyToOne
 	//@JoinColumn(name="opportunity_id")
-	private long opportunityId;
+	private Long opportunityId;
 
 	@Column(name="opportunity_activity_duration")
 	private Double durationInWeeks;
@@ -41,22 +42,23 @@ public class OpportunityActivity {
 	@Column(name="opportunity_activity_start_date")
 	private Timestamp activityStartDate;
 	
+	//@OneToMany(FetchType.LAZY, mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
 	private List<ResourceSpecification> resourceSpecificationList;
 
-	public int getOpportunityActivityId() {
+	public Long getOpportunityActivityId() {
 		return opportunityActivityId;
 	}
 
-	public void setOpportunityActivityId(int opportunityActivityId) {
+	public void setOpportunityActivityId(Long opportunityActivityId) {
 		this.opportunityActivityId = opportunityActivityId;
 	}
 
-	public long getOpportunityId() {
+	public Long getOpportunityId() {
 		return opportunityId;
 	}
 
-	public void setOpportunityId(long opportunityId) {
+	public void setOpportunityId(Long opportunityId) {
 		this.opportunityId = opportunityId;
 	}
 

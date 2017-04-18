@@ -26,7 +26,7 @@ public class OpportunityActivityController {
     }
 	
 	@RequestMapping("/opportunityactivities/{opportunityActivityId}")
-    public OpportunityActivity fetchOpportunityActivity(@PathVariable int opportunityActivityId) {
+    public OpportunityActivity fetchOpportunityActivity(@PathVariable Long opportunityActivityId) {
        return opportunityActivityService.fetchOpportunityActivity(opportunityActivityId);
     }
 	
@@ -38,11 +38,11 @@ public class OpportunityActivityController {
 		if(opportunityActivity==null) {
 			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(new OpportunityActivity());
 			isNew = true;
-		} else if(opportunityActivity.getOpportunityActivityId() == 0) {
+		} else if(opportunityActivity.getOpportunityActivityId() == null) {
 			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(opportunityActivity);
 			isNew = true;
 		} else {
-			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(opportunityActivity);
+			savedOpportunityActivity = opportunityActivityService.updateOpportunityActivity(opportunityActivity, opportunityActivity.getOpportunityId());
 			isNew = false;
 		}
 		if(savedOpportunityActivity==null) {
@@ -56,6 +56,21 @@ public class OpportunityActivityController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunityactivities/{opportunityActivityId}")
+    public ResponseEntity<Object> updateOpportunityActivity(@PathVariable Long opportunityActivityId, @RequestBody OpportunityActivity opportunityActivity) {
+		OpportunityActivity savedOpportunityActivity = null;
+		Long idInRequestBody = opportunityActivity.getOpportunityActivityId();
+		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityActivityId)) != 0) ) {
+			//unmatched object and url id's
+			return new ResponseEntity<>("Unmatched ID's in RequestBody and URL", HttpStatus.BAD_REQUEST);
+		}
+		savedOpportunityActivity = opportunityActivityService.updateOpportunityActivity(opportunityActivity, opportunityActivityId);
+		if(savedOpportunityActivity==null) {
+			return new ResponseEntity<>(opportunityActivity, HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(savedOpportunityActivity, HttpStatus.OK);
+		}
+    }
 	
-
+	
 }

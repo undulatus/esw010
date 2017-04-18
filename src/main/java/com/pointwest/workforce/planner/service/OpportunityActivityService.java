@@ -8,8 +8,12 @@ public interface OpportunityActivityService {
 
 	public List<OpportunityActivity> fetchAllOpportunityActivities();
 
-	public OpportunityActivity fetchOpportunityActivity(long opportunityActivityId);
+	public OpportunityActivity fetchOpportunityActivity(Long opportunityActivityId);
 
 	public OpportunityActivity saveOpportunityActivity(OpportunityActivity opportunityActivity);
+	
+	public OpportunityActivity updateOpportunityActivity(OpportunityActivity opportunityActivity, Long opportunityActivityId);
+	
+	public int deleteOpportunityActivity(Long opportunityActivityId);
 	
 }

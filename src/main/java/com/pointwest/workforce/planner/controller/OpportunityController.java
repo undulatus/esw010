@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Opportunity;
+import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.OpportunityService;
 
 @RestController
@@ -47,11 +48,11 @@ public class OpportunityController {
 		if(opportunity==null) {
 			savedOpportunity = opportunityService.saveOpportunity(new Opportunity());
 			isNew = true;
-		} else if(opportunity.getOpportunityId() == 0) {
+		} else if(opportunity.getOpportunityId() == null) {
 			savedOpportunity = opportunityService.saveOpportunity(opportunity);
 			isNew = true;
 		} else {
-			savedOpportunity = opportunityService.saveOpportunity(opportunity);
+			savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunity.getOpportunityId());
 			isNew = false;
 		}
 		if(savedOpportunity==null) {
@@ -62,6 +63,22 @@ public class OpportunityController {
 			} else {
 				return new ResponseEntity<Opportunity>(savedOpportunity, HttpStatus.OK);
 			}
+		}
+    }
+	
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}")
+    public ResponseEntity<Object> updateOpportunity(@PathVariable Long opportunityId, @RequestBody(required=true) Opportunity opportunity) {
+		Opportunity savedOpportunity = null;
+		Long idInRequestBody = opportunity.getOpportunityId();
+		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityId)) != 0) ) {
+			//unmatched object and url id's
+			return new ResponseEntity<>("Unmatched ID's in RequestBody and URL", HttpStatus.BAD_REQUEST);
+		}
+		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
+		if(savedOpportunity==null) {
+			return new ResponseEntity<>(opportunity, HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(savedOpportunity, HttpStatus.OK);
 		}
     }
 	

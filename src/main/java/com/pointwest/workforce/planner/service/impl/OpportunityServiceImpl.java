@@ -13,6 +13,7 @@ import com.pointwest.workforce.planner.WorkforcePlannerApplication;
 import com.pointwest.workforce.planner.data.OpportunityLockEntityRepository;
 import com.pointwest.workforce.planner.data.OpportunityRepository;
 import com.pointwest.workforce.planner.domain.Opportunity;
+import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.domain.OpportunityLockEntity;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ReferenceDataService;
@@ -59,12 +60,27 @@ public class OpportunityServiceImpl implements OpportunityService {
 		return saved;
 	}
 	
-	/*@Override
-	public int updateOpportunity(Opportunity opportunity) {
-		Opportunity saved = opportunityRepository.save(opportunity);
+	@Override
+	public Opportunity updateOpportunity(Opportunity opportunity,
+			Long opportunityId) {
+		//if id not supplied in body then set it
+		if(opportunity.getOpportunityId() == null) opportunity.setOpportunityId(opportunityId);
+		//do not save null values but set the previous values into it
+		Opportunity previousOpportunity = opportunityRepository.findOne(opportunityId);
+		if(opportunity.getOpportunityName() == null) opportunity.setOpportunityName(previousOpportunity.getOpportunityName());
+		if(opportunity.getMarketCircle() == null) opportunity.setMarketCircle(previousOpportunity.getMarketCircle());
+		if(opportunity.getServiceLine() == null) opportunity.setServiceLine(previousOpportunity.getServiceLine());
+		if(opportunity.getDurationGranularity() == null) opportunity.setDurationGranularity(previousOpportunity.getDurationGranularity());
+		if(opportunity.getDurationInWeeks() == null) opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks());
+		if(opportunity.getProjectStartDate() == null) opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());
+		if(opportunity.getOpportunityStatus() == null) opportunity.setOpportunityStatus(previousOpportunity.getOpportunityStatus());
+		if(opportunity.getDocumentStatus() == null) opportunity.setDocumentStatus(previousOpportunity.getDocumentStatus());
+		if(opportunity.getClientName() == null) opportunity.setClientName(previousOpportunity.getClientName());
+		if(opportunity.getProjectAlias() == null) opportunity.setProjectAlias(previousOpportunity.getProjectAlias());
+		if(opportunity.getUser() == null) opportunity.setUser(previousOpportunity.getUser());
 		
-		return saved != null ?  1 : 0;
-	}*/
+		return opportunityRepository.save(opportunity);
+	}
 
 	@Override
 	public List<Opportunity> fetchOpportunityList() {

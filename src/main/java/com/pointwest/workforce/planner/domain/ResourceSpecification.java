@@ -24,7 +24,7 @@ public class ResourceSpecification {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="resource_specification_id")
-	private int resourceSpecificationId;
+	private Long resourceSpecificationId;
 	
 	@OneToOne
 	@JoinColumn(name="role_id")
@@ -39,7 +39,7 @@ public class ResourceSpecification {
 	private PayLevel payLevel;
 	
 	@Column(name="resource_specification_is_billable",columnDefinition="INT(1)")
-	private boolean isBillable;
+	private Boolean isBillable;
 	
 //	@ManyToOne
 //	@JoinColumn(name="opportunity_activity_id")
@@ -49,11 +49,11 @@ public class ResourceSpecification {
 	private List<WeeklyFTE> resourceSchedule;
 	
 
-	public int getResourceSpecificationId() {
+	public Long getResourceSpecificationId() {
 		return resourceSpecificationId;
 	}
 
-	public void setResourceSpecificationId(int resourceSpecificationId) {
+	public void setResourceSpecificationId(Long resourceSpecificationId) {
 		this.resourceSpecificationId = resourceSpecificationId;
 	}
 
@@ -81,11 +81,11 @@ public class ResourceSpecification {
 		this.payLevel = payLevel;
 	}
 
-	public boolean isBillable() {
+	public Boolean isBillable() {
 		return isBillable;
 	}
 
-	public void setBillable(boolean isBillable) {
+	public void setBillable(Boolean isBillable) {
 		this.isBillable = isBillable;
 	}
 

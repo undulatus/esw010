@@ -28,7 +28,7 @@ public class Opportunity {
 	@Id
 	@Column(name="opportunity_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long opportunityId;
+	private Long opportunityId;
 	
 	@Column(name="opportunity_name")
 	private String opportunityName;
@@ -45,7 +45,7 @@ public class Opportunity {
 	private String durationGranularity;
 	
 	@Column(name="opportunity_duration_week")
-	private double durationInWeeks;
+	private Double durationInWeeks;
 	
 	@Column(name="opportunity_start_date")
 	private Timestamp projectStartDate;
@@ -69,11 +69,11 @@ public class Opportunity {
 	@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
 	private List<OpportunityActivity> opportunityActivities;
 
-	public long getOpportunityId() {
+	public Long getOpportunityId() {
 		return opportunityId;
 	}
 
-	public void setOpportunityId(long opportunityId) {
+	public void setOpportunityId(Long opportunityId) {
 		this.opportunityId = opportunityId;
 	}
 
@@ -109,11 +109,11 @@ public class Opportunity {
 		this.durationGranularity = durationGranularity;
 	}
 
-	public double getDurationInWeeks() {
+	public Double getDurationInWeeks() {
 		return durationInWeeks;
 	}
 
-	public void setDurationInWeeks(double durationInWeeks) {
+	public void setDurationInWeeks(Double durationInWeeks) {
 		this.durationInWeeks = durationInWeeks;
 	}
 

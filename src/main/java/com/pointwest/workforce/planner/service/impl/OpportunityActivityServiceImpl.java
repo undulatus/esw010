@@ -24,7 +24,7 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 	}
 
 	@Override
-	public OpportunityActivity fetchOpportunityActivity(long opportunityActivityId) {
+	public OpportunityActivity fetchOpportunityActivity(Long opportunityActivityId) {
 		return opportunityActivityRepository.findOne(opportunityActivityId);
 		
 	}
@@ -34,7 +34,26 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		return opportunityActivityRepository.save(opportunityActivity);
 	}
 	
-	
+	@Override
+	public OpportunityActivity updateOpportunityActivity(OpportunityActivity opportunityActivity,
+			Long opportunityActivityId) {
+		//if id not supplied in request body then set it
+		if(opportunityActivity.getOpportunityActivityId() == null) opportunityActivity.setOpportunityActivityId(opportunityActivityId);
+		//do not save null values but set the previous values into it
+		OpportunityActivity previousOpportunityActivity = opportunityActivityRepository.findOne(opportunityActivityId);
+		if(opportunityActivity.getActivity() == null) opportunityActivity.setActivity(previousOpportunityActivity.getActivity());
+		if(opportunityActivity.getActivityStartDate() == null) opportunityActivity.setActivityStartDate(previousOpportunityActivity.getActivityStartDate());
+		if(opportunityActivity.getDurationInWeeks() == null) opportunityActivity.setDurationInWeeks(previousOpportunityActivity.getDurationInWeeks());
+		return opportunityActivityRepository.save(opportunityActivity);
+	}
+
+	@Override
+	public int deleteOpportunityActivity(Long opportunityActivityId) {
+		int initialCount = opportunityActivityRepository.countByOpportunityActivityId(opportunityActivityId);
+		opportunityActivityRepository.delete(opportunityActivityId);
+		int postDeleteCount = opportunityActivityRepository.countByOpportunityActivityId(opportunityActivityId);
+		return initialCount - postDeleteCount;
+	}
 	
 
 	

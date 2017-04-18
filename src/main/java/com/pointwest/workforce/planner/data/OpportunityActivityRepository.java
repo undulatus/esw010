@@ -6,4 +6,6 @@ import com.pointwest.workforce.planner.domain.OpportunityActivity;
 
 public interface OpportunityActivityRepository extends CrudRepository<OpportunityActivity, Long> {
 
+	public int countByOpportunityActivityId(Long opportunityActivityId);
+
 }
