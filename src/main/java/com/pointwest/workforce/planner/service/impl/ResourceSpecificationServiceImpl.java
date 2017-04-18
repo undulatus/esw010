@@ -18,9 +18,9 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 
 	@Override
 	public List<ResourceSpecification> fetchAllResourceSpecifications() {
-		List<ResourceSpecification> opportunityActivies = new ArrayList<ResourceSpecification>(); 
-		resourceSpecificationRepository.findAll().forEach(opportunityActivies::add);
-		return opportunityActivies;
+		List<ResourceSpecification> resourceSpecifications = new ArrayList<ResourceSpecification>(); 
+		resourceSpecificationRepository.findAll().forEach(resourceSpecifications::add);
+		return resourceSpecifications;
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		if(resourceSpecification.getResourceSpecificationId() == null) resourceSpecification.setResourceSpecificationId(resourceSpecificationId);
 		//do not save null values but set the previous values into it
 		ResourceSpecification previousResourceSpecification = resourceSpecificationRepository.findOne(resourceSpecificationId);
+		if(resourceSpecification.getRole() == null) resourceSpecification.setRole(previousResourceSpecification.getRole());
+		if(resourceSpecification.getPractice() == null) resourceSpecification.setPractice(previousResourceSpecification.getPractice());
+		if(resourceSpecification.getPayLevel() == null) resourceSpecification.setPayLevel(previousResourceSpecification.getPayLevel());
+		if(resourceSpecification.isBillable() == null) resourceSpecification.setBillable(previousResourceSpecification.isBillable());
+		if(resourceSpecification.getOpportunityActivityId() == null) resourceSpecification.setOpportunityActivityId(previousResourceSpecification.getOpportunityActivityId());
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 

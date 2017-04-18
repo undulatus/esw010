@@ -44,6 +44,7 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		if(opportunityActivity.getActivity() == null) opportunityActivity.setActivity(previousOpportunityActivity.getActivity());
 		if(opportunityActivity.getActivityStartDate() == null) opportunityActivity.setActivityStartDate(previousOpportunityActivity.getActivityStartDate());
 		if(opportunityActivity.getDurationInWeeks() == null) opportunityActivity.setDurationInWeeks(previousOpportunityActivity.getDurationInWeeks());
+		if(opportunityActivity.getOpportunityId() == null) opportunityActivity.setOpportunityId(previousOpportunityActivity.getOpportunityId());;
 		return opportunityActivityRepository.save(opportunityActivity);
 	}
 

@@ -42,7 +42,7 @@ public class OpportunityActivityController {
 			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(opportunityActivity);
 			isNew = true;
 		} else {
-			savedOpportunityActivity = opportunityActivityService.updateOpportunityActivity(opportunityActivity, opportunityActivity.getOpportunityId());
+			savedOpportunityActivity = opportunityActivityService.updateOpportunityActivity(opportunityActivity, opportunityActivity.getOpportunityActivityId());
 			isNew = false;
 		}
 		if(savedOpportunityActivity==null) {

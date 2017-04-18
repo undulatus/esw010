@@ -89,11 +89,11 @@ public class ResourceSpecification {
 		this.isBillable = isBillable;
 	}
 
-	public long getOpportunityActivityId() {
+	public Long getOpportunityActivityId() {
 		return opportunityActivityId;
 	}
 
-	public void setOpportunityActivityId(long opportunityActivityId) {
+	public void setOpportunityActivityId(Long opportunityActivityId) {
 		this.opportunityActivityId = opportunityActivityId;
 	}
 
