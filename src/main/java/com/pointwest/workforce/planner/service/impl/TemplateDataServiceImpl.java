@@ -30,18 +30,18 @@ public class TemplateDataServiceImpl implements TemplateDataService {
 		private static final Logger log = LoggerFactory.getLogger(TemplateDataServiceImpl.class);
 
 		@Override
-		public List<Activity> fetchActivitiesByServiceLineId(int serviceLineId) {
-			log.debug("MCI >> fetchActivitiesByServiceLineId with serviceLineId: " + serviceLineId);
-			List<Activity> activities = (List<Activity>) activityRepository.findActivitiesByServiceLineId(serviceLineId);
-			log.debug("MCO >> fetchActivitiesByServiceLineId with serviceLineId: " + serviceLineId);
+		public List<Activity> fetchActivitiesByServiceTypeId(int serviceTypeId) {
+			log.debug("MCI >> fetchActivitiesByServiceTypeId with serviceTypeId: " + serviceTypeId);
+			List<Activity> activities = (List<Activity>) activityRepository.findActivitiesByServiceTypeId(serviceTypeId);
+			log.debug("MCO >> fetchActivitiesByServiceTypeId with serviceTypeId: " + serviceTypeId);
 			return activities;
 		}
 
 		@Override
-		public List<Role> fetchRolesByServiceLineId(int serviceLineId) {
-			log.debug("MCI >> fetchRolesByServiceLineId with serviceLineId: " + serviceLineId);
-			List<Role> roles = (List<Role>) roleRepository.findRolesByServiceLineId(serviceLineId);
-			log.debug("MCO >> fetchRolesByServiceLineId with serviceLineId: " + serviceLineId);
+		public List<Role> fetchRolesByServiceTypeId(int serviceTypeId) {
+			log.debug("MCI >> fetchRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
+			List<Role> roles = (List<Role>) roleRepository.findRolesByServiceTypeId(serviceTypeId);
+			log.debug("MCO >> fetchRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
 			return roles;
 		}
 

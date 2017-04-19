@@ -8,7 +8,7 @@ import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
 import com.pointwest.workforce.planner.domain.Role;
-import com.pointwest.workforce.planner.domain.ServiceLine;
+import com.pointwest.workforce.planner.domain.ServiceType;
 
 public interface ReferenceDataService {
 
@@ -20,13 +20,13 @@ public interface ReferenceDataService {
 
 	public int updateBusinessUnit(int businessUnitId, BusinessUnit businessUnit);
 	
-	public List<ServiceLine> fetchAllServiceLine();
+	public List<ServiceType> fetchAllServiceType();
 
-	public ServiceLine fetchServiceLine(int serviceLineId);
+	public ServiceType fetchServiceType(int serviceTypeId);
 
-	public int addServiceLine(ServiceLine serviceLine);
+	public int addServiceType(ServiceType serviceType);
 
-	public int updateServiceLine(int serviceLineId, ServiceLine serviceLine);
+	public int updateServiceType(int serviceTypeId, ServiceType serviceType);
 	
 	public List<Activity> fetchAllActivity();
 

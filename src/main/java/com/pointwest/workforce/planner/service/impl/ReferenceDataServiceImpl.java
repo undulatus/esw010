@@ -13,14 +13,14 @@ import com.pointwest.workforce.planner.data.BusinessUnitRepository;
 import com.pointwest.workforce.planner.data.PayLevelRepository;
 import com.pointwest.workforce.planner.data.PracticeRepository;
 import com.pointwest.workforce.planner.data.RoleRepository;
-import com.pointwest.workforce.planner.data.ServiceLineRepository;
+import com.pointwest.workforce.planner.data.ServiceTypeRepository;
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.Group;
 import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
 import com.pointwest.workforce.planner.domain.Role;
-import com.pointwest.workforce.planner.domain.ServiceLine;
+import com.pointwest.workforce.planner.domain.ServiceType;
 import com.pointwest.workforce.planner.service.ReferenceDataService;
 
 @Service
@@ -30,7 +30,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		public BusinessUnitRepository businessUnitRepository;
 		
 		@Autowired
-		public ServiceLineRepository serviceLineRepository;
+		public ServiceTypeRepository serviceTypeRepository;
 		
 		@Autowired
 		public ActivityRepository activityRepository;
@@ -80,33 +80,33 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		}
 
 		@Override
-		public List<ServiceLine> fetchAllServiceLine() {
-			log.debug("MCI >> fetchAllServiceLine");
-			List<ServiceLine> serviceLines = (List<ServiceLine>) serviceLineRepository.findAll();
-			log.debug("MCO >> fetchAllServiceLine");
-			return serviceLines;
+		public List<ServiceType> fetchAllServiceType() {
+			log.debug("MCI >> fetchAllServiceType");
+			List<ServiceType> serviceTypes = (List<ServiceType>) serviceTypeRepository.findAll();
+			log.debug("MCO >> fetchAllServiceType");
+			return serviceTypes;
 			
 		}
 
 		@Override
-		public ServiceLine fetchServiceLine(int serviceLineId) {
-			log.debug("MCI >> fetchServiceLine with id: " + serviceLineId);
-			ServiceLine serviceLine = serviceLineRepository.findOne(serviceLineId);
-			log.debug("MCI >> fetchServiceLine with id: " + serviceLineId);
-			return serviceLine;
+		public ServiceType fetchServiceType(int serviceTypeId) {
+			log.debug("MCI >> fetchServiceType with id: " + serviceTypeId);
+			ServiceType serviceType = serviceTypeRepository.findOne(serviceTypeId);
+			log.debug("MCI >> fetchServiceType with id: " + serviceTypeId);
+			return serviceType;
 		}
 
 		@Override
-		public int addServiceLine(ServiceLine serviceLine) {
-			log.debug("MCI >> addServiceLine");
-			ServiceLine saved = serviceLineRepository.save(serviceLine);
+		public int addServiceType(ServiceType serviceType) {
+			log.debug("MCI >> addServiceType");
+			ServiceType saved = serviceTypeRepository.save(serviceType);
 			int result = saved != null ?  1 : 0;
-			log.debug("MCO >> addServiceLine result " + result);
+			log.debug("MCO >> addServiceType result " + result);
 			return result;
 		}
 
 		@Override
-		public int updateServiceLine(int serviceLineId, ServiceLine serviceLine) {
+		public int updateServiceType(int serviceTypeId, ServiceType serviceType) {
 			// TODO Auto-generated method stub
 			return 0;
 		}

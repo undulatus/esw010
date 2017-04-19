@@ -34,9 +34,9 @@ public class ActivityController {
        return referenceDataService.fetchActivity(activityId);
     }
 	
-	@RequestMapping("/servicelines/{serviceLineId}/activities")
-    public List<Activity> fetchActivitiesByServiceLineId(@PathVariable int serviceLineId) {
-       return templateDataService.fetchActivitiesByServiceLineId(serviceLineId);
+	@RequestMapping("/servicetypes/{serviceTypeId}/activities")
+    public List<Activity> fetchActivitiesByServiceTypeId(@PathVariable int serviceTypeId) {
+       return templateDataService.fetchActivitiesByServiceTypeId(serviceTypeId);
     }
 	
 	@RequestMapping(method=RequestMethod.POST, value="/activities")

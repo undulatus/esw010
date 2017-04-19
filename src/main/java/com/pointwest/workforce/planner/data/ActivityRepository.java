@@ -15,6 +15,6 @@ public interface ActivityRepository extends CrudRepository<Activity, Integer> {
 			" LEFT JOIN tmpl_service_line_activity sla ON a.activity_id = sla.activity_id" +
 			" WHERE sla.service_line_id =?1"
 			, nativeQuery=true)
-	public List<Activity> findActivitiesByServiceLineId(int serviceLineId);
+	public List<Activity> findActivitiesByServiceTypeId(int serviceTypeId);
 	
 }

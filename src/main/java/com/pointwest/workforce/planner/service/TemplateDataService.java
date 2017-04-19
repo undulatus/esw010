@@ -8,9 +8,9 @@ import com.pointwest.workforce.planner.domain.Role;
 
 public interface TemplateDataService {
 
-	public List<Activity> fetchActivitiesByServiceLineId(int serviceLineId);
+	public List<Activity> fetchActivitiesByServiceTypeId(int serviceTypeId);
 	
-	public List<Role> fetchRolesByServiceLineId(int serviceLineId);
+	public List<Role> fetchRolesByServiceTypeId(int serviceTypeId);
 	
 	public List<Practice> fetchPracticesByRoleId(int practice);
 	

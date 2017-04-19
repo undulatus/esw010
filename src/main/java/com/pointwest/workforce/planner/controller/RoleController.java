@@ -30,9 +30,9 @@ public class RoleController {
        return referenceDataService.fetchRole(roleId);
     }
 	
-	@RequestMapping("/servicelines/{serviceLineId}/roles")
-    public List<Role> fetchRolesByServiceLineId(@PathVariable int serviceLineId) {
-       return templateDataService.fetchRolesByServiceLineId(serviceLineId);
+	@RequestMapping("/servicetypes/{serviceTypeId}/roles")
+    public List<Role> fetchRolesByServiceTypeId(@PathVariable int serviceTypeId) {
+       return templateDataService.fetchRolesByServiceTypeId(serviceTypeId);
     }
 
 }

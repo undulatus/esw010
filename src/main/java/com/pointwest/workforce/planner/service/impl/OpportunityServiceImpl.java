@@ -64,7 +64,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 		Opportunity previousOpportunity = opportunityRepository.findOne(opportunityId);
 		if(opportunity.getOpportunityName() == null) opportunity.setOpportunityName(previousOpportunity.getOpportunityName());
 		if(opportunity.getBusinessUnit() == null) opportunity.setBusinessUnit(previousOpportunity.getBusinessUnit());
-		if(opportunity.getServiceLine() == null) opportunity.setServiceLine(previousOpportunity.getServiceLine());
+		if(opportunity.getServiceType() == null) opportunity.setServiceType(previousOpportunity.getServiceType());
 		if(opportunity.getDurationGranularity() == null) opportunity.setDurationGranularity(previousOpportunity.getDurationGranularity());
 		if(opportunity.getDurationInWeeks() == null) opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks());
 		if(opportunity.getProjectStartDate() == null) opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());

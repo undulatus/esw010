@@ -15,5 +15,5 @@ public interface RoleRepository extends CrudRepository<Role, Integer> {
 			" LEFT JOIN tmpl_service_line_role slr ON r.role_id = slr.role_id" +
 			" WHERE slr.service_line_id = ?1"
 			, nativeQuery=true)
-	public List<Role> findRolesByServiceLineId(int serviceLineId);
+	public List<Role> findRolesByServiceTypeId(int serviceTypeId);
 }

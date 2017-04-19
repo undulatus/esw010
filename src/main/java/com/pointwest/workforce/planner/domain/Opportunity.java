@@ -39,7 +39,7 @@ public class Opportunity {
 	
 	@OneToOne
 	@JoinColumn(name="service_line_id")
-	private ServiceLine serviceLine;
+	private ServiceType serviceType;
 	
 	@Column(name="opportunity_duration_granularity")
 	private String durationGranularity;
@@ -93,12 +93,12 @@ public class Opportunity {
 		this.businessUnit = businessUnit;
 	}
 
-	public ServiceLine getServiceLine() {
-		return serviceLine;
+	public ServiceType getServiceType() {
+		return serviceType;
 	}
 
-	public void setServiceLine(ServiceLine serviceLine) {
-		this.serviceLine = serviceLine;
+	public void setServiceType(ServiceType serviceType) {
+		this.serviceType = serviceType;
 	}
 
 	public String getDurationGranularity() {
@@ -176,7 +176,7 @@ public class Opportunity {
 	@Override
 	public String toString() {
 		return "Opportunity [opportunityId=" + opportunityId + ", opportunityName=" + opportunityName
-				+ ", businessUnit=" + businessUnit + ", serviceLine=" + serviceLine + ", durationGranularity="
+				+ ", businessUnit=" + businessUnit + ", serviceType=" + serviceType + ", durationGranularity="
 				+ durationGranularity + ", durationInWeeks=" + durationInWeeks + ", projectStartDate="
 				+ projectStartDate + ", opportunityStatus=" + opportunityStatus + ", documentStatus=" + documentStatus
 				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user
