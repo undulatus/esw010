@@ -2,6 +2,7 @@ package com.pointwest.workforce.planner.service;
 
 import java.util.List;
 
+import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 
 public interface OpportunityActivityService {
@@ -15,5 +16,7 @@ public interface OpportunityActivityService {
 	public OpportunityActivity updateOpportunityActivity(OpportunityActivity opportunityActivity, Long opportunityActivityId);
 	
 	public int deleteOpportunityActivity(Long opportunityActivityId);
+	
+	public List<OpportunityActivity> saveOpportunityActivity(List<Activity> activities, Long opportunityId);
 	
 }

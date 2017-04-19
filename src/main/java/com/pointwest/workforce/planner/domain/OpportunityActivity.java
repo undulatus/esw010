@@ -21,6 +21,12 @@ public class OpportunityActivity {
 	public OpportunityActivity() {
 		super();
 	}
+	
+	public OpportunityActivity(Activity activity, Long opportunityId) {
+		super();
+		this.activity = activity;
+		this.opportunityId = opportunityId;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

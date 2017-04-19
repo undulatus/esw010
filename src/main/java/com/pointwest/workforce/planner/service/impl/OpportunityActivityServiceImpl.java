@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.OpportunityActivityRepository;
+import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 
@@ -54,6 +55,16 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		opportunityActivityRepository.delete(opportunityActivityId);
 		int postDeleteCount = opportunityActivityRepository.countByOpportunityActivityId(opportunityActivityId);
 		return initialCount - postDeleteCount;
+	}
+
+	@Override
+	public List<OpportunityActivity> saveOpportunityActivity(List<Activity> activities, Long opportunityId) {
+		List<OpportunityActivity> opportunityActivities = new ArrayList<OpportunityActivity>();
+		for(Activity activity : activities) {
+			opportunityActivities.add(new OpportunityActivity(activity, opportunityId));
+		}
+		opportunityActivityRepository.save(opportunityActivities);
+		return (List<OpportunityActivity>) opportunityActivityRepository.save(opportunityActivities);
 	}
 	
 

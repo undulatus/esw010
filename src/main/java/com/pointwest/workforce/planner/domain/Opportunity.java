@@ -24,6 +24,11 @@ public class Opportunity {
 	public Opportunity() {
 		super();
 	}
+	
+	public Opportunity(Long opportunityId) {
+		super();
+		this.opportunityId = opportunityId;
+	}
 
 	@Id
 	@Column(name="opportunity_id")
