@@ -13,6 +13,16 @@ public class WeeklyFTEKey implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public WeeklyFTEKey() {
+		super();
+	}
+	
+	public WeeklyFTEKey(Long resourceSpecificationId, Long resourceScheduleWeekNumber) {
+		super();
+		this.resourceSpecificationId = resourceSpecificationId;
+		this.resourceScheduleWeekNumber = resourceScheduleWeekNumber;
+	}
+	
 	@Column(name="resource_specification_id")
 	private Long resourceSpecificationId;
 	
