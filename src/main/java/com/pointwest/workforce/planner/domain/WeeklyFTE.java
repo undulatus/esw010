@@ -1,5 +1,7 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -7,13 +9,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="resource_schedule")
-public class WeeklyFTE {
+public class WeeklyFTE implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	public WeeklyFTE() {
 		super();
 	}
 	
 	public WeeklyFTE(Long resourceSpecificationId, Long resourceScheduleWeekNumber, Double resourceScheduleFTE) {
+		super();
 		this.key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
 		this.resourceScheduleFTE = resourceScheduleFTE;
 	}
