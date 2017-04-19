@@ -88,5 +88,23 @@ public class WeeklyFTEController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{resourceScheduleWeekNumber}")
+    public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable Long resourceScheduleWeekNumber) {
+		int deleteCount = 0;
+		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
+			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
+			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+		} else {
+			WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
+			deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
+		}
+		if(deleteCount > 0) {
+			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
+		}
+    }
+	
 	
 }

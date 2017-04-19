@@ -72,5 +72,15 @@ public class OpportunityActivityController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/opportunityactivities/{opportunityActivityId}")
+    public ResponseEntity<Object> deleteOpportunityActivity(@PathVariable Long opportunityActivityId) {
+		int deleteCount = opportunityActivityService.deleteOpportunityActivity(opportunityActivityId);
+		if(deleteCount > 0) {
+			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
+		}
+    }
+	
 	
 }

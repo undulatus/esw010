@@ -72,5 +72,15 @@ public class ResourceSpecificationController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/resourcespecifications/{resourceSpecificationId}")
+    public ResponseEntity<Object> deleteResourceSpecification(@PathVariable Long resourceSpecificationId) {
+		int deleteCount = resourceSpecificationService.deleteResourceSpecification(resourceSpecificationId);
+		if(deleteCount > 0) {
+			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
+		}
+    }
+	
 	
 }
