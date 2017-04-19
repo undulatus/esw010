@@ -35,7 +35,7 @@ public class Opportunity {
 	
 	@OneToOne
 	@JoinColumn(name="market_circle_id")
-	private MarketCircle marketCircle;
+	private BusinessUnit businessUnit;
 	
 	@OneToOne
 	@JoinColumn(name="service_line_id")
@@ -85,12 +85,12 @@ public class Opportunity {
 		this.opportunityName = opportunityName;
 	}
 
-	public MarketCircle getMarketCircle() {
-		return marketCircle;
+	public BusinessUnit getBusinessUnit() {
+		return businessUnit;
 	}
 
-	public void setMarketCircle(MarketCircle marketCircle) {
-		this.marketCircle = marketCircle;
+	public void setBusinessUnit(BusinessUnit businessUnit) {
+		this.businessUnit = businessUnit;
 	}
 
 	public ServiceLine getServiceLine() {
@@ -176,7 +176,7 @@ public class Opportunity {
 	@Override
 	public String toString() {
 		return "Opportunity [opportunityId=" + opportunityId + ", opportunityName=" + opportunityName
-				+ ", marketCircle=" + marketCircle + ", serviceLine=" + serviceLine + ", durationGranularity="
+				+ ", businessUnit=" + businessUnit + ", serviceLine=" + serviceLine + ", durationGranularity="
 				+ durationGranularity + ", durationInWeeks=" + durationInWeeks + ", projectStartDate="
 				+ projectStartDate + ", opportunityStatus=" + opportunityStatus + ", documentStatus=" + documentStatus
 				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user

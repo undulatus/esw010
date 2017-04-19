@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.ActivityRepository;
 import com.pointwest.workforce.planner.data.GroupRepository;
-import com.pointwest.workforce.planner.data.MarketCircleRepository;
+import com.pointwest.workforce.planner.data.BusinessUnitRepository;
 import com.pointwest.workforce.planner.data.PayLevelRepository;
 import com.pointwest.workforce.planner.data.PracticeRepository;
 import com.pointwest.workforce.planner.data.RoleRepository;
 import com.pointwest.workforce.planner.data.ServiceLineRepository;
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.Group;
-import com.pointwest.workforce.planner.domain.MarketCircle;
+import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
 import com.pointwest.workforce.planner.domain.Role;
@@ -27,7 +27,7 @@ import com.pointwest.workforce.planner.service.ReferenceDataService;
 public class ReferenceDataServiceImpl implements ReferenceDataService {
 
 		@Autowired
-		public MarketCircleRepository marketCircleRepository;
+		public BusinessUnitRepository businessUnitRepository;
 		
 		@Autowired
 		public ServiceLineRepository serviceLineRepository;
@@ -50,37 +50,32 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		private static final Logger log = LoggerFactory.getLogger(ReferenceDataServiceImpl.class);
 		
 		@Override
-		public List<MarketCircle> fetchAllMarketCircle() {
-//			List<MarketCircle> marketCircles = new ArrayList<MarketCircle>(); 
-//			marketCircleRepository.findAll().forEach(marketCircles::add);
-//			return marketCircles;
-			log.debug("MCI >> fetchAllMarketCircle");
-			List<MarketCircle> marketCircles = (List<MarketCircle>) marketCircleRepository.findAll();
-			log.debug("MCO >> fetchAllMarketCircle");
-			return marketCircles;
+		public List<BusinessUnit> fetchAllBusinessUnit() {
+			log.debug("MCI >> fetchAllBusinessUnit");
+			List<BusinessUnit> businessUnits = (List<BusinessUnit>) businessUnitRepository.findAll();
+			log.debug("MCO >> fetchAllBusinessUnit");
+			return businessUnits;
 		}
 		
 		@Override
-		public MarketCircle fetchMarketCircle(int marketCircleId) {
-			log.debug("MCI >> fetchMarketCircle with id : " + marketCircleId);
-			MarketCircle marketCircle = marketCircleRepository.findOne(marketCircleId);
-			log.debug("MCO >> fetchMarketCircle with id : " + marketCircleId);
-			return marketCircle;
+		public BusinessUnit fetchBusinessUnit(int businessUnitId) {
+			log.debug("MCI >> fetchBusinessUnit with id : " + businessUnitId);
+			BusinessUnit businessUnit = businessUnitRepository.findOne(businessUnitId);
+			log.debug("MCO >> fetchBusinessUnit with id : " + businessUnitId);
+			return businessUnit;
 		}
 		
 		@Override
-		public int addMarketCircle(MarketCircle marketCircle) {
-			log.debug("MCI >> addMarketCircle");
-			MarketCircle saved = marketCircleRepository.save(marketCircle);
+		public int addBusinessUnit(BusinessUnit businessUnit) {
+			log.debug("MCI >> addBusinessUnit");
+			BusinessUnit saved = businessUnitRepository.save(businessUnit);
 			int result = saved != null ?  1 : 0;
-			log.debug("MCO >> addMarketCircle result " + result);
+			log.debug("MCO >> addBusinessUnit result " + result);
 			return result;
 		}
 		
 		@Override
-		public int updateMarketCircle(int marketCircleId, MarketCircle marketCircle) {
-//			MarketCircle saved = marketCircleRepository.save(marketCircleId, marketCircle);
-//			return saved != null ?  1 : 0;
+		public int updateBusinessUnit(int businessUnitId, BusinessUnit businessUnit) {
 			return 0;
 		}
 

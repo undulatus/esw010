@@ -41,10 +41,6 @@ public class OpportunityServiceImpl implements OpportunityService {
 	public List<Opportunity> fetchAllOpportunities() {
 		List<Opportunity> opportunities = new ArrayList<Opportunity>(); 
 		opportunityRepository.findAll().forEach(opportunities::add);
-//		
-//		for(Opportunity opportunity : opportunities) {
-//			log.debug(opportunity.getOpportunityName() + " MC: " + opportunity.getMarketCircle().getMarketCircleId());
-//		}
 		return opportunities;
 	}
 	
@@ -67,7 +63,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 		//do not save null values but set the previous values into it
 		Opportunity previousOpportunity = opportunityRepository.findOne(opportunityId);
 		if(opportunity.getOpportunityName() == null) opportunity.setOpportunityName(previousOpportunity.getOpportunityName());
-		if(opportunity.getMarketCircle() == null) opportunity.setMarketCircle(previousOpportunity.getMarketCircle());
+		if(opportunity.getBusinessUnit() == null) opportunity.setBusinessUnit(previousOpportunity.getBusinessUnit());
 		if(opportunity.getServiceLine() == null) opportunity.setServiceLine(previousOpportunity.getServiceLine());
 		if(opportunity.getDurationGranularity() == null) opportunity.setDurationGranularity(previousOpportunity.getDurationGranularity());
 		if(opportunity.getDurationInWeeks() == null) opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks());

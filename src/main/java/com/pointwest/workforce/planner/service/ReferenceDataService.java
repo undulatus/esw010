@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.Group;
-import com.pointwest.workforce.planner.domain.MarketCircle;
+import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
 import com.pointwest.workforce.planner.domain.Role;
@@ -12,13 +12,13 @@ import com.pointwest.workforce.planner.domain.ServiceLine;
 
 public interface ReferenceDataService {
 
-	public List<MarketCircle> fetchAllMarketCircle();
+	public List<BusinessUnit> fetchAllBusinessUnit();
 
-	public MarketCircle fetchMarketCircle(int marketCircleId);
+	public BusinessUnit fetchBusinessUnit(int businessUnitId);
 
-	public int addMarketCircle(MarketCircle marketCircle);
+	public int addBusinessUnit(BusinessUnit businessUnit);
 
-	public int updateMarketCircle(int marketCircleId, MarketCircle marketCircle);
+	public int updateBusinessUnit(int businessUnitId, BusinessUnit businessUnit);
 	
 	public List<ServiceLine> fetchAllServiceLine();
 
