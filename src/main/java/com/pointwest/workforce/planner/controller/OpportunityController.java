@@ -128,6 +128,8 @@ public class OpportunityController {
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunityId <= 0 || serviceTypeId <= 0) {
 			return new ResponseEntity<>(new CustomError("Invalid id's"), HttpStatus.BAD_REQUEST);
+		} else if(opportunity.getOpportunityActivities().size() > 0) {
+			return new ResponseEntity<>("activities found not initializing new activities", HttpStatus.OK);
 		} else {
 			List<Activity> preLoadedActivities = templateDataService.fetchActivitiesByServiceTypeId(serviceTypeId);
 			List<OpportunityActivity> opportunityActivities = opportunityActivityService.saveOpportunityActivity(preLoadedActivities, opportunityId);
