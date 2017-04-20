@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Activity;
+import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
@@ -30,28 +31,48 @@ public class OpportunityController {
 	@Autowired
 	TemplateDataService templateDataService;
 	
-	@RequestMapping("/opportunities")
-    public List<Opportunity> fetchAllOpportunities() {
-       return opportunityService.fetchAllOpportunities();
+	@RequestMapping(method=RequestMethod.GET, value="/opportunities")
+    public ResponseEntity<Object> fetchAllOpportunities() {
+		List<Opportunity> opportunities = opportunityService.fetchAllOpportunities();
+		if(opportunities == null || opportunities.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunities, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/opportunities/{opportunityId}")
-    public Opportunity fetchOpportunity(@PathVariable int opportunityId) {
-       return opportunityService.fetchOpportunity(opportunityId);
+	@RequestMapping(method=RequestMethod.GET, value="/opportunities/{opportunityId}")
+    public ResponseEntity<Object> fetchOpportunity(@PathVariable int opportunityId) {
+		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
+		if(opportunity == null) {
+			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunity, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/users/{username}/opportunities")
-    public List<Opportunity> fetchOpportunity(@PathVariable String username) {
-       return opportunityService.fetchOpportunitiesByUsername(username);
+	@RequestMapping(method=RequestMethod.GET, value="/users/{username}/opportunities")
+    public ResponseEntity<Object> fetchOpportunity(@PathVariable String username) {
+       List<Opportunity> opportunities = opportunityService.fetchOpportunitiesByUsername(username);
+		if(opportunities == null || opportunities.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunities, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/users/{username}/opportunities/other")
-    public List<Opportunity> fetchNotOwnedOpportunity(@PathVariable String username) {
-       return opportunityService.fetchNotOwnedOpportunitiesByUsername(username);
+	@RequestMapping(method=RequestMethod.GET, value="/users/{username}/opportunities/other")
+    public ResponseEntity<Object> fetchNotOwnedOpportunity(@PathVariable String username) {
+		List<Opportunity> opportunities = opportunityService.fetchNotOwnedOpportunitiesByUsername(username);
+		if(opportunities == null || opportunities.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunities, HttpStatus.OK);
+		}
     }
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities")
-    public ResponseEntity<Opportunity> saveOpportunity(@RequestBody(required=false) Opportunity opportunity) {
+    public ResponseEntity<Object> saveOpportunity(@RequestBody(required=false) Opportunity opportunity) {
 		Opportunity savedOpportunity = null;
 		boolean isNew = false;
 		if(opportunity==null) {
@@ -65,12 +86,12 @@ public class OpportunityController {
 			isNew = false;
 		}
 		if(savedOpportunity==null) {
-			return new ResponseEntity<>(opportunity, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Incorrect inputs, not saved"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(isNew) {
-				return new ResponseEntity<Opportunity>(savedOpportunity, HttpStatus.CREATED);
+				return new ResponseEntity<>(savedOpportunity, HttpStatus.CREATED);
 			} else {
-				return new ResponseEntity<Opportunity>(savedOpportunity, HttpStatus.OK);
+				return new ResponseEntity<>(savedOpportunity, HttpStatus.OK);
 			}
 		}
     }
@@ -81,7 +102,7 @@ public class OpportunityController {
 		Long idInRequestBody = opportunity.getOpportunityId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityId)) != 0) ) {
 			//unmatched object and url id's
-			return new ResponseEntity<>("Unmatched ID's in RequestBody and URL", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Unmatched ID's in RequestBody and URL"), HttpStatus.BAD_REQUEST);
 		}
 		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
 		if(savedOpportunity==null) {
@@ -93,20 +114,25 @@ public class OpportunityController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/lock/{lock}")
-    public void updateOpportunityLock(@PathVariable long opportunityId, @PathVariable boolean lock) {
-		opportunityService.lockOpportunity(opportunityId, lock);
+    public ResponseEntity<Object> updateOpportunityLock(@PathVariable long opportunityId, @PathVariable boolean lock) {
+		int success = opportunityService.lockOpportunity(opportunityId, lock);
+		if(success == 1) {
+			return new ResponseEntity<>(success, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(new CustomError("Opportunity lock unchanged"), HttpStatus.BAD_REQUEST);
+		}
     }
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/servicetypes/{serviceTypeId}")
     public ResponseEntity<Object> updateOpportunityWithLoadedActivities(@PathVariable Long opportunityId, @PathVariable int serviceTypeId) {
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunityId <= 0 || serviceTypeId <= 0) {
-			return new ResponseEntity<>("Invalid id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid id's"), HttpStatus.BAD_REQUEST);
 		} else {
 			List<Activity> preLoadedActivities = templateDataService.fetchActivitiesByServiceTypeId(serviceTypeId);
 			List<OpportunityActivity> opportunityActivities = opportunityActivityService.saveOpportunityActivity(preLoadedActivities, opportunityId);
 			if(opportunityActivities == null) {
-				return new ResponseEntity<>("Failed to preload templates", HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>(new CustomError("Failed to preload templates"), HttpStatus.BAD_REQUEST);
 			} else {
 				opportunity.setOpportunityActivities(opportunityActivities);
 				return new ResponseEntity<>(opportunity, HttpStatus.OK);

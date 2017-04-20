@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Activity;
+import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.service.ReferenceDataService;
 import com.pointwest.workforce.planner.service.TemplateDataService;
 
@@ -24,29 +25,44 @@ public class ActivityController {
 	@Autowired
 	TemplateDataService templateDataService;
 	
-	@RequestMapping("/activities")
-    public List<Activity> fetchAllActivity() {
-       return referenceDataService.fetchAllActivity();
+	@RequestMapping(method=RequestMethod.GET, value="/activities")
+    public ResponseEntity<Object> fetchAllActivity() {
+       List<Activity> activities = referenceDataService.fetchAllActivity();
+       if(activities == null) {
+    	   return new ResponseEntity<>(new CustomError("No activities retrieved"), HttpStatus.NOT_FOUND);
+       } else {
+    	   return new ResponseEntity<>(activities, HttpStatus.OK);
+       }
     }
 	
-	@RequestMapping("/activities/{activityId}")
-    public Activity fetchActivity(@PathVariable int activityId) {
-       return referenceDataService.fetchActivity(activityId);
+	@RequestMapping(method=RequestMethod.GET, value="/activities/{activityId}")
+    public ResponseEntity<Object> fetchActivity(@PathVariable int activityId) {
+        Activity activity = referenceDataService.fetchActivity(activityId); 
+		if(activity == null) {
+			return new ResponseEntity<>(new CustomError("Activity not found"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(activity, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/servicetypes/{serviceTypeId}/activities")
-    public List<Activity> fetchActivitiesByServiceTypeId(@PathVariable int serviceTypeId) {
-       return templateDataService.fetchActivitiesByServiceTypeId(serviceTypeId);
+	@RequestMapping(method=RequestMethod.GET, value="/servicetypes/{serviceTypeId}/activities")
+    public ResponseEntity<Object> fetchActivitiesByServiceTypeId(@PathVariable int serviceTypeId) {
+		List<Activity> activities = templateDataService.fetchActivitiesByServiceTypeId(serviceTypeId);
+		if(activities == null) {
+			return new ResponseEntity<>(new CustomError("No activities retrieved for the given service type"), HttpStatus.NOT_FOUND);
+		} else {
+		   return new ResponseEntity<>(activities, HttpStatus.OK);
+		}
     }
 	
 	@RequestMapping(method=RequestMethod.POST, value="/activities")
-    public ResponseEntity<Activity> saveCustomActivity(@RequestBody(required=true) String activityName) {
+    public ResponseEntity<Object> saveCustomActivity(@RequestBody(required=true) String activityName) {
 		Activity customActivity = new Activity(activityName, true);
 		customActivity = referenceDataService.addActivity(customActivity);
 		if(customActivity==null) {
-			return new ResponseEntity<Activity>(customActivity, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Incorrect inputs, not saved"), HttpStatus.BAD_REQUEST);
 		} else {
-			return new ResponseEntity<Activity>(customActivity, HttpStatus.CREATED);
+			return new ResponseEntity<>(customActivity, HttpStatus.CREATED);
 		}
     }
 

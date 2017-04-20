@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 
@@ -20,19 +21,29 @@ public class ResourceSpecificationController {
 	@Autowired
 	ResourceSpecificationService resourceSpecificationService;
 	
-	@RequestMapping("/resourcespecifications")
-    public List<ResourceSpecification> fetchAllOpportunities() {
-       return resourceSpecificationService.fetchAllResourceSpecifications();
+	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications")
+    public ResponseEntity<Object> fetchAllOpportunities() {
+		List<ResourceSpecification> resourceSpecifications =resourceSpecificationService.fetchAllResourceSpecifications();
+		if(resourceSpecifications == null || resourceSpecifications.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No Resource Specifications retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(resourceSpecifications, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/resourcespecifications/{resourceSpecificationId}")
-    public ResourceSpecification fetchResourceSpecification(@PathVariable Long resourceSpecificationId) {
-       return resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId);
+	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications/{resourceSpecificationId}")
+    public ResponseEntity<Object> fetchResourceSpecification(@PathVariable Long resourceSpecificationId) {
+		ResourceSpecification resourceSpecification = resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId);
+		if(resourceSpecification == null) {
+			return new ResponseEntity<>(new CustomError("Resource Specification not found"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(resourceSpecification, HttpStatus.OK);
+		}
     }
 	
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications")
-    public ResponseEntity<ResourceSpecification> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification) {
+    public ResponseEntity<Object> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification) {
 		ResourceSpecification savedResourceSpecification = null;
 		boolean isNew = false;
 		if(resourceSpecification==null) {
@@ -46,12 +57,12 @@ public class ResourceSpecificationController {
 			isNew = false;
 		}
 		if(savedResourceSpecification==null) {
-			return new ResponseEntity<>(resourceSpecification, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid inputs, not saved"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(isNew) {
-				return new ResponseEntity<ResourceSpecification>(savedResourceSpecification, HttpStatus.CREATED);
+				return new ResponseEntity<>(savedResourceSpecification, HttpStatus.CREATED);
 			} else {
-				return new ResponseEntity<ResourceSpecification>(savedResourceSpecification, HttpStatus.OK);
+				return new ResponseEntity<>(savedResourceSpecification, HttpStatus.OK);
 			}
 		}
     }
@@ -62,7 +73,7 @@ public class ResourceSpecificationController {
 		Long idInRequestBody = resourceSpecification.getResourceSpecificationId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(resourceSpecificationId)) != 0) ) {
 			//unmatched object and url id's
-			return new ResponseEntity<>("Unmatched ID's in RequestBody and URL", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Unmatched ID's in RequestBody and URL"), HttpStatus.BAD_REQUEST);
 		}
 		savedResourceSpecification = resourceSpecificationService.updateResourceSpecification(resourceSpecification, resourceSpecificationId);
 		if(savedResourceSpecification==null) {

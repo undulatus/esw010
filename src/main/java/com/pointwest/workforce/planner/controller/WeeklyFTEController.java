@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
@@ -21,22 +22,31 @@ public class WeeklyFTEController {
 	@Autowired
 	WeeklyFTEService weeklyFTEService;
 	
-	@RequestMapping("/weeklyftes")
-    public List<WeeklyFTE> fetchAllOpportunities() {
-       return weeklyFTEService.fetchAllWeeklyFTEs();
+	@RequestMapping(method=RequestMethod.GET, value="/weeklyftes")
+    public ResponseEntity<Object> fetchAllWeeklyFTE() {
+       List<WeeklyFTE> weeklyFTEs = weeklyFTEService.fetchAllWeeklyFTEs();
+       if(weeklyFTEs == null || weeklyFTEs.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No Weekly FTEs retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(weeklyFTEs, HttpStatus.OK);
+		}
     }
 	
-	@RequestMapping("/resourcespecifications/{resourceSpecificationId}/weeklyftes/{resourceScheduleWeekNumber}")
+	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> fetchWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable Long resourceScheduleWeekNumber) {
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
 			WeeklyFTE weeklyFTE = weeklyFTEService.fetchWeeklyFTE(key);
-			return new ResponseEntity<>(weeklyFTE, HttpStatus.OK);
+			if(weeklyFTE == null) {
+				return new ResponseEntity<>(new CustomError("No weekly fte entry"), HttpStatus.NOT_FOUND);
+			} else {
+				return new ResponseEntity<>(weeklyFTE, HttpStatus.OK);
+			}
 		}
     }
 	
@@ -46,19 +56,19 @@ public class WeeklyFTEController {
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
-			return new ResponseEntity<>("Invalid Body", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else if(FTE > 1 || FTE < 0) {
-			return new ResponseEntity<>("Invalid Body", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			WeeklyFTE weeklyFTE = new WeeklyFTE(resourceSpecificationId, resourceScheduleWeekNumber, FTE);
 			savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(weeklyFTE);
 		}
 		if(savedWeeklyFTE==null) {
-			return new ResponseEntity<>("nothing saved", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("nothing saved"), HttpStatus.BAD_REQUEST);
 		} else {
 			return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 		}
@@ -70,19 +80,19 @@ public class WeeklyFTEController {
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
-			return new ResponseEntity<>("Invalid Body", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else if(FTE > 1 || FTE < 0) {
-			return new ResponseEntity<>("Invalid Body", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			WeeklyFTE weeklyFTE = new WeeklyFTE(resourceSpecificationId, resourceScheduleWeekNumber, FTE);
 			savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(weeklyFTE);
 		}
 		if(savedWeeklyFTE==null) {
-			return new ResponseEntity<>("nothing saved", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("nothing saved"), HttpStatus.BAD_REQUEST);
 		} else {
 			return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 		}
@@ -92,9 +102,9 @@ public class WeeklyFTEController {
     public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable Long resourceScheduleWeekNumber) {
 		int deleteCount = 0;
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
-			return new ResponseEntity<>("Invalid Id's", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else {
 			WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
 			deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
