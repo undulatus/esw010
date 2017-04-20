@@ -48,10 +48,10 @@ public class WeeklyFTEServiceImpl implements WeeklyFTEService {
 
 	@Override
 	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey) {
-		//int initialCount = weeklyFTERepository.countByWeeklyFTEKey(weeklyFTEKey);
+		int initialCount = weeklyFTERepository.countByKey(weeklyFTEKey);
 		weeklyFTERepository.delete(weeklyFTEKey);
-		//int postDeleteCount = weeklyFTERepository.countByWeeklyFTEKey(weeklyFTEKey);
-		return 1;
+		int postDeleteCount = weeklyFTERepository.countByKey(weeklyFTEKey);
+		return initialCount - postDeleteCount;
 	}
 	
 
