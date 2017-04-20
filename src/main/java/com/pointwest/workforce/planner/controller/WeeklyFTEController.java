@@ -27,6 +27,12 @@ public class WeeklyFTEController {
 	@Value("${month.to.week.multiplier}")
 	private Long WEEKSINMONTH;
 	
+	@Value("${granularity.week}")
+	private String WEEKLY;
+	
+	@Value("${granularity.month}")
+	private String MONTHLY;
+	
 	@RequestMapping(method=RequestMethod.GET, value="/weeklyftes")
     public ResponseEntity<Object> fetchAllWeeklyFTE() {
        List<WeeklyFTE> weeklyFTEs = weeklyFTEService.fetchAllWeeklyFTEs();
@@ -69,7 +75,7 @@ public class WeeklyFTEController {
 		} else if(FTE > 1 || FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
-			if(granularity.equals("weekly")) {
+			if(granularity.equals(WEEKLY)) {
 				savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, resourceScheduleWeekNumber, FTE));
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + resourceScheduleWeekNumber), HttpStatus.BAD_REQUEST);
@@ -77,7 +83,7 @@ public class WeeklyFTEController {
 					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 				}
 			}
-			else if(granularity.equals("monthly")) {
+			else if(granularity.equals(MONTHLY)) {
 				List<Long> weeks = getWeeksInMonth(resourceScheduleWeekNumber, WEEKSINMONTH);
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
@@ -122,7 +128,7 @@ public class WeeklyFTEController {
 		} else if(FTE > 1 || FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
-			if(granularity.equals("weekly")) {
+			if(granularity.equals(WEEKLY)) {
 				savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, resourceScheduleWeekNumber, FTE));
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + resourceScheduleWeekNumber), HttpStatus.BAD_REQUEST);
@@ -130,7 +136,7 @@ public class WeeklyFTEController {
 					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 				}
 			}
-			else if(granularity.equals("monthly")) {
+			else if(granularity.equals(MONTHLY)) {
 				List<Long> weeks = getWeeksInMonth(resourceScheduleWeekNumber, WEEKSINMONTH);
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
@@ -153,11 +159,11 @@ public class WeeklyFTEController {
 		} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else {
-			if(granularity.equals("weekly")) {
+			if(granularity.equals(WEEKLY)) {
 				WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
 				deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
 			}
-			else if(granularity.equals("monthly")) {
+			else if(granularity.equals(MONTHLY)) {
 				List<Long> weeks = getWeeksInMonth(resourceScheduleWeekNumber, WEEKSINMONTH);
 				WeeklyFTEKey key;
 				for(Long week : weeks) {
