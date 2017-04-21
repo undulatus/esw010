@@ -71,7 +71,8 @@ public class Opportunity {
 	@JoinColumn(name="username")
 	private User user;
 	
-	@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "opportunityId")
 	private List<OpportunityActivity> opportunityActivities;
 
 	public Long getOpportunityId() {

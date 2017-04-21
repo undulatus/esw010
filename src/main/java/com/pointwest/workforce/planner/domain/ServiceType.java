@@ -15,16 +15,16 @@ public class ServiceType {
 
 	@Id
 	@Column(name="service_line_id")
-	private int serviceTypeId;
+	private Integer serviceTypeId;
 	
 	@Column(name="service_line_name")
 	private String serviceTypeName;
 
-	public int getServiceTypeId() {
+	public Integer getServiceTypeId() {
 		return serviceTypeId;
 	}
 
-	public void setServiceTypeId(int serviceTypeId) {
+	public void setServiceTypeId(Integer serviceTypeId) {
 		this.serviceTypeId = serviceTypeId;
 	}
 

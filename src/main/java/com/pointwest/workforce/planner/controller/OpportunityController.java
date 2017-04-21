@@ -2,6 +2,8 @@ package com.pointwest.workforce.planner.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,9 @@ public class OpportunityController {
 
 	@Autowired
 	TemplateDataService templateDataService;
+	
+	private static final Logger log = LoggerFactory.getLogger(OpportunityController.class);
+
 
 	@RequestMapping(method = RequestMethod.GET, value = "/opportunities")
 	public ResponseEntity<Object> fetchAllOpportunities() {
@@ -126,18 +131,26 @@ public class OpportunityController {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}/servicetypes/{serviceTypeId}")
 	public ResponseEntity<Object> updateOpportunityWithLoadedActivities(@PathVariable Long opportunityId,
-			@PathVariable int serviceTypeId) {
+			@PathVariable Integer serviceTypeId) {
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunityId <= 0 || serviceTypeId <= 0) {
 			return new ResponseEntity<>(new CustomError("Invalid id's"), HttpStatus.BAD_REQUEST);
 		} else {
 			if (opportunity.getOpportunityActivities().size() > 0) {
-				if (opportunity.getServiceType().getServiceTypeId() != serviceTypeId) {
+				log.info("1st id "+ opportunity.getServiceType().getServiceTypeId());
+				log.info("2nd id "+ serviceTypeId);
+				if (!(opportunity.getServiceType().getServiceTypeId().equals(serviceTypeId))) {
+					log.debug("not equal service type id delete!");
+					
+					Long opportunityActivityId;
 					for (OpportunityActivity opportunityActivity : opportunity.getOpportunityActivities()) {
-						opportunityActivityService
-								.deleteOpportunityActivity(opportunityActivity.getOpportunityActivityId());
+						opportunityActivityId = opportunityActivity.getOpportunityActivityId();
+						log.debug("delete id " + opportunityActivityId);
+						int result = opportunityActivityService.deleteOpportunityActivity(opportunityActivityId);
+						
 						// delete schedule too here to do bmab
 					}
+					//opportunity.setOpportunityActivities(null);
 				} else {
 					return new ResponseEntity<>(opportunity, HttpStatus.OK);
 				}

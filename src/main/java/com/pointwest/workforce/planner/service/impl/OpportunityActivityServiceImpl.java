@@ -3,6 +3,8 @@ package com.pointwest.workforce.planner.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 	
 	@Autowired
 	public OpportunityActivityRepository opportunityActivityRepository;
+	
+	private static final Logger log = LoggerFactory.getLogger(OpportunityActivityServiceImpl.class);
 
 	@Override
 	public List<OpportunityActivity> fetchAllOpportunityActivities() {
@@ -51,9 +55,14 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 
 	@Override
 	public int deleteOpportunityActivity(Long opportunityActivityId) {
+		log.debug("MCI >> deleteOpportunityActivity id : " + opportunityActivityId);
 		int initialCount = opportunityActivityRepository.countByOpportunityActivityId(opportunityActivityId);
+		log.debug("before delete count " + initialCount);
 		opportunityActivityRepository.delete(opportunityActivityId);
 		int postDeleteCount = opportunityActivityRepository.countByOpportunityActivityId(opportunityActivityId);
+		log.debug("after delete count " + postDeleteCount);
+		log.debug("deleted count " + (initialCount - postDeleteCount));
+		log.debug("MCO >> deleteOpportunityActivity id : " + opportunityActivityId);
 		return initialCount - postDeleteCount;
 	}
 
