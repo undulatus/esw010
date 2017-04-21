@@ -61,6 +61,17 @@ public class WeeklyFTEController {
 		}
     }
 	
+	private List<Long> getWeeksInMonth(long monthNumber, long multiplier) {
+		long min = ((monthNumber - 1) * multiplier) + 1;
+		long max = monthNumber * multiplier;
+		
+		List<Long> weekNumbers = new ArrayList<Long>();
+		for(long i = min; i <= max; i ++) {
+			weekNumbers.add(i);
+		}
+		return weekNumbers;
+	}
+	
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{granularity}/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> saveWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber, 
@@ -98,22 +109,6 @@ public class WeeklyFTEController {
 		}
     }
 	
-	private List<Long> getWeeksInMonth(long monthNumber, long multiplier) {
-		long min;
-		long max;
-		if(monthNumber == 1) {
-			min = 0;
-			max = 1;
-		} else {
-			min = ((monthNumber - 1) * multiplier) + 1;
-			max = monthNumber * multiplier;
-		}
-		List<Long> weekNumbers = new ArrayList<Long>();
-		for(long i = min; i <= max; i ++) {
-			weekNumbers.add(i);
-		}
-		return weekNumbers;
-	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{granularity}/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> updateWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber, 
