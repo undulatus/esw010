@@ -5,7 +5,7 @@ import com.pointwest.workforce.planner.domain.Version;
 
 public interface VersionService {
 
-	public int saveVersion(Version version);
+	public Version saveVersion(Version version);
 
 	/**
 	 * This will discard any current data for the opportunity with the opportunityId
