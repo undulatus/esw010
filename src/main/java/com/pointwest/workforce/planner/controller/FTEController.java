@@ -19,7 +19,7 @@ import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
 
 @RestController
-public class WeeklyFTEController {
+public class FTEController {
 	
 	@Autowired
 	WeeklyFTEService weeklyFTEService;
