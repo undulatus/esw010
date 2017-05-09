@@ -8,6 +8,8 @@ import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
 public interface WeeklyFTEService {
 
 	public List<WeeklyFTE> fetchAllWeeklyFTEs();
+	
+	public List<WeeklyFTE> fetchWeeklyFTE(Long resourceSpecificationId);
 
 	public WeeklyFTE fetchWeeklyFTE(WeeklyFTEKey key);
 
@@ -16,5 +18,5 @@ public interface WeeklyFTEService {
 	public WeeklyFTE updateWeeklyFTE(WeeklyFTE weeklyFTE, WeeklyFTEKey weeklyFTEKey);
 	
 	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey);
-	
+
 }

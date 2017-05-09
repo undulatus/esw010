@@ -19,14 +19,19 @@ public class WeeklyFTEServiceImpl implements WeeklyFTEService {
 
 	@Override
 	public List<WeeklyFTE> fetchAllWeeklyFTEs() {
-		List<WeeklyFTE> opportunityActivies = new ArrayList<WeeklyFTE>(); 
-		weeklyFTERepository.findAll().forEach(opportunityActivies::add);
-		return opportunityActivies;
+		List<WeeklyFTE> weeklyFTEs = new ArrayList<WeeklyFTE>(); 
+		weeklyFTERepository.findAll().forEach(weeklyFTEs::add);
+		return weeklyFTEs;
 	}
 
 	@Override
 	public WeeklyFTE fetchWeeklyFTE(WeeklyFTEKey key) {
 		return weeklyFTERepository.findOne(key);
+	}
+	
+	@Override
+	public List<WeeklyFTE> fetchWeeklyFTE(Long resourceSpecificationId) {
+		return weeklyFTERepository.findWeeklyFTEsByKeyResourceSpecificationId(resourceSpecificationId);
 	}
 
 	@Override

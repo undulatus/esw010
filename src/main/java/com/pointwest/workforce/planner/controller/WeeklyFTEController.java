@@ -33,7 +33,7 @@ public class WeeklyFTEController {
 	@Value("${granularity.month}")
 	private String MONTHLY;
 	
-	@RequestMapping(method=RequestMethod.GET, value="/weeklyftes")
+	@RequestMapping(method=RequestMethod.GET, value="/ftes")
     public ResponseEntity<Object> fetchAllWeeklyFTE() {
        List<WeeklyFTE> weeklyFTEs = weeklyFTEService.fetchAllWeeklyFTEs();
        if(weeklyFTEs == null || weeklyFTEs.isEmpty()) {
@@ -43,7 +43,7 @@ public class WeeklyFTEController {
 		}
     }
 	
-	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{resourceScheduleWeekNumber}")
+	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications/{resourceSpecificationId}/ftes/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> fetchWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable Long resourceScheduleWeekNumber) {
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
@@ -61,6 +61,16 @@ public class WeeklyFTEController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications/{resourceSpecificationId}/ftes")
+    public ResponseEntity<Object> fetchWeeklyFTEByResourceSpecification(@PathVariable Long resourceSpecificationId) {
+		List<WeeklyFTE> weeklyFTEs = weeklyFTEService.fetchWeeklyFTE(resourceSpecificationId);
+		if(weeklyFTEs == null || weeklyFTEs.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No weekly FTEs retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(weeklyFTEs, HttpStatus.OK);
+		}
+    }
+	
 	private List<Long> getWeeksInMonth(long monthNumber, long multiplier) {
 		long min = ((monthNumber - 1) * multiplier) + 1;
 		long max = monthNumber * multiplier;
@@ -73,7 +83,7 @@ public class WeeklyFTEController {
 	}
 	
 
-	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{granularity}/{resourceScheduleWeekNumber}")
+	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> saveWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
@@ -110,7 +120,7 @@ public class WeeklyFTEController {
     }
 	
 	
-	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}/weeklyftes/{granularity}/{resourceScheduleWeekNumber}")
+	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> updateWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
@@ -146,7 +156,7 @@ public class WeeklyFTEController {
 		}
     }
 	
-	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/weeklyftes/{granularity}/{resourceScheduleWeekNumber}")
+	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{resourceScheduleWeekNumber}")
     public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber) {
 		int deleteCount = 0;
 		if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
