@@ -1,9 +1,9 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,11 +16,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name="opportunity")
 @DynamicUpdate
-public class Opportunity {
+public class Opportunity implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public Opportunity() {
 		super();
 	}
@@ -39,11 +46,11 @@ public class Opportunity {
 	private String opportunityName;
 	
 	@OneToOne
-	@JoinColumn(name="market_circle_id")
+	@JoinColumn(name="business_unit_id")
 	private BusinessUnit businessUnit;
 	
 	@OneToOne
-	@JoinColumn(name="service_line_id")
+	@JoinColumn(name="service_type_id")
 	private ServiceType serviceType;
 	
 	@Column(name="opportunity_duration_granularity")
@@ -178,6 +185,11 @@ public class Opportunity {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	/*@JsonSerialize()
+	public Opportunity getJson() {
+		return this;
+	}*/
 
 	@Override
 	public String toString() {

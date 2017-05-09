@@ -51,6 +51,10 @@ public class OpportunityCollaborator implements Serializable{
 		 */
 		private static final long serialVersionUID = 1L;
 		
+		public OpportunityCollaboratorKey() {
+			super();
+		}
+		
 		@Column(name="opportunity_id")
 		private Long opportunityId;
 

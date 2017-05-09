@@ -1,23 +1,30 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ref_service_line")
-public class ServiceType {
+@Table(name="ref_service_type")
+public class ServiceType implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ServiceType() {
 		super();
 	}
 
 	@Id
-	@Column(name="service_line_id")
+	@Column(name="service_type_id")
 	private Integer serviceTypeId;
 	
-	@Column(name="service_line_name")
+	@Column(name="service_type_name")
 	private String serviceTypeName;
 
 	public Integer getServiceTypeId() {

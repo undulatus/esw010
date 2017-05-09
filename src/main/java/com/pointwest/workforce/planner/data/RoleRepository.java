@@ -12,8 +12,8 @@ public interface RoleRepository extends CrudRepository<Role, Integer> {
 	@Query(value=
 			" SELECT r.role_id, r.role_name" +
 			" FROM ref_role r" +
-			" LEFT JOIN tmpl_service_line_role slr ON r.role_id = slr.role_id" +
-			" WHERE slr.service_line_id = ?1"
+			" LEFT JOIN tmpl_service_type_role slr ON r.role_id = slr.role_id" +
+			" WHERE slr.service_type_id = ?1"
 			, nativeQuery=true)
 	public List<Role> findRolesByServiceTypeId(int serviceTypeId);
 }

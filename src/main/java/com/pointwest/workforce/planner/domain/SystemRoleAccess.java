@@ -44,6 +44,10 @@ public class SystemRoleAccess implements Serializable{
 		 */
 		private static final long serialVersionUID = 1L;
 		
+		public SystemRoleAccessKey() {
+			super();
+		}
+		
 		@Column(name="system_role")
 		private String systemRole;
 

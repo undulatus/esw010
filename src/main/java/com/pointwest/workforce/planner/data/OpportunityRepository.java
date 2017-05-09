@@ -13,8 +13,8 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 			" SELECT opportunity_id," +
 			" opportunity_name," +
 			" opportunity_project_alias," +
-			" market_circle_id," +
-			" service_line_id," +
+			" business_unit_id," +
+			" service_type_id," +
 			" opportunity_start_date," +
 			" opportunity_duration_granularity," +
 			" opportunity_duration_week," +
@@ -37,8 +37,8 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 			" SELECT opportunity_id," +
 			" opportunity_name," +
 			" opportunity_project_alias," +
-			" market_circle_id," +
-			" service_line_id," +
+			" business_unit_id," +
+			" service_type_id," +
 			" opportunity_start_date," +
 			" opportunity_duration_granularity," +
 			" opportunity_duration_week," +
@@ -56,8 +56,8 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	" SELECT opportunity_id," +
 	" opportunity_name," +
 	" opportunity_project_alias," +
-	" market_circle_id," +
-	" service_line_id," +
+	" business_unit_id," +
+	" service_type_id," +
 	" opportunity_start_date," +
 	" opportunity_duration_granularity," +
 	" opportunity_duration_week," +

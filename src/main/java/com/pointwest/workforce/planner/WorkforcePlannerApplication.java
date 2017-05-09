@@ -9,7 +9,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
-
 @PropertySource("classpath:db-values.properties")
 @SpringBootApplication
 public class WorkforcePlannerApplication extends SpringBootServletInitializer {
@@ -24,7 +23,14 @@ public class WorkforcePlannerApplication extends SpringBootServletInitializer {
     	JsonParser parser = new JacksonJsonParser();
     	return parser;
     }
-
+    
+    /*@Bean
+    public Jackson2ObjectMapperBuilder objectMapper() {
+    	Jackson2ObjectMapperBuilder objectMapper = new Jackson2ObjectMapperBuilder();
+    	objectMapper.indentOutput(true);
+    	return objectMapper;
+    } */
+    
 	public static void main(String[] args) {
 		SpringApplication.run(WorkforcePlannerApplication.class, args);
 	}

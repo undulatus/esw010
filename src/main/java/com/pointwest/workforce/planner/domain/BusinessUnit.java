@@ -1,23 +1,30 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ref_market_circle")
-public class BusinessUnit {
+@Table(name="ref_business_unit")
+public class BusinessUnit implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BusinessUnit() {
 		super();
 	}
 
 	@Id
-	@Column(name="market_circle_id")
+	@Column(name="business_unit_id")
 	private int businessUnitId;
 	
-	@Column(name="market_circle_name")
+	@Column(name="business_unit_name")
 	private String businessUnitName;
 
 	public int getBusinessUnitId() {
