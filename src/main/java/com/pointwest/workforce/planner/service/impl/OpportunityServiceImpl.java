@@ -92,7 +92,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	
 	@Override
 	public int lockOpportunity(long opportunityId, boolean lock) {
-		String documentStatus = (lock == true ? LOCKED : UNLOCKED);
+		String documentStatus = (lock == true ? UNLOCKED : LOCKED);
 		OpportunityLockEntity opportunity = new OpportunityLockEntity(opportunityId, documentStatus);
 		OpportunityLockEntity saved = opportunityEntityRepository.save(opportunity);
 		return saved != null ?  1 : 0;
