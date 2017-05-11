@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class OpportunityActivity {
 	private Double durationInWeeks;
 	
 	@Column(name="opportunity_activity_start_date")
-	private Timestamp activityStartDate;
+	private Date activityStartDate;
 	
 	//@OneToMany(FetchType.LAZY, mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
@@ -75,11 +76,11 @@ public class OpportunityActivity {
 		this.durationInWeeks = durationInWeeks;
 	}
 
-	public Timestamp getActivityStartDate() {
+	public Date getActivityStartDate() {
 		return activityStartDate;
 	}
 
-	public void setActivityStartDate(Timestamp activityStartDate) {
+	public void setActivityStartDate(Date activityStartDate) {
 		this.activityStartDate = activityStartDate;
 	}
 
