@@ -14,6 +14,8 @@ public interface ResourceSpecificationService {
 	
 	public ResourceSpecification updateResourceSpecification(ResourceSpecification resourceSpecification, Long resourceSpecificationId);
 	
+	public ResourceSpecification updateResourceSpecificationDates(Long resourceSpecificationId);
+	
 	public int deleteResourceSpecification(Long resourceSpecificationId);
 	
 }

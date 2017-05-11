@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.domain;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -44,6 +45,12 @@ public class ResourceSpecification {
 //	@ManyToOne
 //	@JoinColumn(name="opportunity_activity_id")
 	private long opportunityActivityId;
+	
+	@Column(name="resource_specification_start_date")
+	private Date roleStartDate;
+	
+	@Column(name="resource_specification_duration_week")
+	private Double durationInWeeks;
 	
 	@OneToMany(mappedBy = "key.resourceSpecificationId", cascade = CascadeType.ALL)
 	private List<WeeklyFTE> resourceSchedule;
@@ -104,7 +111,22 @@ public class ResourceSpecification {
 	public void setResourceSchedule(List<WeeklyFTE> resourceSchedule) {
 		this.resourceSchedule = resourceSchedule;
 	}
-	
+
+	public Date getRoleStartDate() {
+		return roleStartDate;
+	}
+
+	public void setRoleStartDate(Date roleStartDate) {
+		this.roleStartDate = roleStartDate;
+	}
+
+	public Double getDurationInWeeks() {
+		return durationInWeeks;
+	}
+
+	public void setDurationInWeeks(Double durationInWeeks) {
+		this.durationInWeeks = durationInWeeks;
+	}
 	
 	
 }

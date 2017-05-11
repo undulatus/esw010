@@ -1,8 +1,12 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +19,8 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 	
 	@Autowired
 	public ResourceSpecificationRepository resourceSpecificationRepository;
+	
+	private static final Logger log = LoggerFactory.getLogger(ResourceSpecificationServiceImpl.class);
 
 	@Override
 	public List<ResourceSpecification> fetchAllResourceSpecifications() {
@@ -26,7 +32,6 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 	@Override
 	public ResourceSpecification fetchResourceSpecification(Long resourceSpecificationId) {
 		return resourceSpecificationRepository.findOne(resourceSpecificationId);
-		
 	}
 
 	@Override
@@ -46,6 +51,9 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		if(resourceSpecification.getPayLevel() == null) resourceSpecification.setPayLevel(previousResourceSpecification.getPayLevel());
 		if(resourceSpecification.isBillable() == null) resourceSpecification.setBillable(previousResourceSpecification.isBillable());
 		if(resourceSpecification.getOpportunityActivityId() == null) resourceSpecification.setOpportunityActivityId(previousResourceSpecification.getOpportunityActivityId());
+		//sprint 2 changes
+		if(resourceSpecification.getRoleStartDate() == null) resourceSpecification.setRoleStartDate(previousResourceSpecification.getRoleStartDate());
+		if(resourceSpecification.getDurationInWeeks() == null) resourceSpecification.setDurationInWeeks(previousResourceSpecification.getDurationInWeeks());
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 
@@ -55,6 +63,29 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		resourceSpecificationRepository.delete(resourceSpecificationId);
 		int postDeleteCount = resourceSpecificationRepository.countByResourceSpecificationId(resourceSpecificationId);
 		return initialCount - postDeleteCount;
+	}
+
+	@Override
+	public ResourceSpecification updateResourceSpecificationDates(Long resourceSpecificationId) {
+		ResourceSpecification resourceSpecification = resourceSpecificationRepository.findOne(resourceSpecificationId);
+		LocalDate opportunityStartLocalDate = resourceSpecificationRepository.findOpportunityStartDate(resourceSpecificationId);
+		log.debug("opportunity start localdate " + opportunityStartLocalDate);
+		Integer minWeek = resourceSpecificationRepository.findStartWeekOfResourceSpecification(resourceSpecificationId);
+		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
+		
+		log.debug("opportunity start date " + opportunityStartLocalDate.toString());
+		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
+		//add offset months using standardized value
+		int offsetMonth = (minWeek - 1) / 4;
+		int offsetWeek = (minWeek - 1) % 4;
+		Date roleStartDate = Date.valueOf(opportunityStartLocalDate.plusMonths(offsetMonth));
+		//add offset weeks for standardized value
+		roleStartDate = Date.valueOf(opportunityStartLocalDate.plusWeeks(offsetWeek));
+		
+		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
+		resourceSpecification.setRoleStartDate(roleStartDate);
+		resourceSpecification.setDurationInWeeks(durationInWeeks);
+		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 	
 

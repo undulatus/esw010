@@ -3,7 +3,10 @@ package com.pointwest.workforce.planner.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.WeeklyFTERepository;
@@ -16,6 +19,8 @@ public class WeeklyFTEServiceImpl implements WeeklyFTEService {
 	
 	@Autowired
 	public WeeklyFTERepository weeklyFTERepository;
+	
+	private static final Logger log = LoggerFactory.getLogger(WeeklyFTEServiceImpl.class);
 
 	@Override
 	public List<WeeklyFTE> fetchAllWeeklyFTEs() {
@@ -52,13 +57,21 @@ public class WeeklyFTEServiceImpl implements WeeklyFTEService {
 	}
 
 	@Override
-	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey) {
-		int initialCount = weeklyFTERepository.countByKey(weeklyFTEKey);
-		weeklyFTERepository.delete(weeklyFTEKey);
-		int postDeleteCount = weeklyFTERepository.countByKey(weeklyFTEKey);
+	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey) throws Exception {
+		int initialCount = 0;
+		int postDeleteCount = 0;
+		try {
+			initialCount = weeklyFTERepository.countByKey(weeklyFTEKey);
+			weeklyFTERepository.delete(weeklyFTEKey);
+			postDeleteCount = weeklyFTERepository.countByKey(weeklyFTEKey);
+		} catch(EmptyResultDataAccessException erda) {
+			//this is a handled exception
+			log.debug("a delete request already does not exist");
+		} catch(Exception e)	{
+			throw new Exception("server error");
+		}
 		return initialCount - postDeleteCount;
 	}
+}
 	
 
-	
-}

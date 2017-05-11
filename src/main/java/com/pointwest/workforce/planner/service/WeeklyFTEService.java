@@ -17,6 +17,6 @@ public interface WeeklyFTEService {
 	
 	public WeeklyFTE updateWeeklyFTE(WeeklyFTE weeklyFTE, WeeklyFTEKey weeklyFTEKey);
 	
-	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey);
+	public int deleteWeeklyFTE(WeeklyFTEKey weeklyFTEKey) throws Exception;
 
 }

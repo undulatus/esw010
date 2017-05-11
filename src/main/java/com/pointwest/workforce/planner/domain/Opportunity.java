@@ -1,7 +1,7 @@
 package com.pointwest.workforce.planner.domain;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,8 +15,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
-
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name="opportunity")
@@ -60,7 +58,7 @@ public class Opportunity implements Serializable {
 	private Double durationInWeeks;
 	
 	@Column(name="opportunity_start_date")
-	private Timestamp projectStartDate;
+	private Date projectStartDate;
 	
 	@Column(name="opportunity_status")
 	private String opportunityStatus;
@@ -130,11 +128,11 @@ public class Opportunity implements Serializable {
 		this.durationInWeeks = durationInWeeks;
 	}
 
-	public Timestamp getProjectStartDate() {
+	public Date getProjectStartDate() {
 		return projectStartDate;
 	}
 
-	public void setProjectStartDate(Timestamp projectStartDate) {
+	public void setProjectStartDate(Date projectStartDate) {
 		this.projectStartDate = projectStartDate;
 	}
 
