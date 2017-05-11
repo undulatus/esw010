@@ -68,19 +68,19 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 	@Override
 	public ResourceSpecification updateResourceSpecificationDates(Long resourceSpecificationId) {
 		ResourceSpecification resourceSpecification = resourceSpecificationRepository.findOne(resourceSpecificationId);
-		LocalDate opportunityStartLocalDate = resourceSpecificationRepository.findOpportunityStartDate(resourceSpecificationId);
-		log.debug("opportunity start localdate " + opportunityStartLocalDate);
+		LocalDate startLocalDate = resourceSpecificationRepository.findOpportunityStartDate(resourceSpecificationId);
+		log.debug("opportunity start localdate " + startLocalDate);
 		Integer minWeek = resourceSpecificationRepository.findStartWeekOfResourceSpecification(resourceSpecificationId);
 		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
 		
-		log.debug("opportunity start date " + opportunityStartLocalDate.toString());
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
-		//add offset months using standardized value
 		int offsetMonth = (minWeek - 1) / 4;
 		int offsetWeek = (minWeek - 1) % 4;
-		Date roleStartDate = Date.valueOf(opportunityStartLocalDate.plusMonths(offsetMonth));
+		//add offset months using standardized value
+		startLocalDate = startLocalDate.plusMonths(offsetMonth);
 		//add offset weeks for standardized value
-		roleStartDate = Date.valueOf(opportunityStartLocalDate.plusWeeks(offsetWeek));
+		startLocalDate = startLocalDate.plusWeeks(offsetWeek);
+		Date roleStartDate = Date.valueOf(startLocalDate);
 		
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		resourceSpecification.setRoleStartDate(roleStartDate);
