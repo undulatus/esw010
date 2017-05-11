@@ -41,7 +41,7 @@ public class OpportunityActivity {
 	//@JoinColumn(name="opportunity_id")
 	private Long opportunityId;
 
-	@Column(name="opportunity_activity_duration")
+	@Column(name="opportunity_activity_duration_week")
 	private Double durationInWeeks;
 	
 	@Column(name="opportunity_activity_start_date")
