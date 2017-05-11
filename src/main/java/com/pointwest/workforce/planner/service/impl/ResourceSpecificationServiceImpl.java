@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.ResourceSpecificationRepository;
@@ -19,6 +20,9 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 	
 	@Autowired
 	public ResourceSpecificationRepository resourceSpecificationRepository;
+	
+	@Value("${month.to.week.multiplier}")
+	private Integer WEEKSINMONTH;
 	
 	private static final Logger log = LoggerFactory.getLogger(ResourceSpecificationServiceImpl.class);
 
@@ -74,8 +78,8 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
 		
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
-		int offsetMonth = (minWeek - 1) / 4;
-		int offsetWeek = (minWeek - 1) % 4;
+		int offsetMonth = (int) ((minWeek - 1) / WEEKSINMONTH);
+		int offsetWeek = (minWeek - 1) % WEEKSINMONTH;
 		//add offset months using standardized value
 		startLocalDate = startLocalDate.plusMonths(offsetMonth);
 		//add offset weeks for standardized value

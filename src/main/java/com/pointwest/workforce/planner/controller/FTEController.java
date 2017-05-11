@@ -179,26 +179,26 @@ public class FTEController {
 		}
     }
 	
-	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{resourceScheduleWeekNumber}")
-    public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long resourceScheduleWeekNumber) {
+	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
+    public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber) {
 		int deleteCount = 0;
 		//sprint 2
 		ResourceSpecification resourceSpecification = null;
 		try {
-			if( !(resourceSpecificationId instanceof Long) || !(resourceScheduleWeekNumber instanceof Long) ) {
+			if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 				return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
-			} else if(resourceSpecificationId <= 0 || resourceScheduleWeekNumber <= 0) {
+			} else if(resourceSpecificationId <= 0 || monthOrWeekNumber <= 0) {
 				return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 			} else {
 				if(granularity.equals(WEEKLY)) {
-					WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
+					WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, monthOrWeekNumber);
 					deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
 					//sprint 2
 					resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
 					log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
 				}
 				else if(granularity.equals(MONTHLY)) {
-					List<Long> weeks = getWeeksInMonth(resourceScheduleWeekNumber, WEEKSINMONTH);
+					List<Long> weeks = getWeeksInMonth(monthOrWeekNumber, WEEKSINMONTH);
 					WeeklyFTEKey key;
 					for(Long week : weeks) {
 						key = new WeeklyFTEKey(resourceSpecificationId, week);
