@@ -15,6 +15,8 @@ public interface OpportunityActivityService {
 	
 	public OpportunityActivity updateOpportunityActivity(OpportunityActivity opportunityActivity, Long opportunityActivityId);
 	
+	public OpportunityActivity updateOpportunityActivityDates(Long resourceSpecificationId);
+
 	public int deleteOpportunityActivity(Long opportunityActivityId);
 	
 	public List<OpportunityActivity> saveOpportunityActivity(List<Activity> activities, Long opportunityId);

@@ -1,11 +1,14 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.OpportunityActivityRepository;
@@ -18,6 +21,9 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 	
 	@Autowired
 	public OpportunityActivityRepository opportunityActivityRepository;
+	
+	@Value("${month.to.week.multiplier}")
+	private Integer WEEKSINMONTH;
 	
 	private static final Logger log = LoggerFactory.getLogger(OpportunityActivityServiceImpl.class);
 
@@ -50,6 +56,29 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		if(opportunityActivity.getActivityStartDate() == null) opportunityActivity.setActivityStartDate(previousOpportunityActivity.getActivityStartDate());
 		if(opportunityActivity.getDurationInWeeks() == null) opportunityActivity.setDurationInWeeks(previousOpportunityActivity.getDurationInWeeks());
 		if(opportunityActivity.getOpportunityId() == null) opportunityActivity.setOpportunityId(previousOpportunityActivity.getOpportunityId());;
+		return opportunityActivityRepository.save(opportunityActivity);
+	}
+	
+	@Override
+	public OpportunityActivity updateOpportunityActivityDates(Long resourceSpecificationId) {
+		OpportunityActivity opportunityActivity = opportunityActivityRepository.findOpportunityActivityOfResourceSpecificationId(resourceSpecificationId);
+		Long opportunityActivityId = opportunityActivity.getOpportunityActivityId();
+		LocalDate startLocalDate = opportunityActivityRepository.findOpportunityStartDate(opportunityActivityId);
+		log.debug("opportunity start localdate for opportunity activity " + startLocalDate);
+		Integer minWeek = opportunityActivityRepository.findStartWeekOfOpportunityActivity(opportunityActivityId);
+		Integer maxWeek = opportunityActivityRepository.findEndWeekOfOpportunityActivity(opportunityActivityId);
+		
+		int offsetMonth = (minWeek - 1) / WEEKSINMONTH;
+		int offsetWeek = (minWeek - 1) % WEEKSINMONTH;
+		//add offset months using standardized value
+		startLocalDate = startLocalDate.plusMonths(offsetMonth);
+		//add offset weeks for standardized value
+		startLocalDate = startLocalDate.plusWeeks(offsetWeek);
+		Date activityStartDate = Date.valueOf(startLocalDate);
+		
+		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
+		opportunityActivity.setActivityStartDate(activityStartDate);
+		opportunityActivity.setDurationInWeeks(durationInWeeks);
 		return opportunityActivityRepository.save(opportunityActivity);
 	}
 

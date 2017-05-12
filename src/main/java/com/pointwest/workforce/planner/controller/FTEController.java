@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
+import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
+import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
 
@@ -27,6 +29,9 @@ public class FTEController {
 	
 	@Autowired
 	WeeklyFTEService weeklyFTEService;
+	
+	@Autowired
+	OpportunityActivityService opportunityActivityService;
 	
 	@Autowired
 	ResourceSpecificationService resourceSpecificationService;
@@ -91,12 +96,17 @@ public class FTEController {
 		return weekNumbers;
 	}
 	
+	private void dateProcessingPostProcessing(Long resourceSpecificationId) {
+		ResourceSpecification resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
+		OpportunityActivity opportunityActivity = opportunityActivityService.updateOpportunityActivityDates(resourceSpecificationId);
+		log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+		log.debug("updated activity dates : " + opportunityActivity.getActivityStartDate() + " , " + opportunityActivity.getDurationInWeeks());
+	}
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
     public ResponseEntity<Object> saveWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
-		ResourceSpecification resourceSpecification = null;
 		if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || monthOrWeekNumber <= 0) {
@@ -109,8 +119,7 @@ public class FTEController {
 			if(granularity.equals(WEEKLY)) {
 				savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, monthOrWeekNumber, FTE));
 				//sprint 2
-				resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-				log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+				dateProcessingPostProcessing(resourceSpecificationId);
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
@@ -122,8 +131,7 @@ public class FTEController {
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
 					//sprint 2
-					resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-					log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+					dateProcessingPostProcessing(resourceSpecificationId);
 					if(savedWeeklyFTE==null)  {
 						return new ResponseEntity<>(new CustomError("not saved FTE in week number " + week), HttpStatus.BAD_REQUEST);
 					}
@@ -140,7 +148,6 @@ public class FTEController {
     public ResponseEntity<Object> updateWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
 		WeeklyFTE savedWeeklyFTE = null;
-		ResourceSpecification resourceSpecification = null;
 		if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if(resourceSpecificationId <= 0 || monthOrWeekNumber <= 0) {
@@ -153,8 +160,7 @@ public class FTEController {
 			if(granularity.equals(WEEKLY)) {
 				savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, monthOrWeekNumber, FTE));
 				//sprint 2
-				resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-				log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+				dateProcessingPostProcessing(resourceSpecificationId);
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
@@ -166,8 +172,7 @@ public class FTEController {
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
 					//sprint 2
-					resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-					log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+					dateProcessingPostProcessing(resourceSpecificationId);
 					if(savedWeeklyFTE==null)  {
 						return new ResponseEntity<>(new CustomError("not saved FTE in week number " + week), HttpStatus.BAD_REQUEST);
 					}
@@ -182,8 +187,6 @@ public class FTEController {
 	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
     public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber) {
 		int deleteCount = 0;
-		//sprint 2
-		ResourceSpecification resourceSpecification = null;
 		try {
 			if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 				return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
@@ -194,8 +197,7 @@ public class FTEController {
 					WeeklyFTEKey key = new WeeklyFTEKey(resourceSpecificationId, monthOrWeekNumber);
 					deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
 					//sprint 2
-					resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-					log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+					dateProcessingPostProcessing(resourceSpecificationId);
 				}
 				else if(granularity.equals(MONTHLY)) {
 					List<Long> weeks = getWeeksInMonth(monthOrWeekNumber, WEEKSINMONTH);
@@ -205,8 +207,7 @@ public class FTEController {
 						deleteCount = deleteCount + weeklyFTEService.deleteWeeklyFTE(key);
 					}
 					//sprint 2
-					resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
-					log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
+					dateProcessingPostProcessing(resourceSpecificationId);
 				} else {
 					return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
 				}

@@ -78,7 +78,7 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
 		
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
-		int offsetMonth = (int) ((minWeek - 1) / WEEKSINMONTH);
+		int offsetMonth = (minWeek - 1) / WEEKSINMONTH;
 		int offsetWeek = (minWeek - 1) % WEEKSINMONTH;
 		//add offset months using standardized value
 		startLocalDate = startLocalDate.plusMonths(offsetMonth);
