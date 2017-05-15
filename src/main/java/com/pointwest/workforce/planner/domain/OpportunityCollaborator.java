@@ -21,6 +21,15 @@ public class OpportunityCollaborator implements Serializable{
 		super();
 	}
 	
+	public OpportunityCollaborator(String username, Long opportunityId, String permission) {
+		OpportunityCollaborator.OpportunityCollaboratorKey key =
+			new OpportunityCollaborator.OpportunityCollaboratorKey();
+		key.setUsername(username);
+		key.setOpportunityId(opportunityId);
+		this.setKey(key);
+		this.setPermission(permission);
+	}
+	
 	@EmbeddedId
 	private OpportunityCollaboratorKey key;
 	
@@ -44,22 +53,34 @@ public class OpportunityCollaborator implements Serializable{
 	}
 	
 	@Embeddable
-	public class OpportunityCollaboratorKey implements Serializable {
+	public static class OpportunityCollaboratorKey implements Serializable {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
 		
-		public OpportunityCollaboratorKey() {
-			super();
-		}
-		
 		@Column(name="opportunity_id")
 		private Long opportunityId;
 
 		@Column(name="username")
 		private String username;
+
+		public Long getOpportunityId() {
+			return opportunityId;
+		}
+
+		public void setOpportunityId(Long opportunityId) {
+			this.opportunityId = opportunityId;
+		}
+
+		public String getUsername() {
+			return username;
+		}
+
+		public void setUsername(String username) {
+			this.username = username;
+		}
 		
 	}
 

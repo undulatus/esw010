@@ -52,6 +52,9 @@ public class ResourceSpecification {
 	@Column(name="resource_specification_duration_week")
 	private Double durationInWeeks;
 	
+	@Column(name="resource_specification_total_fte")
+	private Double totalFTE;
+	
 	@OneToMany(mappedBy = "key.resourceSpecificationId", cascade = CascadeType.ALL)
 	private List<WeeklyFTE> resourceSchedule;
 	
@@ -126,6 +129,14 @@ public class ResourceSpecification {
 
 	public void setDurationInWeeks(Double durationInWeeks) {
 		this.durationInWeeks = durationInWeeks;
+	}
+
+	public Double getTotalFTE() {
+		return totalFTE;
+	}
+
+	public void setTotalFTE(Double totalFTE) {
+		this.totalFTE = totalFTE;
 	}
 	
 	

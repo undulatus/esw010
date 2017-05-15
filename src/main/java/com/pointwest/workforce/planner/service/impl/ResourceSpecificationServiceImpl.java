@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.ResourceSpecificationRepository;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
+import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 
 @Service
@@ -89,6 +90,13 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		resourceSpecification.setRoleStartDate(roleStartDate);
 		resourceSpecification.setDurationInWeeks(durationInWeeks);
+		
+		List<WeeklyFTE> ftes = resourceSpecification.getResourceSchedule();
+		Double totalFTE = 0.0;
+		for(WeeklyFTE fte : ftes) {
+			totalFTE = totalFTE + fte.getResourceScheduleFTE();
+		}
+		resourceSpecification.setTotalFTE(totalFTE);
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 	

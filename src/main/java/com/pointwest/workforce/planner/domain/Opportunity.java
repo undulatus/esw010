@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -79,6 +80,9 @@ public class Opportunity implements Serializable {
 	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "opportunityId")
 	private List<OpportunityActivity> opportunityActivities;
+	
+	@OneToMany(mappedBy = "key.opportunityId", cascade = CascadeType.ALL)
+	private List<OpportunityCollaborator> opportunityCollaborators;
 
 	public Long getOpportunityId() {
 		return opportunityId;
@@ -188,6 +192,14 @@ public class Opportunity implements Serializable {
 	public Opportunity getJson() {
 		return this;
 	}*/
+	
+	public List<OpportunityCollaborator> getOpportunityCollaborators() {
+		return opportunityCollaborators;
+	}
+
+	public void setOpportunityCollaborators(List<OpportunityCollaborator> opportunityCollaborators) {
+		this.opportunityCollaborators = opportunityCollaborators;
+	}
 
 	@Override
 	public String toString() {
@@ -198,6 +210,5 @@ public class Opportunity implements Serializable {
 				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user
 				+ ", opportunityActivities=" + opportunityActivities + "]";
 	}
-
-
+	
 }

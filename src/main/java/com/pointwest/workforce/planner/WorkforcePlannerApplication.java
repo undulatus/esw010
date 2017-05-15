@@ -7,8 +7,10 @@ import org.springframework.boot.json.JacksonJsonParser;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
+@ComponentScan("com.pointwest.workforce.planner")
 @PropertySource("classpath:db-values.properties")
 @SpringBootApplication
 public class WorkforcePlannerApplication extends SpringBootServletInitializer {

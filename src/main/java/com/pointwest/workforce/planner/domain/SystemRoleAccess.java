@@ -37,16 +37,12 @@ public class SystemRoleAccess implements Serializable{
 	}
 
 	@Embeddable
-	public class SystemRoleAccessKey implements Serializable {
+	public static class SystemRoleAccessKey implements Serializable {
 
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
-		
-		public SystemRoleAccessKey() {
-			super();
-		}
 		
 		@Column(name="system_role")
 		private String systemRole;
