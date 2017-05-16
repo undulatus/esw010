@@ -56,6 +56,7 @@ public class OpportunityCollaboratorController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/opportunitycollaborators/{permission}")
     public ResponseEntity<Object> saveOpportunityCollaborator(@RequestBody(required=true) List<String> usernames, @PathVariable Long opportunityId, @PathVariable String permission) {
+		permission = permission.toUpperCase().trim(); 
 		if(permission.equals(EDIT) || permission.equals(VIEW) ) {
 			Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 			if (opportunity == null) {
