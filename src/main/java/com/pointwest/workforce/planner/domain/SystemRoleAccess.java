@@ -21,17 +21,25 @@ public class SystemRoleAccess implements Serializable{
 		super();
 	}
 	
-	@EmbeddedId
-	private SystemRoleAccessKey instance;
+	public SystemRoleAccess(String systemRole, String module, String action) {
+		SystemRoleAccess.SystemRoleAccessKey key = new SystemRoleAccess.SystemRoleAccessKey();
+		key.setSystemRole(systemRole);
+		key.setModule(module);
+		key.setAction(action);
+		this.setKey(key);
+	}
 	
-	public SystemRoleAccessKey getInstance() {
-		return instance;
+	@EmbeddedId
+	private SystemRoleAccessKey key;
+	
+	public SystemRoleAccessKey getKey() {
+		return key;
 	}
 
-	public void setInstance(SystemRoleAccessKey instance) {
-		this.instance = instance;
+	public void setKey(SystemRoleAccessKey key) {
+		this.key = key;
 	}
-	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -76,6 +84,26 @@ public class SystemRoleAccess implements Serializable{
 		public void setAction(String action) {
 			this.action = action;
 		}
+		
+		@Override
+		public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || this.getClass() != o.getClass()) return false;
+	        SystemRoleAccessKey that = (SystemRoleAccessKey) o;
+	        if (systemRole != null? !systemRole.equals(that.getSystemRole()) : that.getSystemRole() != null) return false;
+	        if (module != null? !module.equals(that.getModule()) : that.getModule()!=null) return false;
+	        if (action != null? !action.equals(that.getAction()) : that.getAction()!=null) return false;
+	        return true;
+	    }
+
+		@Override
+	    public int hashCode() {
+	        int result;
+	        result = (systemRole != null? systemRole.hashCode() : 0);
+	        result = 31 * result + (module !=null? module.hashCode() : 0);
+	        result = 31 * result + (action !=null? action.hashCode() : 0);
+	        return result;
+	    }
 	}
 
 }

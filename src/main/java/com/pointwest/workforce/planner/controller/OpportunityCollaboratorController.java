@@ -32,7 +32,6 @@ public class OpportunityCollaboratorController {
 		if(opportunityCollaborators == null || opportunityCollaborators.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("No Opportunity Collaborators retrieved"), HttpStatus.NOT_FOUND);
 		} else {
-			//Collaborators collaborators = new CollaboratorsAdapter(opportunityCollaborators, opportunityId);
 			Collaborators collaborators = collaboratorsAdapter.transform(opportunityCollaborators, opportunityId);
 			return new ResponseEntity<>(collaborators, HttpStatus.OK);
 		}

@@ -45,4 +45,22 @@ public class WeeklyFTEKey implements Serializable {
 		this.resourceScheduleWeekNumber = resourceScheduleWeekNumber;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        WeeklyFTEKey that = (WeeklyFTEKey) o;
+        if (resourceSpecificationId != null? !resourceSpecificationId.equals(that.getResourceSpecificationId()) : that.getResourceSpecificationId() != null) return false;
+        if (resourceScheduleWeekNumber != null? !resourceScheduleWeekNumber.equals(that.getResourceScheduleWeekNumber()) : that.getResourceScheduleWeekNumber() != null) return false;
+        return true;
+    }
+
+	@Override
+    public int hashCode() {
+        int result;
+        result = (resourceSpecificationId != null? resourceSpecificationId.hashCode() : 0);
+        result = 31 * result + (resourceScheduleWeekNumber !=null? resourceScheduleWeekNumber.hashCode() : 0);
+        return result;
+    }
+	
 }

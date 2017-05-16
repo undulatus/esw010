@@ -1,7 +1,5 @@
 package com.pointwest.workforce.planner.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
@@ -42,7 +40,7 @@ public class VersionController {
 	@Autowired
 	Jackson2ObjectMapperBuilder objectMapper;
 	
-	private static final Logger log = LoggerFactory.getLogger(VersionController.class);
+	//private static final Logger log = LoggerFactory.getLogger(VersionController.class);
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/versions")
     public ResponseEntity<Object> saveVersion(@PathVariable int opportunityId, @RequestBody Version version) {

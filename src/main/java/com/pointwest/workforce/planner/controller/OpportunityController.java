@@ -145,10 +145,8 @@ public class OpportunityController {
 					Long opportunityActivityId;
 					for (OpportunityActivity opportunityActivity : opportunity.getOpportunityActivities()) {
 						opportunityActivityId = opportunityActivity.getOpportunityActivityId();
-						log.debug("delete id " + opportunityActivityId);
 						int result = opportunityActivityService.deleteOpportunityActivity(opportunityActivityId);
-						
-						// delete schedule too here to do bmab
+						log.debug("delete id " + opportunityActivityId + " result : " + result);
 					}
 					//opportunity.setOpportunityActivities(null);
 				} else {

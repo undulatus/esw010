@@ -82,6 +82,24 @@ public class OpportunityCollaborator implements Serializable{
 			this.username = username;
 		}
 		
+		@Override
+		public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || this.getClass() != o.getClass()) return false;
+	        OpportunityCollaboratorKey that = (OpportunityCollaboratorKey) o;
+	        if (opportunityId != null? !opportunityId.equals(that.getOpportunityId()) : that.getOpportunityId() != null) return false;
+	        if (username != null? !username.equals(that.getUsername()) : that.getUsername() !=null) return false;
+	        return true;
+	    }
+
+		@Override
+	    public int hashCode() {
+	        int result;
+	        result = (username != null? username.hashCode() : 0);
+	        result = 31 * result + (opportunityId !=null? opportunityId.hashCode() : 0);
+	        return result;
+	    }  
+		
 	}
 
 }
