@@ -20,6 +20,15 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 			, nativeQuery=true)
 	public int countUsernameWithEdit(long opportunityId, String username, String permission);
 	
+	public int countByKeyOpportunityId(Long opportunityId);
+	
 	public List<OpportunityCollaborator> findOpportunityCollaboratorsByKeyOpportunityId(Long opportunityId);
+	
+	@Query(value= 
+		" DELETE FROM opportunity_collaborator " +
+		" WHERE opportunity_id = ?1 " +
+		" AND opportunity_collaborator_permission = ?2"
+		, nativeQuery=true)
+	public void deleteByKeyOpportunityIdAndPermission(Long opportunityId, String permission);
 	
 }

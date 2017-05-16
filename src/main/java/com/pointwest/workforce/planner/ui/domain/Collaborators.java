@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.ui.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Collaborators {
@@ -12,6 +13,12 @@ public class Collaborators {
 	
 	public Collaborators() {
 		super();
+	}
+	
+	public Collaborators(Long opportunityId) {
+		this.opportunityId = opportunityId;
+		this.usersWithEdit = new ArrayList<String>();
+		this.usersWithView = new ArrayList<String>();
 	}
 	
 	public List<String> getUsersWithEdit() {

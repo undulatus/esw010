@@ -39,5 +39,15 @@ public class OpportunityCollaboratorServiceImpl implements OpportunityCollaborat
 		return (List<OpportunityCollaborator>) opportunityCollaboratorRepository.save(opportunityCollaborators); 
 	}
 
+	@Override
+	public int deleteByOpportunityIdAndPermission(Long opportunityId, String permission) {
+		int initialCount = opportunityCollaboratorRepository.countByKeyOpportunityId(opportunityId);
+		log.debug("collaborator init count " + initialCount);
+		opportunityCollaboratorRepository.deleteByKeyOpportunityIdAndPermission(opportunityId, permission);
+		int postDeleteCount = opportunityCollaboratorRepository.countByKeyOpportunityId(opportunityId);
+		log.debug("collaborator post delete count " + postDeleteCount);
+		return initialCount - postDeleteCount;
+	}
+
 	
 }

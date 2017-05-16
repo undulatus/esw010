@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
 import com.pointwest.workforce.planner.service.OpportunityCollaboratorService;
 import com.pointwest.workforce.planner.ui.adapter.CollaboratorsAdapter;
@@ -30,7 +29,7 @@ public class OpportunityCollaboratorController {
     public ResponseEntity<Object> fetchOpportunityCollaborators(@PathVariable Long opportunityId) {
 		List<OpportunityCollaborator> opportunityCollaborators = opportunityCollaboratorService.fetchOpportunityCollaborators(opportunityId);
 		if(opportunityCollaborators == null || opportunityCollaborators.isEmpty()) {
-			return new ResponseEntity<>(new CustomError("No Opportunity Collaborators retrieved"), HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(new Collaborators(opportunityId), HttpStatus.OK);
 		} else {
 			Collaborators collaborators = collaboratorsAdapter.transform(opportunityCollaborators, opportunityId);
 			return new ResponseEntity<>(collaborators, HttpStatus.OK);
@@ -39,9 +38,28 @@ public class OpportunityCollaboratorController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/opportunitycollaborators/{permission}")
     public ResponseEntity<Object> saveOpportunityCollaborator(@RequestBody(required=true) List<String> usernames, @PathVariable Long opportunityId, @PathVariable String permission) {
+		if(usernames.isEmpty()) {
+			this.opportunityCollaboratorService.deleteByOpportunityIdAndPermission(opportunityId, permission);
+			return new ResponseEntity<>(new Collaborators(opportunityId), HttpStatus.OK);
+		} else {
+			this.opportunityCollaboratorService.deleteByOpportunityIdAndPermission(opportunityId, permission);
+			List<OpportunityCollaborator> opportunityCollaborators = this.opportunityCollaboratorService.saveOpportunityCollaborator(usernames, opportunityId, permission);
+			Collaborators collaborators = collaboratorsAdapter.transform(opportunityCollaborators, opportunityId);
+			return new ResponseEntity<>(collaborators, HttpStatus.OK);
+		}
+		
+    }
+	
+	/*@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/opportunitycollaborators/{permission}")
+    public ResponseEntity<Object> updateOpportunityCollaborator(@RequestBody(required=true) List<String> usernames, @PathVariable Long opportunityId, @PathVariable String permission) {
 		List<OpportunityCollaborator> opportunityCollaborators = this.opportunityCollaboratorService.saveOpportunityCollaborator(usernames, opportunityId, permission);
 		return new ResponseEntity<>(opportunityCollaborators, HttpStatus.OK);
     }
 	
+	@RequestMapping(method=RequestMethod.DELETE, value="/opportunities/{opportunityId}/opportunitycollaborators/{permission}")
+    public ResponseEntity<Object> updateOpportunityCollaborator(@RequestBody(required=true) List<String> usernames, @PathVariable Long opportunityId, @PathVariable String permission) {
+		List<OpportunityCollaborator> opportunityCollaborators = this.opportunityCollaboratorService.saveOpportunityCollaborator(usernames, opportunityId, permission);
+		return new ResponseEntity<>(opportunityCollaborators, HttpStatus.OK);
+    }*/
 	
 }

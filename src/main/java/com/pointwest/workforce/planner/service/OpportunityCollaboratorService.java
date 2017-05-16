@@ -9,5 +9,7 @@ public interface OpportunityCollaboratorService {
 	public List<OpportunityCollaborator> fetchOpportunityCollaborators(Long opportunityId);
 	
 	public List<OpportunityCollaborator> saveOpportunityCollaborator(List<String> usernames, Long opportunityId, String permission);
+	
+	public int deleteByOpportunityIdAndPermission(Long opportunityId, String permission);
 
 }
