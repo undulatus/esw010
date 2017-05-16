@@ -2,8 +2,10 @@ package com.pointwest.workforce.planner.data;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator.OpportunityCollaboratorKey;
@@ -24,6 +26,8 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 	
 	public List<OpportunityCollaborator> findOpportunityCollaboratorsByKeyOpportunityId(Long opportunityId);
 	
+	@Modifying
+	@Transactional
 	@Query(value= 
 		" DELETE FROM opportunity_collaborator " +
 		" WHERE opportunity_id = ?1 " +
