@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -20,6 +21,9 @@ import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.TemplateDataService;
+import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardAdapter;
+import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardProjection;
+import com.pointwest.workforce.planner.ui.domain.OpportunityDashboard;
 
 @RestController
 public class OpportunityController {
@@ -57,8 +61,9 @@ public class OpportunityController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/users/{username}/opportunities")
-	public ResponseEntity<Object> fetchOpportunity(@PathVariable String username) {
-		List<Opportunity> opportunities = opportunityService.fetchOpportunitiesByUsername(username);
+	public ResponseEntity<Object> fetchUserOwnedOpportunity(@PathVariable String username) {
+		List<OpportunityDashboardProjection> projections = opportunityService.fetchOpportunitiesByUsername(username);
+		List<OpportunityDashboard> opportunities = new OpportunityDashboardAdapter(projections).getOpportunityDashboards();
 		if (opportunities == null || opportunities.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
 		} else {
@@ -162,6 +167,20 @@ public class OpportunityController {
 				opportunity.setOpportunityActivities(opportunityActivities);
 				return new ResponseEntity<>(opportunity, HttpStatus.OK);
 			}
+		}
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/users/{username}/opportunities/shared")
+	public ResponseEntity<Object> fetchSharedOpportunities(@PathVariable String username) { 
+		List<OpportunityDashboardProjection> projections = opportunityService.fetchSharedOpportunitiesByUsername(username);
+		List<OpportunityDashboard> opportunities = new OpportunityDashboardAdapter(projections, username).getOpportunityDashboards();
+		for(OpportunityDashboard opp : opportunities) {
+			log.debug("permission " + opp.getUserPermission() + " id : " + opp.getOpportunityId());
+		}
+		if (opportunities == null || opportunities.isEmpty()) {
+			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunities, HttpStatus.OK);
 		}
 	}
 

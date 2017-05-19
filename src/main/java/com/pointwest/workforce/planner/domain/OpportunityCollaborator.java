@@ -34,7 +34,7 @@ public class OpportunityCollaborator implements Serializable{
 	private OpportunityCollaboratorKey key;
 	
 	@Column(name="opportunity_collaborator_permission")
-	private String permission;
+	public String permission;
 	
 	public OpportunityCollaboratorKey getKey() {
 		return key;

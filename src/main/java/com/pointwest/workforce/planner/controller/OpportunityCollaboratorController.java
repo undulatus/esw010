@@ -17,8 +17,8 @@ import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
 import com.pointwest.workforce.planner.service.OpportunityCollaboratorService;
 import com.pointwest.workforce.planner.service.OpportunityService;
-import com.pointwest.workforce.planner.ui.adapter.CollaboratorsAdapter;
-import com.pointwest.workforce.planner.ui.domain.Collaborators;
+import com.pointwest.workforce.planner.ui.adapter.CollaboratorsSharingAdapter;
+import com.pointwest.workforce.planner.ui.domain.CollaboratorsSharing;
 
 @RestController
 public class OpportunityCollaboratorController {
@@ -30,7 +30,7 @@ public class OpportunityCollaboratorController {
 	OpportunityService opportunityService;
 	
 	@Autowired
-	CollaboratorsAdapter collaboratorsAdapter;
+	CollaboratorsSharingAdapter collaboratorsSharingAdapter;
 	
 	@Value("${collaborator.permission.edit}")
 	private String EDIT;
@@ -46,11 +46,11 @@ public class OpportunityCollaboratorController {
 			if (opportunity == null) {
 				return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
 			} else {
-				return new ResponseEntity<>(new Collaborators(opportunityId), HttpStatus.OK);
+				return new ResponseEntity<>(new CollaboratorsSharing(opportunityId), HttpStatus.OK);
 			}
 		} else {
-			Collaborators collaborators = collaboratorsAdapter.transform(opportunityCollaborators, opportunityId);
-			return new ResponseEntity<>(collaborators, HttpStatus.OK);
+			CollaboratorsSharing collaboratorsSharing = collaboratorsSharingAdapter.transform(opportunityCollaborators, opportunityId);
+			return new ResponseEntity<>(collaboratorsSharing, HttpStatus.OK);
 		}
     }
 	
@@ -64,12 +64,12 @@ public class OpportunityCollaboratorController {
 			} else {
 				if(usernames.isEmpty()) {
 					this.opportunityCollaboratorService.deleteByOpportunityIdAndPermission(opportunityId, permission);
-					return new ResponseEntity<>(new Collaborators(opportunityId), HttpStatus.OK);
+					return new ResponseEntity<>(new CollaboratorsSharing(opportunityId), HttpStatus.OK);
 				} else {
 					this.opportunityCollaboratorService.deleteByOpportunityIdAndPermission(opportunityId, permission);
 					List<OpportunityCollaborator> opportunityCollaborators = this.opportunityCollaboratorService.saveOpportunityCollaborator(usernames, opportunityId, permission);
-					Collaborators collaborators = collaboratorsAdapter.transform(opportunityCollaborators, opportunityId);
-					return new ResponseEntity<>(collaborators, HttpStatus.OK);
+					CollaboratorsSharing collaboratorsSharing = collaboratorsSharingAdapter.transform(opportunityCollaborators, opportunityId);
+					return new ResponseEntity<>(collaboratorsSharing, HttpStatus.OK);
 				}
 			}
 		} else {

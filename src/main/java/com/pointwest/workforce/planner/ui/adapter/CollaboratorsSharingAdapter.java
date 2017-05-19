@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
-import com.pointwest.workforce.planner.ui.domain.Collaborators;
+import com.pointwest.workforce.planner.ui.domain.CollaboratorsSharing;
 
 @Component
-public class CollaboratorsAdapter extends Collaborators {
+public class CollaboratorsSharingAdapter extends CollaboratorsSharing {
 	
 	@Value("${collaborator.permission.edit}")
 	private String EDIT;
@@ -18,11 +18,11 @@ public class CollaboratorsAdapter extends Collaborators {
 	@Value("${collaborator.permission.view}")
 	private String VIEW;
 	
-	public CollaboratorsAdapter() {
+	public CollaboratorsSharingAdapter() {
 		super();
 	}
 	
-	public CollaboratorsAdapter(List<OpportunityCollaborator> opportunityCollaborators, Long opportunityId) {
+	public CollaboratorsSharingAdapter(List<OpportunityCollaborator> opportunityCollaborators, Long opportunityId) {
 		this.initial(opportunityCollaborators, opportunityId);
 	}
 
@@ -31,7 +31,7 @@ public class CollaboratorsAdapter extends Collaborators {
 		this.createTheOpportunityId(opportunityId);
 	}
 	
-	public Collaborators transform(List<OpportunityCollaborator> opportunityCollaborators, Long opportunityId) {
+	public CollaboratorsSharing transform(List<OpportunityCollaborator> opportunityCollaborators, Long opportunityId) {
 		this.createTheUserLists(opportunityCollaborators);
 		this.createTheOpportunityId(opportunityId);
 		return this;
@@ -47,8 +47,8 @@ public class CollaboratorsAdapter extends Collaborators {
 				viewUsers.add(opportunityCollaborator.getKey().getUsername());
 			}
 		}
-		super.setUsersWithEdit(editUsers);
-		super.setUsersWithView(viewUsers);
+		this.setUsersWithEdit(editUsers);
+		this.setUsersWithView(viewUsers);
 	}
 	
 	private void createTheOpportunityId(Long opportunityId) {

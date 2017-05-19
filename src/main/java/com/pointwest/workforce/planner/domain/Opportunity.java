@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicUpdate;
 
+import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardProjection;
+
 @Entity
 @Table(name="opportunity")
 @DynamicUpdate
@@ -210,5 +212,11 @@ public class Opportunity implements Serializable {
 				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user
 				+ ", opportunityActivities=" + opportunityActivities + "]";
 	}
+
+
+	/*@Override
+	public String getBusinessUnitName() {
+		return this.businessUnit.getBusinessUnitName();
+	}*/
 	
 }

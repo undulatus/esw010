@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.pointwest.workforce.planner.domain.Opportunity;
+import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardProjection;
 
 public interface OpportunityRepository extends CrudRepository<Opportunity, Long> {
 
@@ -33,25 +34,6 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 		, nativeQuery=true)
 	public void updateOpportunityDocumentStatus(long opportunityId, String documentStatus);
 	
-	/*@Query(value= 
-			" SELECT opportunity_id," +
-			" opportunity_name," +
-			" opportunity_project_alias," +
-			" business_unit_id," +
-			" service_type_id," +
-			" opportunity_start_date," +
-			" opportunity_duration_granularity," +
-			" opportunity_duration_week," +
-			" opportunity_status," +
-			" opportunity_client_name," +
-			" o.username," +
-			" opportunity_document_status" +
-			" FROM opportunity o" +
-			" LEFT JOIN user u ON o.username = u.username" +
-			" WHERE o.username = ?1"
-			, nativeQuery=true)*/
-	public List<Opportunity> findByUserUsername(String username);
-	
 	@Query(value= 
 	" SELECT opportunity_id," +
 	" opportunity_name," +
@@ -70,5 +52,58 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	" WHERE o.username != ?1"
 	, nativeQuery=true)
 	public List<Opportunity> findNotOwnedOpportunitiesByUserUsername(String username);
+	
+	
+	/*@Query(value= 
+	" SELECT new com.pointwest.workforce.planner.ui.domain.OpportunityDashboard(" +
+		"o.opportunity_id," +
+	    " o.opportunity_name," +
+	    //" o.business_unit_id," +
+	    //" bu.business_unit_name," +
+	    //" o.service_type_id," +
+		" o.opportunity_start_date," +
+		" o.opportunity_status," +
+		" o.opportunity_document_status," +
+		" o.opportunity_client_name)" +
+		//" o.username" +
+		//" o.opportunity_last_update," +
+		//" oc.opportunity_collaborator_permission" +
+	" FROM opportunity o" +
+	" LEFT JOIN ref_business_unit bu ON o.business_unit_id = bu.business_unit_id" +
+	" LEFT JOIN opportunity_collaborator oc ON o.opportunity_id = oc.opportunity_id" +
+	" WHERE o.username != ?1" +
+	" AND oc.username = ?1"
+	//, nativeQuery=true)
+	)
+	public List<OpportunityDashboardProjector> findSharedOpportunitiesByUsername(String username);*/
+	
+	/**
+	 * DEPRECATED - bmab
+	*/
+	@Query(value= 
+	" SELECT " +
+		" o.opportunity_id," +
+	    " o.opportunity_name," +
+	    " o.business_unit_id," +
+	    " bu.business_unit_name," +
+	    " o.service_type_id," +
+		" o.opportunity_start_date," +
+		" o.opportunity_status," +
+		" o.opportunity_document_status," +
+		" o.opportunity_client_name" +
+		" o.username" +
+		" o.opportunity_last_update," +
+		" oc.opportunity_collaborator_permission" +
+	" FROM opportunity o" +
+	" LEFT JOIN ref_business_unit bu ON o.business_unit_id = bu.business_unit_id" +
+	" LEFT JOIN opportunity_collaborator oc ON o.opportunity_id = oc.opportunity_id" +
+	" WHERE o.username != ?1" +
+	" AND oc.username = ?1"
+	, nativeQuery=true)
+	public List<OpportunityDashboardProjection> findSharedOpportunitiesByUsername(String username);
+	
+	public List<OpportunityDashboardProjection> findByUserUsername(String username);
+	
+	public List<OpportunityDashboardProjection> findByOpportunityCollaboratorsKeyUsername(String username);
 	
 }
