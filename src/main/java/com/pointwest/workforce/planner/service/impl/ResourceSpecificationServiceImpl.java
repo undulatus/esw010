@@ -15,6 +15,7 @@ import com.pointwest.workforce.planner.data.ResourceSpecificationRepository;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
+import com.pointwest.workforce.planner.util.DateUtil;
 
 @Service
 public class ResourceSpecificationServiceImpl implements ResourceSpecificationService {
@@ -79,13 +80,8 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
 		
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
-		int offsetMonth = (minWeek - 1) / WEEKSINMONTH;
-		int offsetWeek = (minWeek - 1) % WEEKSINMONTH;
-		//add offset months using standardized value
-		startLocalDate = startLocalDate.plusMonths(offsetMonth);
-		//add offset weeks for standardized value
-		startLocalDate = startLocalDate.plusWeeks(offsetWeek);
-		Date roleStartDate = Date.valueOf(startLocalDate);
+		
+		Date roleStartDate = DateUtil.adjustDate(startLocalDate, minWeek, WEEKSINMONTH);
 		
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		resourceSpecification.setRoleStartDate(roleStartDate);

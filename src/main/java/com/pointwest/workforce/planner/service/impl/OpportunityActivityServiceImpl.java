@@ -15,6 +15,7 @@ import com.pointwest.workforce.planner.data.OpportunityActivityRepository;
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
+import com.pointwest.workforce.planner.util.DateUtil;
 
 @Service
 public class OpportunityActivityServiceImpl implements OpportunityActivityService {
@@ -42,6 +43,15 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 
 	@Override
 	public OpportunityActivity saveOpportunityActivity(OpportunityActivity opportunityActivity) {
+		/*try {
+			log.debug("bry key new op act " +opportunityActivity.getOpportunityActivityId()); 
+			opportunityActivityRepository.findOne(opportunityActivity.getOpportunityActivityId());
+		} catch(Exception e) {
+			System.out.println("bry err");
+			e.printStackTrace();
+		}
+		OpportunityActivity outOpportunityActivity =  opportunityActivityRepository.saveAndFlush(opportunityActivity);
+		return opportunityActivityRepository.findOne(outOpportunityActivity.getOpportunityActivityId());*/
 		return opportunityActivityRepository.save(opportunityActivity);
 	}
 	
@@ -68,13 +78,7 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		Integer minWeek = opportunityActivityRepository.findStartWeekOfOpportunityActivity(opportunityActivityId);
 		Integer maxWeek = opportunityActivityRepository.findEndWeekOfOpportunityActivity(opportunityActivityId);
 		
-		int offsetMonth = (minWeek - 1) / WEEKSINMONTH;
-		int offsetWeek = (minWeek - 1) % WEEKSINMONTH;
-		//add offset months using standardized value
-		startLocalDate = startLocalDate.plusMonths(offsetMonth);
-		//add offset weeks for standardized value
-		startLocalDate = startLocalDate.plusWeeks(offsetWeek);
-		Date activityStartDate = Date.valueOf(startLocalDate);
+		Date activityStartDate = DateUtil.adjustDate(startLocalDate, minWeek, WEEKSINMONTH);
 		
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		opportunityActivity.setActivityStartDate(activityStartDate);

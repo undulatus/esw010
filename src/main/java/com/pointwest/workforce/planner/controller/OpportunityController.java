@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Activity;
@@ -107,7 +108,7 @@ public class OpportunityController {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}")
 	public ResponseEntity<Object> updateOpportunity(@PathVariable Long opportunityId,
-			@RequestBody(required = true) Opportunity opportunity) {
+			@RequestParam(required=true) Opportunity opportunity, @RequestParam(required=false) Boolean dateChanged) {
 		Opportunity savedOpportunity = null;
 		Long idInRequestBody = opportunity.getOpportunityId();
 		if ((idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityId)) != 0)) {
@@ -116,6 +117,9 @@ public class OpportunityController {
 					HttpStatus.BAD_REQUEST);
 		}
 		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
+		if(dateChanged == true) {
+			savedOpportunity = opportunityService.updateOpportunityDates(opportunityId);
+		}
 		if (savedOpportunity == null) {
 			return new ResponseEntity<>(opportunity, HttpStatus.BAD_REQUEST);
 		} else {

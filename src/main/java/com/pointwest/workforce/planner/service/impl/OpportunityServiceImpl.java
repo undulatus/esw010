@@ -1,5 +1,7 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityLockEntity;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardProjection;
+import com.pointwest.workforce.planner.util.DateUtil;
 
 @Service
 public class OpportunityServiceImpl implements OpportunityService {
@@ -31,6 +34,9 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Value("${opportunity.documentstatus.unlocked}")
 	private String UNLOCKED;
+	
+	@Value("${month.to.week.multiplier}")
+	private Integer WEEKSINMONTH;
 
 	private static final Logger log = LoggerFactory.getLogger(WorkforcePlannerApplication.class);
 
@@ -135,5 +141,17 @@ public class OpportunityServiceImpl implements OpportunityService {
 		List<OpportunityDashboardProjection> oppList;
 		oppList = opportunityRepository.findByOpportunityCollaboratorsKeyUsername(username);
 		return oppList;
+	}
+
+	@Override
+	public Opportunity updateOpportunityDates(Long opportunityId) {
+		Opportunity opportunity = opportunityRepository.findOne(opportunityId);
+		LocalDate startDate = opportunity.getProjectStartDate().toLocalDate();
+		int durationInWeeks = opportunity.getDurationInWeeks().intValue();
+		
+		Date endDate = DateUtil.adjustDate(startDate, durationInWeeks, WEEKSINMONTH);
+		opportunity.setProjectEndDate(endDate);
+		
+		return opportunityRepository.save(opportunity);
 	}
 }

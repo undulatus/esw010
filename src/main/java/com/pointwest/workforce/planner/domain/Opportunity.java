@@ -73,6 +73,9 @@ public class Opportunity implements Serializable {
 	@Column(name="opportunity_project_alias")
 	private String projectAlias;
 	
+	@Column(name="opportunity_end_date")
+	private Date projectEndDate;
+	
 	@OneToOne
 	@JoinColumn(name="username")
 	private User user;
@@ -208,6 +211,14 @@ public class Opportunity implements Serializable {
 	public void setVersions(List<Version> versions) {
 		this.versions = versions;
 	}*/
+	
+	public Date getProjectEndDate() {
+		return projectEndDate;
+	}
+
+	public void setProjectEndDate(Date projectEndDate) {
+		this.projectEndDate = projectEndDate;
+	}
 
 	@Override
 	public String toString() {
@@ -218,5 +229,6 @@ public class Opportunity implements Serializable {
 				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user
 				+ ", opportunityActivities=" + opportunityActivities + "]";
 	}
+
 	
 }

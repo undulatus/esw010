@@ -24,4 +24,7 @@ public interface OpportunityService {
 	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsername(String username);
 
 	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsername(String username);
+	
+	public Opportunity updateOpportunityDates(Long opportunityId);
+
 }
