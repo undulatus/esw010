@@ -193,7 +193,7 @@ public class Opportunity implements Serializable {
 	}
 	
 	public List<OpportunityCollaborator> getOpportunityCollaborators() {
-	return opportunityCollaborators;
+		return opportunityCollaborators;
 	}
 
 	public void setOpportunityCollaborators(List<OpportunityCollaborator> opportunityCollaborators) {
