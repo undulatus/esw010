@@ -78,7 +78,7 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 		Integer minWeek = opportunityActivityRepository.findStartWeekOfOpportunityActivity(opportunityActivityId);
 		Integer maxWeek = opportunityActivityRepository.findEndWeekOfOpportunityActivity(opportunityActivityId);
 		
-		Date activityStartDate = DateUtil.adjustDate(startLocalDate, minWeek, WEEKSINMONTH);
+		Date activityStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
 		
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		opportunityActivity.setActivityStartDate(activityStartDate);

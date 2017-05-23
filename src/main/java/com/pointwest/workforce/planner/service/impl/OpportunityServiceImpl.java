@@ -87,6 +87,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 			opportunity.setProjectAlias(previousOpportunity.getProjectAlias());
 		if (opportunity.getUser() == null)
 			opportunity.setUser(previousOpportunity.getUser());
+		if (opportunity.getProjectEndDate() == null) opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
 
 		return opportunityRepository.save(opportunity);
 	}
@@ -149,7 +150,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 		LocalDate startDate = opportunity.getProjectStartDate().toLocalDate();
 		int durationInWeeks = opportunity.getDurationInWeeks().intValue();
 		
-		Date endDate = DateUtil.adjustDate(startDate, durationInWeeks, WEEKSINMONTH);
+		Date endDate = DateUtil.adjustDateExclusive(startDate, durationInWeeks, WEEKSINMONTH);
 		opportunity.setProjectEndDate(endDate);
 		
 		return opportunityRepository.save(opportunity);

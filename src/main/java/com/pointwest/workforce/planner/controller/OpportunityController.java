@@ -108,7 +108,7 @@ public class OpportunityController {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}")
 	public ResponseEntity<Object> updateOpportunity(@PathVariable Long opportunityId,
-			@RequestParam(required=true) Opportunity opportunity, @RequestParam(required=false) Boolean dateChanged) {
+			@RequestBody(required=true) Opportunity opportunity, @RequestParam(required=false) Boolean dateChanged) {
 		Opportunity savedOpportunity = null;
 		Long idInRequestBody = opportunity.getOpportunityId();
 		if ((idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityId)) != 0)) {
@@ -117,7 +117,7 @@ public class OpportunityController {
 					HttpStatus.BAD_REQUEST);
 		}
 		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
-		if(dateChanged == true) {
+		if(dateChanged != null && dateChanged == true) {
 			savedOpportunity = opportunityService.updateOpportunityDates(opportunityId);
 		}
 		if (savedOpportunity == null) {

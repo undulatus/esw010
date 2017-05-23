@@ -60,6 +60,7 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		//sprint 2 changes
 		if(resourceSpecification.getRoleStartDate() == null) resourceSpecification.setRoleStartDate(previousResourceSpecification.getRoleStartDate());
 		if(resourceSpecification.getDurationInWeeks() == null) resourceSpecification.setDurationInWeeks(previousResourceSpecification.getDurationInWeeks());
+		if(resourceSpecification.getTotalFTE() == null) resourceSpecification.setTotalFTE(previousResourceSpecification.getTotalFTE());
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 
@@ -81,7 +82,7 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
 		
-		Date roleStartDate = DateUtil.adjustDate(startLocalDate, minWeek, WEEKSINMONTH);
+		Date roleStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
 		
 		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		resourceSpecification.setRoleStartDate(roleStartDate);
