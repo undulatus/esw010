@@ -68,7 +68,7 @@ public class OpportunityActivityController {
     }
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/opportunityactivities/{opportunityActivityId}")
-    public ResponseEntity<Object> updateOpportunityActivity(@PathVariable Long opportunityActivityId, @RequestBody OpportunityActivity opportunityActivity) {
+    public ResponseEntity<Object> updateOpportunityActivity(@RequestBody(required=true) OpportunityActivity opportunityActivity, @PathVariable Long opportunityActivityId) {
 		OpportunityActivity savedOpportunityActivity = null;
 		Long idInRequestBody = opportunityActivity.getOpportunityActivityId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityActivityId)) != 0) ) {

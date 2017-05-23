@@ -18,7 +18,7 @@ public class Version {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="version_id")
-	private int versionId;
+	private Long versionId;
 	
 	@Column(name="version_name")
 	private String versionName;
@@ -29,11 +29,11 @@ public class Version {
 	@Column(name="version_data")
 	private String versionData;
 
-	public int getVersionId() {
+	public Long getVersionId() {
 		return versionId;
 	}
 
-	public void setVersionId(int versionId) {
+	public void setVersionId(Long versionId) {
 		this.versionId = versionId;
 	}
 

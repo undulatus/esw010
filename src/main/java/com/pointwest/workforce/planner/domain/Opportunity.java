@@ -77,12 +77,16 @@ public class Opportunity implements Serializable {
 	@JoinColumn(name="username")
 	private User user;
 	
-	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
+	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.DETACH)
 	@OneToMany(mappedBy = "opportunityId")
 	private List<OpportunityActivity> opportunityActivities;
 	
 	@OneToMany(mappedBy = "key.opportunityId", cascade = CascadeType.ALL)
 	private List<OpportunityCollaborator> opportunityCollaborators;
+	
+	//removed - will explicitly call
+	/*@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.ALL)
+	private List<Version> versions;*/
 
 	public Long getOpportunityId() {
 		return opportunityId;
@@ -188,18 +192,22 @@ public class Opportunity implements Serializable {
 		this.user = user;
 	}
 	
-	/*@JsonSerialize()
-	public Opportunity getJson() {
-		return this;
-	}*/
-	
 	public List<OpportunityCollaborator> getOpportunityCollaborators() {
-		return opportunityCollaborators;
+	return opportunityCollaborators;
 	}
 
 	public void setOpportunityCollaborators(List<OpportunityCollaborator> opportunityCollaborators) {
 		this.opportunityCollaborators = opportunityCollaborators;
 	}
+
+	//removed - will explicitly call
+	/*public List<Version> getVersions() {
+		return versions;
+	}
+
+	public void setVersions(List<Version> versions) {
+		this.versions = versions;
+	}*/
 
 	@Override
 	public String toString() {

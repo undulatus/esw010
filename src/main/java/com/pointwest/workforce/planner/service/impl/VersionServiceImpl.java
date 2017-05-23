@@ -1,10 +1,11 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.VersionRepository;
-import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.Version;
 import com.pointwest.workforce.planner.service.VersionService;
 
@@ -20,9 +21,19 @@ public class VersionServiceImpl implements VersionService {
 	}
 
 	@Override
-	public Opportunity fetchAndLoadOpportunityVersion(long versionId, long opportunityId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Version> fetchVersions(Long opportunityId) {
+		return versionRepository.findByOpportunityId(opportunityId);
 	}
+	
+	@Override
+	public Version fetchOpportunityVersion(Long versionId) {
+		return versionRepository.findOne(versionId);
+	}
+
+	/*@Override
+	public Version fetchAndApplyOpportunityVersion(Long versionId) {
+		
+	}*/
+	
 	
 }

@@ -68,7 +68,7 @@ public class ResourceSpecificationController {
     }
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}")
-    public ResponseEntity<Object> updateResourceSpecification(@PathVariable Long resourceSpecificationId, @RequestBody ResourceSpecification resourceSpecification) {
+    public ResponseEntity<Object> updateResourceSpecification(@RequestBody(required=true) ResourceSpecification resourceSpecification, @PathVariable Long resourceSpecificationId) {
 		ResourceSpecification savedResourceSpecification = null;
 		Long idInRequestBody = resourceSpecification.getResourceSpecificationId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(resourceSpecificationId)) != 0) ) {
