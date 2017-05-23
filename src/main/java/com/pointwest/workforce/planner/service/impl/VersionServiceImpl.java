@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.data.VersionRepository;
 import com.pointwest.workforce.planner.domain.Version;
+import com.pointwest.workforce.planner.domain.Version.VersionKey;
 import com.pointwest.workforce.planner.service.VersionService;
 
 @Service
@@ -16,18 +17,19 @@ public class VersionServiceImpl implements VersionService {
 	VersionRepository versionRepository;
 
 	@Override
-	public Version saveVersion(Version version) {
+	public Version saveVersion(Long opportunityId, String versionName, String versionData) {
+		Version version = new Version(opportunityId, versionName, versionData);
 		return versionRepository.save(version);
 	}
 
 	@Override
 	public List<Version> fetchVersions(Long opportunityId) {
-		return versionRepository.findByOpportunityId(opportunityId);
+		return versionRepository.findByKeyOpportunityId(opportunityId);
 	}
 	
 	@Override
-	public Version fetchOpportunityVersion(Long versionId) {
-		return versionRepository.findOne(versionId);
+	public Version fetchOpportunityVersion(VersionKey key) {
+		return versionRepository.findOne(key);
 	}
 
 	/*@Override

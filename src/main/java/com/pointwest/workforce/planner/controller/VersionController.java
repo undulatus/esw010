@@ -75,29 +75,35 @@ public class VersionController {
 		}
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="opportunities/{opportunityId}/versions/{versionId}")
-    public ResponseEntity<Object> fetchVersion(@PathVariable Long versionId) {
+	@RequestMapping(method=RequestMethod.GET, value="opportunities/{opportunityId}/versions/{versionName}")
+    public ResponseEntity<Object> fetchVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
 		ObjectMapper mapper = new ObjectMapper();
-
-        Version version = versionService.fetchOpportunityVersion(versionId);
-        Opportunity opportunity = null;
+		Version version = null;
+		Opportunity opportunity = null;
+		Version.VersionKey key = new Version.VersionKey();
+		key.setOpportunityId(opportunityId);
+		key.setVersionName(versionName);
 		try {
-			opportunity = mapper.readValue(version.getVersionData(), Opportunity.class);
+	        version = versionService.fetchOpportunityVersion(key);
+	        if(version == null) {
+				return new ResponseEntity<>(new CustomError("Version not found"), HttpStatus.NOT_FOUND);
+			} else {			
+				opportunity = mapper.readValue(version.getVersionData(), Opportunity.class);
+			}
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Version corrupted"), HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Version corrupted"), HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Bad inputs"), HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Bad inputs"), HttpStatus.BAD_REQUEST);
 		}
-		if(version == null) {
-			return new ResponseEntity<>(new CustomError("Version not found"), HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<>(opportunity, HttpStatus.OK);
-		}
+		return new ResponseEntity<>(opportunity, HttpStatus.OK);
     }
 	
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/versions")
@@ -110,11 +116,8 @@ public class VersionController {
 		} else {
 			try {
 				jsonData = mapper.writeValueAsString(opportunity);
-				Version version = new Version();
-				version.setOpportunityId(opportunityId);
-				version.setVersionName(versionName);
-				version.setVersionData(jsonData);
-				versionService.saveVersion(version);
+				versionService.saveVersion(opportunityId, versionName, jsonData);
+				
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 				return new ResponseEntity<>(new CustomError("Error in saving version"), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -123,10 +126,15 @@ public class VersionController {
 		}
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="opportunities/{opportunityId}/versions/{versionId}/revert")
-    public ResponseEntity<Object> revertVersion(@PathVariable Long opportunityId, @PathVariable Long versionId) {
+	@RequestMapping(method=RequestMethod.POST, value="opportunities/{opportunityId}/versions/{versionName}/revert")
+    public ResponseEntity<Object> revertVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
 		ObjectMapper mapper = new ObjectMapper();
-        Version version = versionService.fetchOpportunityVersion(versionId);
+		
+		Version.VersionKey vKey = new Version.VersionKey();
+		vKey.setOpportunityId(opportunityId);
+		vKey.setVersionName(versionName);
+        Version version = versionService.fetchOpportunityVersion(vKey);
+        
         Opportunity currentOpportunity = null;
         Opportunity versionedOpportunity = null;
 		try {
@@ -155,9 +163,9 @@ public class VersionController {
 		List<ResourceSpecification> ress;
 		List<WeeklyFTE> weeks;
 		WeeklyFTEKey key = null;
+		log.debug("act opp id " + versionedOpportunity.getOpportunityId());
 		for(OpportunityActivity act : versionedOpportunity.getOpportunityActivities()) {
 			act.setOpportunityId(versionedOpportunity.getOpportunityId());
-			log.debug("act opp id " + versionedOpportunity.getOpportunityId());
 			ress = act.getResourceSpecificationList();
 			act.setResourceSpecificationList(null);
 			transAct = opportunityActivityService.saveOpportunityActivity(act);
@@ -188,26 +196,5 @@ public class VersionController {
 		}
 	}
 	
-		/*Version savedVersion = null;
-		boolean isNew = false;
-		if(version==null) {
-			savedVersion = versionService.saveVersion(new Version());
-			isNew = true;
-		} else if(version.getVersionId() == null) {
-			savedVersion = versionService.saveVersion(version);
-			isNew = true;
-		} else {
-			savedVersion = versionService.saveVersion(version);
-			isNew = false;
-		}
-		if(savedVersion==null) {
-			return new ResponseEntity<>(new CustomError("Invalid inputs, not saved"), HttpStatus.BAD_REQUEST);
-		} else {
-			if(isNew) {
-				return new ResponseEntity<>(savedVersion, HttpStatus.CREATED);
-			} else {
-				return new ResponseEntity<>(savedVersion, HttpStatus.OK);
-			}
-		}*/
     
 }
