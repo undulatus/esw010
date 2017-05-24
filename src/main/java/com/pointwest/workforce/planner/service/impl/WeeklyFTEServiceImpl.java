@@ -72,6 +72,23 @@ public class WeeklyFTEServiceImpl implements WeeklyFTEService {
 		}
 		return initialCount - postDeleteCount;
 	}
+
+	@Override
+	public int deleteWeeklyFTEbyOpportunityId(Long opportunityId) throws Exception {
+		int initialCount = 0;
+		int postDeleteCount = 0;
+		try {
+			initialCount = weeklyFTERepository.countFTEsByOpportunityId(opportunityId);
+			weeklyFTERepository.deleteFTEsByOpportunityId(opportunityId);
+			postDeleteCount = weeklyFTERepository.countFTEsByOpportunityId(opportunityId);
+		} catch(EmptyResultDataAccessException erda) {
+			//this is a handled exception
+			log.debug("a delete request already does not exist");
+		} catch(Exception e)	{
+			throw new Exception("server error");
+		}
+		return initialCount - postDeleteCount;
+	}
 }
 	
 

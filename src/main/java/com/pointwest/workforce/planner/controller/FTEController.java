@@ -16,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
+import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
+import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
 
@@ -29,6 +31,9 @@ public class FTEController {
 	
 	@Autowired
 	WeeklyFTEService weeklyFTEService;
+	
+	@Autowired
+	OpportunityService opportunityService;
 	
 	@Autowired
 	OpportunityActivityService opportunityActivityService;
@@ -222,6 +227,27 @@ public class FTEController {
 			return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	} 
+	
+	@RequestMapping(method=RequestMethod.DELETE, value= "/opportunities/{opportunityId}/ftes")
+    public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long opportunityId) {
+		int deleteCount = 0;
+		try {
+			deleteCount = weeklyFTEService.deleteWeeklyFTEbyOpportunityId(opportunityId);
+		} catch(Exception e) {
+			Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
+			if(opportunity == null) {
+				return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
+			} else {
+				return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}
+		if(deleteCount > 0) {
+			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(new CustomError("Nothing deleted"), HttpStatus.BAD_REQUEST);
+		}
+	}
+	
 	
 	
 }
