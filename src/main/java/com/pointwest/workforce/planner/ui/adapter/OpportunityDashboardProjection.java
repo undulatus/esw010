@@ -14,10 +14,10 @@ public interface OpportunityDashboardProjection {
 
 	public String getOpportunityName();
 	
-	@Value("#{target.businessUnit.businessUnitName}")
+	@Value("#{target.businessUnit != null ? target.businessUnit.businessUnitName : null }")
 	public String getBusinessUnitName();
 	
-	@Value("#{target.serviceType.serviceTypeName}")
+	@Value("#{target.serviceType != null ? target.serviceType.serviceTypeName : null }")
 	public String getServiceTypeName();
 	
 	public Date getProjectStartDate();

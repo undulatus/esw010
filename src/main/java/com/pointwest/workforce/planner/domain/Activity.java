@@ -26,6 +26,12 @@ public class Activity implements Serializable {
 		this.activityName = activityName;
 		this.isCustom = isCustom;
 	}
+	
+	public Activity(String activityName, Boolean isCustom, Long opportunityId) {
+		this.activityName = activityName;
+		this.isCustom = isCustom;
+		this.opportunityId = opportunityId;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,6 +43,9 @@ public class Activity implements Serializable {
 	
 	@Column(name="activity_is_custom", columnDefinition="INT(1)")
 	private Boolean isCustom;
+	
+	@Column(name="opportunity_id")
+	private Long opportunityId;
 
 	public Integer getActivityId() {
 		return activityId;
@@ -60,6 +69,14 @@ public class Activity implements Serializable {
 
 	public void setCustom(Boolean isCustom) {
 		this.isCustom = isCustom;
+	}
+
+	public Long getOpportunityId() {
+		return opportunityId;
+	}
+
+	public void setOpportunityId(Long opportunityId) {
+		this.opportunityId = opportunityId;
 	}
 	
 	

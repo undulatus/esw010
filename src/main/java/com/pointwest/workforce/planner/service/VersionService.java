@@ -4,12 +4,13 @@ import java.util.List;
 
 import com.pointwest.workforce.planner.domain.Version;
 import com.pointwest.workforce.planner.domain.Version.VersionKey;
+import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 public interface VersionService {
 
 	public Version saveVersion(Long opportunityId, String versionName, String versionData);
 
-	public List<Version> fetchVersions(Long opportunityId);
+	public List<VersionNoDataProjection> fetchVersions(Long opportunityId);
 	
 	public Version fetchOpportunityVersion(VersionKey key);
 	

@@ -9,6 +9,7 @@ import com.pointwest.workforce.planner.data.VersionRepository;
 import com.pointwest.workforce.planner.domain.Version;
 import com.pointwest.workforce.planner.domain.Version.VersionKey;
 import com.pointwest.workforce.planner.service.VersionService;
+import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 @Service
 public class VersionServiceImpl implements VersionService {
@@ -23,8 +24,8 @@ public class VersionServiceImpl implements VersionService {
 	}
 
 	@Override
-	public List<Version> fetchVersions(Long opportunityId) {
-		return versionRepository.findByKeyOpportunityId(opportunityId);
+	public List<VersionNoDataProjection> fetchVersions(Long opportunityId) {
+		return versionRepository.findByKeyOpportunityIdOrderByDateCreatedDesc(opportunityId);
 	}
 	
 	@Override

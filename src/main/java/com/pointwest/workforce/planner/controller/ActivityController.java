@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Activity;
@@ -55,9 +56,16 @@ public class ActivityController {
 		}
     }
 	
+	//implemented like this to prevent breaking integration
 	@RequestMapping(method=RequestMethod.POST, value="/activities")
-    public ResponseEntity<Object> saveCustomActivity(@RequestBody(required=true) String activityName) {
-		Activity customActivity = new Activity(activityName, true);
+    public ResponseEntity<Object> saveCustomActivity(@RequestBody(required=true) String activityName, 
+    		@RequestParam(required = false) Long opportunityId) {
+		Activity customActivity = null;
+		if(opportunityId != null) {
+			customActivity = new Activity(activityName, true, opportunityId);
+		} else {			
+			customActivity = new Activity(activityName, true);
+		}
 		customActivity = referenceDataService.addActivity(customActivity);
 		if(customActivity==null) {
 			return new ResponseEntity<>(new CustomError("Incorrect inputs, not saved"), HttpStatus.BAD_REQUEST);

@@ -33,6 +33,7 @@ import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 import com.pointwest.workforce.planner.service.TemplateDataService;
 import com.pointwest.workforce.planner.service.VersionService;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
+import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 @RestController
 public class VersionController {
@@ -62,11 +63,15 @@ public class VersionController {
 	JsonParser parser;
 	
 	private static final Logger log = LoggerFactory.getLogger(VersionController.class);
-	
+
+	/**
+	 * @param opportunityId
+	 * @return list of versions ordered by creation date descending, data not included
+	 */
 	@RequestMapping(method=RequestMethod.GET, value="opportunities/{opportunityId}/versions")
 	public ResponseEntity<Object> fetchOpportunityVersions(@PathVariable Long opportunityId) {
 		
-        List<Version> versions = versionService.fetchVersions(opportunityId);
+        List<VersionNoDataProjection> versions = versionService.fetchVersions(opportunityId);
        
 		if( versions == null || versions.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("Versions not found for supplied opportunity id"), HttpStatus.NOT_FOUND);
@@ -75,6 +80,11 @@ public class VersionController {
 		}
 	}
 	
+	/**
+	 * @param opportunityId
+	 * @param versionName
+	 * @return an opportunity version
+	 */
 	@RequestMapping(method=RequestMethod.GET, value="opportunities/{opportunityId}/versions/{versionName}")
     public ResponseEntity<Object> fetchVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -106,6 +116,12 @@ public class VersionController {
 		return new ResponseEntity<>(opportunity, HttpStatus.OK);
     }
 	
+	
+	/**
+	 * @param versionName
+	 * @param opportunityId
+	 * @return saved opportunity version based on parameters
+	 */
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/versions")
     public ResponseEntity<Object> saveVersion(@RequestBody(required=true) String versionName, @PathVariable Long opportunityId) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -126,6 +142,12 @@ public class VersionController {
 		}
 	}
 	
+	
+	/**
+	 * @param opportunityId
+	 * @param versionName
+	 * @return an opportunity reverted to its selected version values
+	 */
 	@RequestMapping(method=RequestMethod.POST, value="opportunities/{opportunityId}/versions/{versionName}/revert")
     public ResponseEntity<Object> revertVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
 		ObjectMapper mapper = new ObjectMapper();
@@ -141,14 +163,17 @@ public class VersionController {
 			versionedOpportunity = mapper.readValue(version.getVersionData(), Opportunity.class);
 			currentOpportunity = opportunityService.fetchOpportunity(opportunityId);
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Version corrupted"), HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Version corrupted"), HttpStatus.INTERNAL_SERVER_ERROR);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Bad inputs"), HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(new CustomError("Bad inputs"), HttpStatus.BAD_REQUEST);
 		}
 		Long opportunityActivityId;
 		for (OpportunityActivity opportunityActivity : currentOpportunity.getOpportunityActivities()) {

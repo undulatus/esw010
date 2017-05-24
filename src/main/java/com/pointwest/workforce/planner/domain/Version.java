@@ -1,6 +1,8 @@
 package com.pointwest.workforce.planner.domain;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -27,6 +29,7 @@ public class Version implements Serializable {
 		key.setVersionName(versionName);
 		this.key = key;
 		this.versionData = versionData;
+		this.setDateCreated(Timestamp.from(Instant.now()));
 	}
 
 	@EmbeddedId
@@ -34,6 +37,9 @@ public class Version implements Serializable {
 	
 	@Column(name="version_data")
 	private String versionData;
+	
+	@Column(name="version_date_created")
+	private Timestamp dateCreated;
 
 	public VersionKey getKey() {
 		return key;
@@ -49,6 +55,14 @@ public class Version implements Serializable {
 
 	public void setVersionData(String versionData) {
 		this.versionData = versionData;
+	}
+	
+	public Timestamp getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Timestamp dateCreated) {
+		this.dateCreated = dateCreated;
 	}
 
 	@Embeddable

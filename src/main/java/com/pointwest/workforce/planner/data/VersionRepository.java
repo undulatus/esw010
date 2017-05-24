@@ -6,9 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.pointwest.workforce.planner.domain.Version;
 import com.pointwest.workforce.planner.domain.Version.VersionKey;
+import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 public interface VersionRepository extends CrudRepository<Version, VersionKey> {
 
-	public List<Version> findByKeyOpportunityId(Long opportunityId);
+	public List<VersionNoDataProjection> findByKeyOpportunityIdOrderByDateCreatedDesc(Long opportunityId);
 
 }
