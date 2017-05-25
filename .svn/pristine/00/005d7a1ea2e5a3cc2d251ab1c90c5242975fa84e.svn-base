@@ -1,0 +1,7 @@
+opportunity.documentstatus.locked=locked
+opportunity.documentstatus.unlocked=unlocked
+
+month.to.week.multiplier=4
+
+granularity.week=weekly
+granularity.month=monthly

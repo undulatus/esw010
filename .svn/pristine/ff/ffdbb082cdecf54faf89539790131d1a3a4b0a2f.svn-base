@@ -1,0 +1,34 @@
+package com.pointwest.workforce.planner.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class VersionController {
+	
+	/*@Autowired
+	ReferenceDataService referenceDataService;
+	
+	@Autowired
+	TemplateDataService templateDataService;
+	
+	@Autowired
+	JsonParser parser;
+	
+	@RequestMapping("/roles")
+    public List<Role> fetchAllRole() {
+       return referenceDataService.fetchAllRole();
+    }
+	
+	@RequestMapping("/roles/{roleId}")
+    public Role fetchRole(@PathVariable int roleId) {
+		
+		//Map<String,Object> resMap = this.parser.parseMap(EntityUtils.toString(response.getEntity()));
+       return referenceDataService.fetchRole(roleId);
+    }
+	
+	@RequestMapping("/servicelines/{serviceLineId}/roles")
+    public List<Role> fetchRolesByServiceLineId(@PathVariable int serviceLineId) {
+       return templateDataService.fetchRolesByServiceLineId(serviceLineId);
+    }*/
+
+}
