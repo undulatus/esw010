@@ -12,6 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @ComponentScan("com.pointwest.workforce.planner")
 @PropertySource("classpath:db-values.properties")
+@PropertySource("classpath:security-config.properties")
 @SpringBootApplication
 public class WorkforcePlannerApplication extends SpringBootServletInitializer {
 	
