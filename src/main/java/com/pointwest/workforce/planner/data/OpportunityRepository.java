@@ -51,7 +51,7 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	" LEFT JOIN user u ON o.username = u.username" +
 	" WHERE o.username != ?1"
 	, nativeQuery=true)
-	public List<Opportunity> findNotOwnedOpportunitiesByUserUsername(String username);
+	public List<Opportunity> findNotOwnedOpportunitiesByUsername(String username);
 	
 	
 	/*@Query(value= 
@@ -102,7 +102,7 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	, nativeQuery=true)
 	public List<OpportunityDashboardProjection> findSharedOpportunitiesByUsername(String username);
 	
-	public List<OpportunityDashboardProjection> findByUserUsername(String username);
+	public List<OpportunityDashboardProjection> findByUsername(String username);
 	
 	public List<OpportunityDashboardProjection> findByOpportunityCollaboratorsKeyUsername(String username);
 	

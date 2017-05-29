@@ -62,7 +62,7 @@ public class JWTDecoderServiceImpl implements JWTDecoderService {
 	@Override
 	
 	public Boolean isValidToken(String token) {
-		if(getTokenUser(token) != null && isTokenExpired(token)) {
+		if(getTokenUser(token) != null && !isTokenExpired(token)) {
 			return true;
 		}
 		else {

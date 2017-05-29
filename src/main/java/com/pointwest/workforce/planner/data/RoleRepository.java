@@ -10,9 +10,9 @@ import com.pointwest.workforce.planner.domain.Role;
 public interface RoleRepository extends CrudRepository<Role, Integer> {
 
 	@Query(value=
-			" SELECT r.role_id, r.role_name" +
-			" FROM ref_role r" +
-			" LEFT JOIN tmpl_service_type_role slr ON r.role_id = slr.role_id" +
+			" SELECT r.org_role_id, r.org_role_name" +
+			" FROM ref_org_role r" +
+			" LEFT JOIN tmpl_service_type_org_role slr ON r.org_role_id = slr.org_role_id" +
 			" WHERE slr.service_type_id = ?1"
 			, nativeQuery=true)
 	public List<Role> findRolesByServiceTypeId(int serviceTypeId);

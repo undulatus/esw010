@@ -76,9 +76,8 @@ public class Opportunity implements Serializable {
 	@Column(name="opportunity_end_date")
 	private Date projectEndDate;
 	
-	@OneToOne
 	@JoinColumn(name="username")
-	private User user;
+	private String username;
 	
 	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.DETACH)
 	@OneToMany(mappedBy = "opportunityId")
@@ -187,12 +186,12 @@ public class Opportunity implements Serializable {
 		this.opportunityActivities = opportunityActivities;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	public List<OpportunityCollaborator> getOpportunityCollaborators() {
@@ -226,7 +225,7 @@ public class Opportunity implements Serializable {
 				+ ", businessUnit=" + businessUnit + ", serviceType=" + serviceType + ", durationGranularity="
 				+ durationGranularity + ", durationInWeeks=" + durationInWeeks + ", projectStartDate="
 				+ projectStartDate + ", opportunityStatus=" + opportunityStatus + ", documentStatus=" + documentStatus
-				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + user
+				+ ", clientName=" + clientName + ", projectAlias=" + projectAlias + ", user=" + username
 				+ ", opportunityActivities=" + opportunityActivities + "]";
 	}
 

@@ -12,7 +12,7 @@ import com.pointwest.workforce.planner.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-		@Autowired
+		/*@Autowired
 		public UserRepository userRepository;
 		
 		private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 			log.debug("MCO >> fetchUser with id : " + username);
 			return user;
 		}
-		
+		*/
 		
 }
 

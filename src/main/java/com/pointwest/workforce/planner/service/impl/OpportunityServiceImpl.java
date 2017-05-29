@@ -85,8 +85,8 @@ public class OpportunityServiceImpl implements OpportunityService {
 			opportunity.setClientName(previousOpportunity.getClientName());
 		if (opportunity.getProjectAlias() == null)
 			opportunity.setProjectAlias(previousOpportunity.getProjectAlias());
-		if (opportunity.getUser() == null)
-			opportunity.setUser(previousOpportunity.getUser());
+		if (opportunity.getUsername() == null)
+			opportunity.setUsername(previousOpportunity.getUsername());
 		if (opportunity.getProjectEndDate() == null) opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
 
 		return opportunityRepository.save(opportunity);
@@ -116,7 +116,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Override
 	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsername(String username) {
 		List<OpportunityDashboardProjection> oppList;
-		oppList = opportunityRepository.findByUserUsername(username.trim());
+		oppList = opportunityRepository.findByUsername(username.trim());
 		/*for (Opportunity opp : oppList) {
 
 			log.debug("my opp : " + opp.toString());
@@ -128,7 +128,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Override
 	public List<Opportunity> fetchNotOwnedOpportunitiesByUsername(String username) {
 		List<Opportunity> oppList = new ArrayList<Opportunity>();
-		oppList = opportunityRepository.findNotOwnedOpportunitiesByUserUsername(username.trim());
+		oppList = opportunityRepository.findNotOwnedOpportunitiesByUsername(username.trim());
 		for (Opportunity opp : oppList) {
 
 			log.debug("other opp : " + opp.toString());
