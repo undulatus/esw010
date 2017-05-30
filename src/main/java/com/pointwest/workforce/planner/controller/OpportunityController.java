@@ -2,6 +2,8 @@ package com.pointwest.workforce.planner.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,7 @@ public class OpportunityController {
 
 
 	@RequestMapping(method = RequestMethod.GET, value = "/opportunities")
-	public ResponseEntity<Object> fetchAllOpportunities() {
+	public ResponseEntity<Object> fetchAllOpportunities(HttpServletRequest request) {
 		List<Opportunity> opportunities = opportunityService.fetchAllOpportunities();
 		if (opportunities == null || opportunities.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);

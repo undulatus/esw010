@@ -88,7 +88,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 		if (opportunity.getUsername() == null)
 			opportunity.setUsername(previousOpportunity.getUsername());
 		if (opportunity.getProjectEndDate() == null) opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
-
+		if (opportunity.getLastModifiedDate() == null) opportunity.setLastModifiedDate(previousOpportunity.getLastModifiedDate());
 		return opportunityRepository.save(opportunity);
 	}
 
