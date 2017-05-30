@@ -11141,4 +11141,214 @@ Verify the connector's configuration, identify and stop any process that's liste
 ""2017-05-30 18:40:13 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
 ""2017-05-30 18:40:13 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
 ""2017-05-30 18:40:13 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Started WorkforcePlannerApplication in 5.655 seconds (JVM running for 6.397)
+""2017-05-30 18:46:08 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MBP with PID 11136 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-05-30 18:46:08 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-05-30 18:46:08 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-05-30 18:46:08 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Tue May 30 18:46:08 PHT 2017]; root of context hierarchy
+""2017-05-30 18:46:09 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b802c57c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$50b08db6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@210308d5' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$75853068] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:09 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:46:10 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-05-30 18:46:10 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-05-30 18:46:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-05-30 18:46:10 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-05-30 18:46:11 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:46:11 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-05-30 18:46:11 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-05-30 18:46:11 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-05-30 18:46:11 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-05-30 18:46:11 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-05-30 18:46:11 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2017-05-30 18:46:11 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+""2017-05-30 18:46:12 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:46:12 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+""2017-05-30 18:46:12 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, []
+""2017-05-30 18:46:13 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration$LazyEndpointPathRequestMatcher@42cfd794, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@43778371, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ecdcfe3, org.springframework.security.web.header.HeaderWriterFilter@27a90ce5, org.springframework.security.web.authentication.logout.LogoutFilter@1f75fd1d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@1c53bd49, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2047adea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b6cc344, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@71beada8, org.springframework.security.web.session.SessionManagementFilter@3e5ebdfe, org.springframework.security.web.access.ExceptionTranslationFilter@69f3e556, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@9cc0505]
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:46:13 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+""2017-05-30 18:46:13 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+""2017-05-30 18:46:13 [main] ERROR o.a.coyote.http11.Http11NioProtocol - Failed to start end point associated with ProtocolHandler [http-nio-8080]
+"java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:980)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:573)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:993)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:247)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:190)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:545)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1187)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1176)
+	at com.pointwest.workforce.planner.WorkforcePlannerApplication.main(WorkforcePlannerApplication.java:38)
+"2017-05-30 18:46:13 [main] ERROR o.a.catalina.core.StandardService - Failed to start connector [Connector[HTTP/1.1-8080]]
+"org.apache.catalina.LifecycleException: Failed to start component [Connector[HTTP/1.1-8080]]
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:167)
+	at org.apache.catalina.core.StandardService.addConnector(StandardService.java:225)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.addPreviouslyRemovedConnectors(TomcatEmbeddedServletContainer.java:247)
+	at org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer.start(TomcatEmbeddedServletContainer.java:190)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.startEmbeddedServletContainer(EmbeddedWebApplicationContext.java:297)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.finishRefresh(EmbeddedWebApplicationContext.java:145)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:545)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1187)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1176)
+	at com.pointwest.workforce.planner.WorkforcePlannerApplication.main(WorkforcePlannerApplication.java:38)
+Caused by: org.apache.catalina.LifecycleException: service.getName(): "Tomcat";  Protocol handler start failed
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:1000)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	... 13 common frames omitted
+Caused by: java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74)
+	at org.apache.tomcat.util.net.NioEndpoint.bind(NioEndpoint.java:210)
+	at org.apache.tomcat.util.net.AbstractEndpoint.start(AbstractEndpoint.java:980)
+	at org.apache.coyote.AbstractProtocol.start(AbstractProtocol.java:573)
+	at org.apache.catalina.connector.Connector.startInternal(Connector.java:993)
+	... 14 common frames omitted
+"2017-05-30 18:46:13 [main] INFO  o.a.catalina.core.StandardService - Stopping service Tomcat
+""2017-05-30 18:46:13 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+""2017-05-30 18:46:13 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+The Tomcat connector configured to listen on port 8080 failed to start. The port may already be in use or the connector may be misconfigured.
+
+Action:
+
+Verify the connector's configuration, identify and stop any process that's listening on port 8080, or configure this application to listen on another port.
+
+""2017-05-30 18:46:13 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Tue May 30 18:46:08 PHT 2017]; root of context hierarchy
+""2017-05-30 18:46:13 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-05-30 18:46:13 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-05-30 18:46:13 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:46:17 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2017-05-30 18:46:17 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Tue May 30 18:40:08 PHT 2017]; root of context hierarchy
+""2017-05-30 18:46:17 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-05-30 18:46:17 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-05-30 18:46:17 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:48:04 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MBP with PID 11189 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-05-30 18:48:04 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-05-30 18:48:04 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-05-30 18:48:04 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Tue May 30 18:48:04 PHT 2017]; root of context hierarchy
+""2017-05-30 18:48:05 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b802c57c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$50b08db6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@17f2dd85' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$75853068] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-30 18:48:06 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-05-30 18:48:06 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-05-30 18:48:06 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-05-30 18:48:06 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-05-30 18:48:07 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:48:07 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-05-30 18:48:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-05-30 18:48:07 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-05-30 18:48:07 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-05-30 18:48:07 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-05-30 18:48:07 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2017-05-30 18:48:07 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+""2017-05-30 18:48:08 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-30 18:48:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+""2017-05-30 18:48:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, []
+""2017-05-30 18:48:09 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration$LazyEndpointPathRequestMatcher@4b8a0d03, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@54f373d4, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ee581db, org.springframework.security.web.header.HeaderWriterFilter@17ae13d5, org.springframework.security.web.authentication.logout.LogoutFilter@2d3b0978, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@422ba9b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e5ebdfe, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@65b73689, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1c53bd49, org.springframework.security.web.session.SessionManagementFilter@2c15034f, org.springframework.security.web.access.ExceptionTranslationFilter@78bd02c8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b69fc07]
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+""2017-05-30 18:48:09 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-30 18:48:10 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+""2017-05-30 18:48:10 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+""2017-05-30 18:48:10 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+""2017-05-30 18:48:10 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Started WorkforcePlannerApplication in 5.894 seconds (JVM running for 6.289)
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 16.0
+""2017-05-30 18:48:19 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 16.0
 "

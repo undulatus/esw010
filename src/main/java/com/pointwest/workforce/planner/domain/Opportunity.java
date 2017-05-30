@@ -79,8 +79,6 @@ public class Opportunity extends Auditable implements Serializable {
 	@JoinColumn(name="username")
 	private String username;
 	
-	@Column(name = "opportunity_last_update")
-    private java.util.Date modifiedDate;
 	
 	//@OneToMany(mappedBy = "opportunityId", cascade = CascadeType.DETACH)
 	@OneToMany(mappedBy = "opportunityId")
@@ -222,13 +220,6 @@ public class Opportunity extends Auditable implements Serializable {
 		this.projectEndDate = projectEndDate;
 	}
 	
-	public java.util.Date getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(java.util.Date modifiedDate) {
-		this.modifiedDate = modifiedDate;
-	}
 
 	@Override
 	public String toString() {
