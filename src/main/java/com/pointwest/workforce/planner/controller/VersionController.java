@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -148,6 +149,7 @@ public class VersionController {
 	 * @param versionName
 	 * @return an opportunity reverted to its selected version values
 	 */
+	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD')")
 	@RequestMapping(method=RequestMethod.POST, value="opportunities/{opportunityId}/versions/{versionName}/revert")
     public ResponseEntity<Object> revertVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
 		ObjectMapper mapper = new ObjectMapper();

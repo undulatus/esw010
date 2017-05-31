@@ -2,13 +2,14 @@ package com.pointwest.workforce.planner.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.TemplateDataService;
@@ -35,15 +37,22 @@ public class OpportunityController {
 
 	@Autowired
 	OpportunityActivityService opportunityActivityService;
+	
+	@Autowired
+	AccessService accessService;
 
 	@Autowired
 	TemplateDataService templateDataService;
 	
 	private static final Logger log = LoggerFactory.getLogger(OpportunityController.class);
 
-
+	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD', 'TEAM_LEAD')")
 	@RequestMapping(method = RequestMethod.GET, value = "/opportunities")
-	public ResponseEntity<Object> fetchAllOpportunities(HttpServletRequest request) {
+	public ResponseEntity<Object> fetchAllOpportunities() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		log.debug("TOKEN USER FROM GET OPP " + auth.getPrincipal().toString());
+		log.debug("TOKEN ROLE FROM GET OPP " + auth.getCredentials().toString());
+		log.debug("TOKEN AUTHORITIES FROM GET OPP " + auth.getAuthorities().toString());
 		List<Opportunity> opportunities = opportunityService.fetchAllOpportunities();
 		if (opportunities == null || opportunities.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
@@ -51,9 +60,20 @@ public class OpportunityController {
 			return new ResponseEntity<>(opportunities, HttpStatus.OK);
 		}
 	}
-
+	
+	
 	@RequestMapping(method = RequestMethod.GET, value = "/opportunities/{opportunityId}")
 	public ResponseEntity<Object> fetchOpportunity(@PathVariable int opportunityId) {
+		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
+		if (opportunity == null) {
+			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<>(opportunity, HttpStatus.OK);
+		}
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/public/opportunities/{opportunityId}")
+	public ResponseEntity<Object> fetchOpportunityPublic(@PathVariable int opportunityId) {
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunity == null) {
 			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
@@ -83,8 +103,10 @@ public class OpportunityController {
 		}
 	}
 
+	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD')")
 	@RequestMapping(method = RequestMethod.POST, value = "/opportunities")
 	public ResponseEntity<Object> saveOpportunity(@RequestBody(required = false) Opportunity opportunity) {
+		
 		Opportunity savedOpportunity = null;
 		boolean isNew = false;
 		if (opportunity == null) {
@@ -111,6 +133,13 @@ public class OpportunityController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}")
 	public ResponseEntity<Object> updateOpportunity(@PathVariable Long opportunityId,
 			@RequestBody(required=true) Opportunity opportunity, @RequestParam(required=false) Boolean dateChanged) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
 		Opportunity savedOpportunity = null;
 		Long idInRequestBody = opportunity.getOpportunityId();
 		if ((idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityId)) != 0)) {
@@ -129,8 +158,16 @@ public class OpportunityController {
 		}
 	}
 
+	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD')") 
 	@RequestMapping(method = RequestMethod.POST, value = "/opportunities/{opportunityId}/lock/{lock}")
 	public ResponseEntity<Object> updateOpportunityLock(@PathVariable long opportunityId, @PathVariable boolean lock) {
+
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
 		int success = opportunityService.lockOpportunity(opportunityId, lock);
 		if (success == 1) {
 			return new ResponseEntity<>(success, HttpStatus.OK);
@@ -142,6 +179,13 @@ public class OpportunityController {
 	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}/servicetypes/{serviceTypeId}")
 	public ResponseEntity<Object> updateOpportunityWithLoadedActivities(@PathVariable Long opportunityId,
 			@PathVariable Integer serviceTypeId) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunityId <= 0 || serviceTypeId <= 0) {
 			return new ResponseEntity<>(new CustomError("Invalid id's"), HttpStatus.BAD_REQUEST);

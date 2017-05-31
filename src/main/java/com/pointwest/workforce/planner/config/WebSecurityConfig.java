@@ -7,8 +7,10 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.pointwest.workforce.planner.security.AuthProvider;
+import com.pointwest.workforce.planner.security.RoleAccessDeniedHandler;
 import com.pointwest.workforce.planner.security.TokenFilter;
 
 @Configuration
@@ -17,7 +19,7 @@ import com.pointwest.workforce.planner.security.TokenFilter;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	AuthProvider authProvider;
+	public RoleAccessDeniedHandler roleAccessDeniedHandler;
 	
 	@Bean
 	public TokenFilter tokenFilter() throws Exception {
@@ -30,6 +32,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+		httpSecurity
+		.csrf().disable()
+		// non authorized role handler
+		.exceptionHandling().accessDeniedHandler(roleAccessDeniedHandler).and()
+
+		// don't create session
+		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+		
+		//allow this for CRM?
+		.authorizeRequests()
+	        .antMatchers("/estimate-worksheet/public/**").permitAll()
+            .anyRequest().authenticated();
+	
+		// Custom JWT based security filter
+		httpSecurity.addFilterAt(tokenFilter(), UsernamePasswordAuthenticationFilter.class);
+		
+//		BMAB for reference
 //		httpSecurity
 //	        .authorizeRequests()
 //            .antMatchers( HttpMethod.GET, "/opportunities");
@@ -43,12 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                        "/**/*.css",
 //                        "/**/*.js"
 //                ).permitAll();
-//        httpSecurity.addFilter(tokenFilter());
+//		httpSecurity.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint);
+//      httpSecurity.addFilter(tokenFilter());
+	        
     }
-	
-	/*@Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {        
-        auth.authenticationProvider(authProvider);        
-    }*/
 	
 }

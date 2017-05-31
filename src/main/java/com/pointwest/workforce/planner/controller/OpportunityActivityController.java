@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 
 @RestController
@@ -20,6 +22,9 @@ public class OpportunityActivityController {
 	
 	@Autowired
 	OpportunityActivityService opportunityActivityService;
+	
+	@Autowired
+	AccessService accessService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/opportunityactivities")
     public ResponseEntity<Object> fetchAllOpportunities() {
@@ -44,12 +49,23 @@ public class OpportunityActivityController {
 
 	@RequestMapping(method=RequestMethod.POST, value="/opportunityactivities")
     public ResponseEntity<Object> saveOpportunityActivity(@RequestBody(required=false) OpportunityActivity opportunityActivity) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEdit(opportunityActivity.getOpportunityId(), username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		OpportunityActivity savedOpportunityActivity = null;
 		boolean isNew = false;
-		if(opportunityActivity==null) {
+		/*if(opportunityActivity==null) {
 			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(new OpportunityActivity());
 			isNew = true;
-		} else if(opportunityActivity.getOpportunityActivityId() == null) {
+		} else*/ if(opportunityActivity.getOpportunityActivityId() == null) {
 			savedOpportunityActivity = opportunityActivityService.saveOpportunityActivity(opportunityActivity);
 			isNew = true;
 		} else {
@@ -69,6 +85,17 @@ public class OpportunityActivityController {
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/opportunityactivities/{opportunityActivityId}")
     public ResponseEntity<Object> updateOpportunityActivity(@RequestBody(required=true) OpportunityActivity opportunityActivity, @PathVariable Long opportunityActivityId) {
+		
+		//2nd level checker for editing permission
+		/*String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEdit(opportunityActivity.getOpportunityId(), username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}*/
+		
 		OpportunityActivity savedOpportunityActivity = null;
 		Long idInRequestBody = opportunityActivity.getOpportunityActivityId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(opportunityActivityId)) != 0) ) {
