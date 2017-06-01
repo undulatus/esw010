@@ -108,7 +108,7 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	
 	@Query(value= 
 		" SELECT count(username)" +
-		" FROM workforce_planner.opportunity" +
+		" FROM opportunity" +
 		" WHERE opportunity_id = ?1" +
 		" AND username = ?2" 
 		, nativeQuery=true)
