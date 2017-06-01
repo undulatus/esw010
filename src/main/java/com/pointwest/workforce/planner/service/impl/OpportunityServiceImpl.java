@@ -155,4 +155,10 @@ public class OpportunityServiceImpl implements OpportunityService {
 		
 		return opportunityRepository.save(opportunity);
 	}
+
+	@Override
+	public boolean isUsernameOwner(long opportunityId, String username) {
+		boolean isOwner = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		return isOwner;
+	}
 }

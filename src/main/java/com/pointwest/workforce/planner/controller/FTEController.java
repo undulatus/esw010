@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
@@ -40,6 +42,9 @@ public class FTEController {
 	
 	@Autowired
 	ResourceSpecificationService resourceSpecificationService;
+	
+	@Autowired
+	AccessService accessService;
 	
 	@Value("${month.to.week.multiplier}")
 	private Long WEEKSINMONTH;
@@ -111,6 +116,17 @@ public class FTEController {
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
     public ResponseEntity<Object> saveWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditRsId(resourceSpecificationId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		WeeklyFTE savedWeeklyFTE = null;
 		if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
@@ -152,6 +168,17 @@ public class FTEController {
 	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
     public ResponseEntity<Object> updateWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber, 
     		@RequestBody(required=true) Double FTE) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditRsId(resourceSpecificationId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		WeeklyFTE savedWeeklyFTE = null;
 		if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
@@ -191,6 +218,17 @@ public class FTEController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, value= "/resourcespecifications/{resourceSpecificationId}/ftes/{granularity}/{monthOrWeekNumber}")
     public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long resourceSpecificationId, @PathVariable String granularity, @PathVariable Long monthOrWeekNumber) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditRsId(resourceSpecificationId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		int deleteCount = 0;
 		try {
 			if( !(resourceSpecificationId instanceof Long) || !(monthOrWeekNumber instanceof Long) ) {
@@ -230,6 +268,17 @@ public class FTEController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, value= "/opportunities/{opportunityId}/ftes")
     public ResponseEntity<Object> deleteWeeklyFTE(@PathVariable Long opportunityId) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		int deleteCount = 0;
 		try {
 			deleteCount = weeklyFTEService.deleteWeeklyFTEbyOpportunityId(opportunityId);

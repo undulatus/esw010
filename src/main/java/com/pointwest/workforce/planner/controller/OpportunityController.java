@@ -162,8 +162,13 @@ public class OpportunityController {
 	@RequestMapping(method = RequestMethod.POST, value = "/opportunities/{opportunityId}/lock/{lock}")
 	public ResponseEntity<Object> updateOpportunityLock(@PathVariable long opportunityId, @PathVariable boolean lock) {
 
+		
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		//check ownership
+		if(!opportunityService.isUsernameOwner(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Only opportunity owners can lock the document"), HttpStatus.FORBIDDEN);
+		}
 		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
 			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
 		}

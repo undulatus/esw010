@@ -12,6 +12,14 @@ public interface OpportunityActivityRepository extends CrudRepository<Opportunit
 	public int countByOpportunityActivityId(Long opportunityActivityId);
 	
 	@Query(value= 
+		" SELECT o.opportunity_id" +
+		" FROM opportunity_activity oa" +
+		" LEFT JOIN opportunity o ON oa.opportunity_id = o.opportunity_id" +
+		" WHERE oa.opportunity_activity_id =?1"
+		, nativeQuery=true)
+	public long findOpportunityId(Long opportunityActivityId);
+	
+	@Query(value= 
 		" SELECT o.opportunity_start_date" +
 		" FROM opportunity_activity oa" +
 		" LEFT JOIN opportunity o ON oa.opportunity_id = o.opportunity_id" +

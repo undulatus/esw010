@@ -27,4 +27,6 @@ public interface OpportunityService {
 	
 	public Opportunity updateOpportunityDates(Long opportunityId);
 
+	public boolean isUsernameOwner(long opportunityId, String username);
+	
 }

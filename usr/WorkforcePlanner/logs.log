@@ -18386,4 +18386,1047 @@ Using default security password: 376d5797-3a02-4160-9c50-d7a8280b81d3
 ""2017-05-31 18:14:10 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
 ""2017-05-31 18:14:10 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
 ""2017-05-31 18:14:10 [http-nio-8080-exec-3] DEBUG c.p.w.p.c.OpportunityController - token username kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 22:49:44 [http-nio-8080-exec-5] DEBUG c.p.w.p.c.OpportunityController - token username kathleen.gil
+""2017-05-31 22:52:43 [Thread-3] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Wed May 31 18:12:16 PHT 2017]; root of context hierarchy
+""2017-05-31 22:52:43 [Thread-3] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-05-31 22:52:43 [Thread-3] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-05-31 22:52:43 [Thread-3] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-31 23:32:08 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MacBook-Pro.local with PID 485 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-05-31 23:32:08 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-05-31 23:32:08 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-05-31 23:32:08 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Wed May 31 23:32:08 PHT 2017]; root of context hierarchy
+""2017-05-31 23:32:09 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c15f3260] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$5a0cfa9a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@227a47' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$7ee19d4c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:32:10 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-05-31 23:32:10 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-05-31 23:32:10 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-05-31 23:32:10 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'tokenFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-05-31 23:32:11 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-05-31 23:32:11 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Initializing filter 'tokenFilter'
+""2017-05-31 23:32:11 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Filter 'tokenFilter' configured successfully
+""2017-05-31 23:32:15 [main] ERROR o.a.tomcat.jdbc.pool.ConnectionPool - Unable to create initial connections of pool.
+"com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:918)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:897)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:886)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2115)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2040)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:790)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330)
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310)
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:732)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:664)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:479)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131)
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:111)
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:77)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:342)
+	at org.springframework.boot.autoconfigure.jdbc.EmbeddedDatabaseConnection.isEmbedded(EmbeddedDatabaseConnection.java:137)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate.getDefaultDdlAuto(JpaProperties.java:224)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate.getOrDeduceDdlAuto(JpaProperties.java:212)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate.getAdditionalProperties(JpaProperties.java:188)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate.access$000(JpaProperties.java:129)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaProperties.getHibernateProperties(JpaProperties.java:126)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration.getVendorProperties(HibernateJpaAutoConfiguration.java:103)
+	at org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration.entityManagerFactory(JpaBaseConfiguration.java:117)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$2ae59680.CGLIB$entityManagerFactory$9(<generated>)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$2ae59680$$FastClassBySpringCGLIB$$73535b2.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:358)
+	at org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration$$EnhancerBySpringCGLIB$$2ae59680.entityManagerFactory(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:162)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:588)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1173)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1067)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1081)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:856)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1187)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1176)
+	at com.pointwest.workforce.planner.WorkforcePlannerApplication.main(WorkforcePlannerApplication.java:38)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:989)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:341)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2203)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2056)
+	... 59 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:300)
+	... 61 common frames omitted
+"2017-05-31 23:32:15 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-05-31 23:32:15 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-05-31 23:32:16 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-05-31 23:32:16 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-05-31 23:32:16 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-05-31 23:32:16 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-05-31 23:32:20 [main] ERROR o.a.tomcat.jdbc.pool.ConnectionPool - Unable to create initial connections of pool.
+"com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:918)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:897)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:886)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:860)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2115)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2040)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:790)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:400)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:330)
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connectUsingDriver(PooledConnection.java:310)
+	at org.apache.tomcat.jdbc.pool.PooledConnection.connect(PooledConnection.java:203)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.createConnection(ConnectionPool.java:732)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.borrowConnection(ConnectionPool.java:664)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.init(ConnectionPool.java:479)
+	at org.apache.tomcat.jdbc.pool.ConnectionPool.<init>(ConnectionPool.java:154)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.pCreatePool(DataSourceProxy.java:118)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.createPool(DataSourceProxy.java:107)
+	at org.apache.tomcat.jdbc.pool.DataSourceProxy.getConnection(DataSourceProxy.java:131)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:254)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:228)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:847)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:874)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:353)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:370)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:359)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1081)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:856)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1187)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1176)
+	at com.pointwest.workforce.planner.WorkforcePlannerApplication.main(WorkforcePlannerApplication.java:38)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:989)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:341)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2203)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2056)
+	... 57 common frames omitted
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:211)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:300)
+	... 59 common frames omitted
+"2017-05-31 23:32:20 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata : Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+""2017-05-31 23:32:20 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+""2017-05-31 23:32:20 [main] INFO  o.a.catalina.core.StandardService - Stopping service Tomcat
+""2017-05-31 23:32:20 [main] WARN  o.s.boot.SpringApplication - Error handling failed (Error creating bean with name 'delegatingApplicationListener' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: BeanPostProcessor before instantiation of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'metaDataSourceAdvisor': Cannot resolve reference to bean 'methodSecurityMetadataSource' while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration': Initialization of bean failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No bean named 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry' available)
+""2017-05-31 23:32:20 [main] ERROR o.s.boot.SpringApplication - Application startup failed
+"org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.class]: Invocation of init method failed; nested exception is org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1081)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:856)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:372)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1187)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1176)
+	at com.pointwest.workforce.planner.WorkforcePlannerApplication.main(WorkforcePlannerApplication.java:38)
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:264)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:228)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207)
+	at org.hibernate.engine.jdbc.internal.JdbcServicesImpl.configure(JdbcServicesImpl.java:51)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:94)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:207)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.handleTypes(MetadataBuildingProcess.java:352)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:111)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:847)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:874)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:60)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:353)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:370)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:359)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1687)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1624)
+	... 16 common frames omitted
+Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:100)
+	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:54)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:137)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:88)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:254)
+	... 32 common frames omitted
+"2017-05-31 23:33:53 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MBP with PID 735 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-05-31 23:33:53 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-05-31 23:33:53 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-05-31 23:33:53 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Wed May 31 23:33:53 PHT 2017]; root of context hierarchy
+""2017-05-31 23:33:54 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c15f3260] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$5a0cfa9a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6403e24c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$7ee19d4c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-05-31 23:33:55 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-05-31 23:33:55 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-05-31 23:33:55 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-05-31 23:33:55 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'tokenFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-05-31 23:33:56 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-05-31 23:33:56 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Initializing filter 'tokenFilter'
+""2017-05-31 23:33:56 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Filter 'tokenFilter' configured successfully
+""2017-05-31 23:33:56 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-05-31 23:33:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-05-31 23:33:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-05-31 23:33:56 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-05-31 23:33:56 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-05-31 23:33:56 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-05-31 23:33:57 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2017-05-31 23:33:57 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+""2017-05-31 23:33:57 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2017-05-31 23:33:58 [main] INFO  o.s.b.a.s.AuthenticationManagerConfiguration - 
+
+Using default security password: 25e35213-784f-4a1e-ac35-cd4744def8bc
+
+""2017-05-31 23:33:58 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+""2017-05-31 23:33:58 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [com.pointwest.workforce.planner.security.TokenFilter@5650ac72, org.springframework.security.web.session.SessionManagementFilter@283e1759, org.springframework.security.web.access.ExceptionTranslationFilter@114b203, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@510e4d79]
+""2017-05-31 23:33:58 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration$LazyEndpointPathRequestMatcher@76dc36e5, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a54c92e, org.springframework.security.web.context.SecurityContextPersistenceFilter@751686aa, org.springframework.security.web.header.HeaderWriterFilter@7e3d168e, org.springframework.security.web.authentication.logout.LogoutFilter@7ecb9e17, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@343d1d25, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2dc3ece8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@77f03916, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31533eb1, org.springframework.security.web.session.SessionManagementFilter@73be4cdd, org.springframework.security.web.access.ExceptionTranslationFilter@6bfdaa7a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5f20b6fe]
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-05-31 23:33:59 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+""2017-05-31 23:33:59 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+""2017-05-31 23:33:59 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+""2017-05-31 23:33:59 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Started WorkforcePlannerApplication in 6.071 seconds (JVM running for 6.567)
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> fetchAllActivity
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] INFO  o.h.h.i.QueryTranslatorFactoryInitiator - HHH000397: Using ASTQueryTranslatorFactory
+""2017-05-31 23:35:00 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> fetchAllActivity
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> fetchAllActivity
+""2017-05-31 23:35:08 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> fetchAllActivity
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> addActivity
+""2017-05-31 23:36:10 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> addActivity saved? : true
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> addActivity
+""2017-05-31 23:36:54 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> addActivity saved? : true
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> fetchAllActivity
+""2017-05-31 23:37:36 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> fetchAllActivity
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> fetchAllActivity
+""2017-05-31 23:37:43 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> fetchAllActivity
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 02:50:27 PHT 2017
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value kathleen.gil
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : kathleen.gil
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCI >> fetchAllActivity
+""2017-05-31 23:39:48 [http-nio-8080-exec-9] DEBUG c.p.w.p.s.i.ReferenceDataServiceImpl - MCO >> fetchAllActivity
+""2017-05-31 23:40:38 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2017-05-31 23:40:38 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Wed May 31 23:33:53 PHT 2017]; root of context hierarchy
+""2017-05-31 23:40:38 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-05-31 23:40:38 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-05-31 23:40:38 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2017-06-01 11:42:16 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MBP with PID 2868 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-06-01 11:42:16 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-06-01 11:42:16 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-06-01 11:42:16 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Thu Jun 01 11:42:16 PHT 2017]; root of context hierarchy
+""2017-06-01 11:42:17 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9894c73] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$a23714ad] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@70228253' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$c70bb75f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 11:42:18 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-06-01 11:42:18 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-06-01 11:42:18 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-06-01 11:42:18 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'tokenFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-06-01 11:42:19 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-06-01 11:42:19 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Initializing filter 'tokenFilter'
+""2017-06-01 11:42:19 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Filter 'tokenFilter' configured successfully
+""2017-06-01 11:42:20 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-06-01 11:42:20 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-06-01 11:42:20 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-06-01 11:42:20 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-06-01 11:42:20 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-06-01 11:42:20 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-06-01 11:42:20 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2017-06-01 11:42:20 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+""2017-06-01 11:42:21 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2017-06-01 11:42:21 [main] INFO  o.s.b.a.s.AuthenticationManagerConfiguration - 
+
+Using default security password: 05e5d49a-9c30-4cc2-9f45-44df55df83f5
+
+""2017-06-01 11:42:21 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+""2017-06-01 11:42:21 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [com.pointwest.workforce.planner.security.TokenFilter@3762f71, org.springframework.security.web.session.SessionManagementFilter@4e9e0c6, org.springframework.security.web.access.ExceptionTranslationFilter@5477d90e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@751686aa]
+""2017-06-01 11:42:21 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration$LazyEndpointPathRequestMatcher@528f5b7f, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ccfac29, org.springframework.security.web.context.SecurityContextPersistenceFilter@79295932, org.springframework.security.web.header.HeaderWriterFilter@51508029, org.springframework.security.web.authentication.logout.LogoutFilter@5eb2972f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4db46344, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76e00bdb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e5c5e6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c41b8d8, org.springframework.security.web.session.SessionManagementFilter@31880efa, org.springframework.security.web.access.ExceptionTranslationFilter@356fa0d1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2b6b487c]
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 11:42:22 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+""2017-06-01 11:42:22 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+""2017-06-01 11:42:22 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+""2017-06-01 11:42:22 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+""2017-06-01 11:42:22 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Started WorkforcePlannerApplication in 6.428 seconds (JVM running for 6.997)
+""2017-06-01 11:43:26 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+""2017-06-01 11:43:26 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:43:26 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Security exception @getTokenUser
+""2017-06-01 11:43:26 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Security exception received token not valid
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:32 [http-nio-8080-exec-3] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:47:42 [http-nio-8080-exec-4] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:19 [http-nio-8080-exec-5] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:40 [http-nio-8080-exec-6] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 11:48:55 [http-nio-8080-exec-7] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 11:49:08 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2017-06-01 11:49:08 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Thu Jun 01 11:42:16 PHT 2017]; root of context hierarchy
+""2017-06-01 11:49:08 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-06-01 11:49:08 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-06-01 11:49:08 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+""2017-06-01 14:05:22 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Starting WorkforcePlannerApplication on Bryans-MBP with PID 4249 (/Users/Rupture/SpringProjects/esw010/target/classes started by Rupture in /Users/Rupture/SpringProjects/esw010)
+""2017-06-01 14:05:22 [main] DEBUG c.p.w.p.WorkforcePlannerApplication - Running with Spring Boot v1.4.5.RELEASE, Spring v4.3.7.RELEASE
+""2017-06-01 14:05:22 [main] INFO  c.p.w.p.WorkforcePlannerApplication - No active profile set, falling back to default profiles: default
+""2017-06-01 14:05:22 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Thu Jun 01 14:05:22 PHT 2017]; root of context hierarchy
+""2017-06-01 14:05:22 [main] INFO  o.s.b.f.s.DefaultListableBeanFactory - Overriding bean definition for bean 'tokenFilter' with a different definition: replacing [Generic bean: class [com.pointwest.workforce.planner.security.TokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/Users/Rupture/SpringProjects/esw010/target/classes/com/pointwest/workforce/planner/security/TokenFilter.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=webSecurityConfig; factoryMethodName=tokenFilter; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/pointwest/workforce/planner/config/WebSecurityConfig.class]]
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9894c73] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$a23714ad] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@2849434b' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$c70bb75f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:23 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+""2017-06-01 14:05:24 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 8080 (http)
+""2017-06-01 14:05:24 [main] INFO  o.a.catalina.core.StandardService - Starting service Tomcat
+""2017-06-01 14:05:24 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring embedded WebApplicationContext
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'metricsFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.DelegatingFilterProxyRegistrationBean - Mapping filter: 'springSecurityFilterChain' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'webRequestLoggingFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'tokenFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.FilterRegistrationBean - Mapping filter: 'applicationContextIdFilter' to: [/*]
+""2017-06-01 14:05:24 [localhost-startStop-1] INFO  o.s.b.w.s.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+""2017-06-01 14:05:24 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Initializing filter 'tokenFilter'
+""2017-06-01 14:05:24 [localhost-startStop-1] DEBUG c.p.w.planner.security.TokenFilter - Filter 'tokenFilter' configured successfully
+""2017-06-01 14:05:25 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Building JPA container EntityManagerFactory for persistence unit 'default'
+""2017-06-01 14:05:25 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+""2017-06-01 14:05:25 [main] INFO  org.hibernate.Version - HHH000412: Hibernate Core {5.0.12.Final}
+""2017-06-01 14:05:25 [main] INFO  org.hibernate.cfg.Environment - HHH000206: hibernate.properties not found
+""2017-06-01 14:05:25 [main] INFO  org.hibernate.cfg.Environment - HHH000021: Bytecode provider name : javassist
+""2017-06-01 14:05:25 [main] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+""2017-06-01 14:05:25 [main] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+""2017-06-01 14:05:26 [main] INFO  o.h.tool.hbm2ddl.SchemaUpdate - HHH000228: Running hbm2ddl schema update
+""2017-06-01 14:05:26 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+""2017-06-01 14:05:26 [main] INFO  o.s.b.a.s.AuthenticationManagerConfiguration - 
+
+Using default security password: 70cbe0e6-5090-4e50-bafb-48f71f15b5a7
+
+""2017-06-01 14:05:27 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: OrRequestMatcher [requestMatchers=[Ant [pattern='/css/**'], Ant [pattern='/js/**'], Ant [pattern='/images/**'], Ant [pattern='/webjars/**'], Ant [pattern='/**/favicon.ico'], Ant [pattern='/error']]], []
+""2017-06-01 14:05:27 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [com.pointwest.workforce.planner.security.TokenFilter@e9eea40, org.springframework.security.web.session.SessionManagementFilter@4e9e0c6, org.springframework.security.web.access.ExceptionTranslationFilter@5477d90e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@751686aa]
+""2017-06-01 14:05:27 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: org.springframework.boot.actuate.autoconfigure.ManagementWebSecurityAutoConfiguration$LazyEndpointPathRequestMatcher@528f5b7f, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ccfac29, org.springframework.security.web.context.SecurityContextPersistenceFilter@79295932, org.springframework.security.web.header.HeaderWriterFilter@51508029, org.springframework.security.web.authentication.logout.LogoutFilter@5eb2972f, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4db46344, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76e00bdb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e5c5e6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c41b8d8, org.springframework.security.web.session.SessionManagementFilter@31880efa, org.springframework.security.web.access.ExceptionTranslationFilter@356fa0d1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2b6b487c]
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/heapdump || /heapdump.json],methods=[GET],produces=[application/octet-stream]}" onto public void org.springframework.boot.actuate.endpoint.mvc.HeapdumpMvcEndpoint.invoke(boolean,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException,javax.servlet.ServletException
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/mappings || /mappings.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/configprops || /configprops.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/logfile || /logfile.json],methods=[GET || HEAD]}" onto public void org.springframework.boot.actuate.endpoint.mvc.LogFileMvcEndpoint.invoke(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws javax.servlet.ServletException,java.io.IOException
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.MetricsMvcEndpoint.value(java.lang.String)
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/metrics || /metrics.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/trace || /trace.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/dump || /dump.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/autoconfig || /autoconfig.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env/{name:.*}],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EnvironmentMvcEndpoint.value(java.lang.String)
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/env || /env.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/health || /health.json],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.HealthMvcEndpoint.invoke(java.security.Principal)
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/info || /info.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.b.a.e.mvc.EndpointHandlerMapping - Mapped "{[/beans || /beans.json],methods=[GET],produces=[application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.mvc.EndpointMvcAdapter.invoke()
+""2017-06-01 14:05:27 [main] INFO  o.s.j.e.a.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+""2017-06-01 14:05:27 [main] INFO  o.s.c.s.DefaultLifecycleProcessor - Starting beans in phase 0
+""2017-06-01 14:05:27 [main] INFO  o.s.b.c.e.t.TomcatEmbeddedServletContainer - Tomcat started on port(s): 8080 (http)
+""2017-06-01 14:05:27 [main] INFO  c.p.w.p.WorkforcePlannerApplication - Started WorkforcePlannerApplication in 6.184 seconds (JVM running for 6.676)
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[.[/estimate-worksheet] - Initializing Spring FrameworkServlet 'dispatcherServlet'
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:30 [http-nio-8080-exec-1] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the token expiration : Thu Jun 01 23:50:56 PHT 2017
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCI >> decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value christian.dy
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value auth0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Value null
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key usr
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key iss
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key rle
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - Key exp
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the role : ROLE_BUSINESS_LEAD
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - this is the username : christian.dy
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.ResourceSpecificationServiceImpl - opportunity start localdate 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.i.OpportunityActivityServiceImpl - opportunity start localdate for opportunity activity 2017-05-02
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated resource dates : 2017-05-02 , 17.0
+""2017-06-01 14:05:56 [http-nio-8080-exec-2] DEBUG c.p.w.p.controller.FTEController - updated activity dates : 2017-05-02 , 17.0
 "

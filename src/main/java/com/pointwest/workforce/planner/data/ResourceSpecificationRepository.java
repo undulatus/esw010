@@ -12,6 +12,15 @@ public interface ResourceSpecificationRepository extends CrudRepository<Resource
 	public int countByResourceSpecificationId(Long opportunityActivityId);
 	
 	@Query(value= 
+		" SELECT o.opportunity_id" +
+		" FROM resource_specification rsp" +
+		" LEFT JOIN opportunity_activity oa ON rsp.opportunity_activity_id = oa.opportunity_activity_id" +
+		" LEFT JOIN opportunity o ON oa.opportunity_id = o.opportunity_id" +
+		" WHERE resource_specification_id =?1"
+		, nativeQuery=true)
+	public long findOpportunityId(Long resourceSpecificationId);
+	
+	@Query(value= 
 		" SELECT o.opportunity_start_date" +
 		" FROM resource_specification rsp" +
 		" LEFT JOIN opportunity_activity oa ON rsp.opportunity_activity_id = oa.opportunity_activity_id" +

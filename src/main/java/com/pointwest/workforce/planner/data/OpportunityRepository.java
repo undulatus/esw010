@@ -106,4 +106,12 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	
 	public List<OpportunityDashboardProjection> findByOpportunityCollaboratorsKeyUsername(String username);
 	
+	@Query(value= 
+		" SELECT count(username)" +
+		" FROM workforce_planner.opportunity" +
+		" WHERE opportunity_id = ?1" +
+		" AND username = ?2" 
+		, nativeQuery=true)
+	public int countUsernameWithOpportunityId(long opportunityId, String username);
+	
 }

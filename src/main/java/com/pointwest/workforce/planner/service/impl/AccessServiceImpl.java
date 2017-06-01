@@ -1,16 +1,13 @@
 package com.pointwest.workforce.planner.service.impl;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.pointwest.workforce.planner.data.OpportunityActivityRepository;
 import com.pointwest.workforce.planner.data.OpportunityCollaboratorRepository;
+import com.pointwest.workforce.planner.data.OpportunityRepository;
+import com.pointwest.workforce.planner.data.ResourceSpecificationRepository;
 import com.pointwest.workforce.planner.data.SystemRoleAccessRepository;
 import com.pointwest.workforce.planner.service.AccessService;
 
@@ -22,6 +19,15 @@ public class AccessServiceImpl implements AccessService {
 	
 	@Autowired
 	private OpportunityCollaboratorRepository opportunityCollaboratorRepository;
+	
+	@Autowired
+	private OpportunityRepository opportunityRepository;
+	
+	@Autowired
+	private OpportunityActivityRepository opportunityActivityRepository;
+	
+	@Autowired
+	private ResourceSpecificationRepository resourceSpecificationRepository;
 	
 	@Value("${collaborator.permission.edit}")
 	private String EDIT;
@@ -40,8 +46,12 @@ public class AccessServiceImpl implements AccessService {
 	
 	@Override
 	public boolean hasPermissionToEdit(long opportunityId, String username) {
-		boolean allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
-		
+		//first check if owner
+		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		//if not user check if editor
+		if(!allowed) {
+			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+		}
 		/*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Set<String> authorities= AuthorityUtils.authorityListToSet(auth.getAuthorities());
 		
@@ -49,6 +59,32 @@ public class AccessServiceImpl implements AccessService {
 	        String role = it.next();
 	        
 	    }*/
+		
+		return allowed;
+	}
+	
+	@Override
+	public boolean hasPermissionToEditOaId(long opportunityActivityId, String username) {
+		long opportunityId = opportunityActivityRepository.findOpportunityId(opportunityActivityId);
+		//first check if owner
+		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		//if not user check if editor
+		if(!allowed) {
+			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+		}
+		
+		return allowed;
+	}
+	
+	@Override
+	public boolean hasPermissionToEditRsId(long resourceSpecificationId, String username) {
+		long opportunityId = resourceSpecificationRepository.findOpportunityId(resourceSpecificationId);
+		//first check if owner
+		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		//if not user check if editor
+		if(!allowed) {
+			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+		}
 		
 		return allowed;
 	}

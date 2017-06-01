@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 
 @RestController
@@ -20,6 +22,9 @@ public class ResourceSpecificationController {
 	
 	@Autowired
 	ResourceSpecificationService resourceSpecificationService;
+	
+	@Autowired
+	AccessService accessService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/resourcespecifications")
     public ResponseEntity<Object> fetchAllOpportunities() {
@@ -44,12 +49,23 @@ public class ResourceSpecificationController {
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications")
     public ResponseEntity<Object> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditOaId(resourceSpecification.getOpportunityActivityId(), username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		ResourceSpecification savedResourceSpecification = null;
 		boolean isNew = false;
-		if(resourceSpecification==null) {
+		/*if(resourceSpecification==null) {
 			savedResourceSpecification = resourceSpecificationService.saveResourceSpecification(new ResourceSpecification());
 			isNew = true;
-		} else if(resourceSpecification.getResourceSpecificationId() == null) {
+		} else*/ if(resourceSpecification.getResourceSpecificationId() == null) {
 			savedResourceSpecification = resourceSpecificationService.saveResourceSpecification(resourceSpecification);
 			isNew = true;
 		} else {
@@ -69,6 +85,17 @@ public class ResourceSpecificationController {
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}")
     public ResponseEntity<Object> updateResourceSpecification(@RequestBody(required=true) ResourceSpecification resourceSpecification, @PathVariable Long resourceSpecificationId) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditRsId(resourceSpecificationId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		ResourceSpecification savedResourceSpecification = null;
 		Long idInRequestBody = resourceSpecification.getResourceSpecificationId();
 		if ( (idInRequestBody != null) && ((idInRequestBody.compareTo(resourceSpecificationId)) != 0) ) {
@@ -85,6 +112,17 @@ public class ResourceSpecificationController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/resourcespecifications/{resourceSpecificationId}")
     public ResponseEntity<Object> deleteResourceSpecification(@PathVariable Long resourceSpecificationId) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditRsId(resourceSpecificationId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		int deleteCount = resourceSpecificationService.deleteResourceSpecification(resourceSpecificationId);
 		if(deleteCount > 0) {
 			return new ResponseEntity<>(deleteCount, HttpStatus.OK);

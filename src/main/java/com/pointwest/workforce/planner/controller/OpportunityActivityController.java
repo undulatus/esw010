@@ -87,14 +87,14 @@ public class OpportunityActivityController {
     public ResponseEntity<Object> updateOpportunityActivity(@RequestBody(required=true) OpportunityActivity opportunityActivity, @PathVariable Long opportunityActivityId) {
 		
 		//2nd level checker for editing permission
-		/*String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		try {
-			if(!accessService.hasPermissionToEdit(opportunityActivity.getOpportunityId(), username)) {
+			if(!accessService.hasPermissionToEditOaId(opportunityActivityId, username)) {
 				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
 			}
 		} catch(Exception e) {
 			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
-		}*/
+		}
 		
 		OpportunityActivity savedOpportunityActivity = null;
 		Long idInRequestBody = opportunityActivity.getOpportunityActivityId();
@@ -112,6 +112,17 @@ public class OpportunityActivityController {
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/opportunityactivities/{opportunityActivityId}")
     public ResponseEntity<Object> deleteOpportunityActivity(@PathVariable Long opportunityActivityId) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditOaId(opportunityActivityId, username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
 		int deleteCount = opportunityActivityService.deleteOpportunityActivity(opportunityActivityId);
 		if(deleteCount > 0) {
 			return new ResponseEntity<>(deleteCount, HttpStatus.OK);

@@ -22,6 +22,35 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 			, nativeQuery=true)
 	public int countUsernameWithEdit(long opportunityId, String username, String permission);
 	
+	@Query(value= 
+			//" SELECT system_role, system_role_access_module, system_role_access_action," +
+			" SELECT count(username)" +
+			" FROM workforce_planner.opportunity_collaborator" +
+			" WHERE opportunity_id = " +
+				" (SELECT o.opportunity_id" +
+				" FROM opportunity_activity oa" +
+				" LEFT JOIN opportunity o ON oa.opportunity_id = o.opportunity_id" +
+				" WHERE oa.opportunity_activity_id =?1)" +
+			" AND username = ?2" +
+			" AND opportunity_collaborator_permission = ?3"
+			, nativeQuery=true)
+	public int countUsernameWithEditOaId(long opportunityActivityId, String username, String permission);
+	
+	@Query(value= 
+			//" SELECT system_role, system_role_access_module, system_role_access_action," +
+			" SELECT count(username)" +
+			" FROM workforce_planner.opportunity_collaborator" +
+			" WHERE opportunity_id = " +
+				" (SELECT o.opportunity_id" +
+				" FROM resource_specification rsp" +
+				" LEFT JOIN opportunity_activity oa ON rsp.opportunity_activity_id = oa.opportunity_activity_id" +
+				" LEFT JOIN opportunity o ON oa.opportunity_id = o.opportunity_id" +
+				" WHERE resource_specification_id =?1)" +
+			" AND username = ?2" +
+			" AND opportunity_collaborator_permission = ?3"
+			, nativeQuery=true)
+	public int countUsernameWithEditRsId(long opportunityActivityId, String username, String permission);
+	
 	public int countByKeyOpportunityId(Long opportunityId);
 	
 	public List<OpportunityCollaborator> findOpportunityCollaboratorsByKeyOpportunityId(Long opportunityId);
