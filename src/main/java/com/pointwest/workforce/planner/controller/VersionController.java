@@ -10,6 +10,7 @@ import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ import com.pointwest.workforce.planner.domain.ResourceSpecification;
 import com.pointwest.workforce.planner.domain.Version;
 import com.pointwest.workforce.planner.domain.WeeklyFTE;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ReferenceDataService;
@@ -59,6 +61,9 @@ public class VersionController {
 	
 	@Autowired
 	VersionService versionService;
+	
+	@Autowired
+	AccessService accessService;
 	
 	@Autowired
 	JsonParser parser;
@@ -125,6 +130,13 @@ public class VersionController {
 	 */
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/versions")
     public ResponseEntity<Object> saveVersion(@RequestBody(required=true) String versionName, @PathVariable Long opportunityId) {
+
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonData;
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);		
@@ -152,6 +164,13 @@ public class VersionController {
 	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD')")
 	@RequestMapping(method=RequestMethod.POST, value="opportunities/{opportunityId}/versions/{versionName}/revert")
     public ResponseEntity<Object> revertVersion(@PathVariable Long opportunityId, @PathVariable String versionName) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
 		ObjectMapper mapper = new ObjectMapper();
 		
 		Version.VersionKey vKey = new Version.VersionKey();

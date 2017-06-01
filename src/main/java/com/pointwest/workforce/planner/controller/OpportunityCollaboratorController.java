@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
+import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityCollaboratorService;
 import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.ui.adapter.CollaboratorsSharingAdapter;
@@ -31,6 +33,9 @@ public class OpportunityCollaboratorController {
 	
 	@Autowired
 	CollaboratorsSharingAdapter collaboratorsSharingAdapter;
+	
+	@Autowired
+	AccessService accessService;
 	
 	@Value("${collaborator.permission.edit}")
 	private String EDIT;
@@ -57,7 +62,11 @@ public class OpportunityCollaboratorController {
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/opportunitycollaborators/{permission}")
     public ResponseEntity<Object> saveOpportunityCollaborator(@RequestBody(required=true) List<String> usernames, @PathVariable Long opportunityId, @PathVariable String permission) {
 		
-		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
 		
 		permission = permission.toUpperCase().trim(); 
 		if(permission.equals(EDIT) || permission.equals(VIEW) ) {

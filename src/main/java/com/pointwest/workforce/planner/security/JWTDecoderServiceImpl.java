@@ -24,13 +24,6 @@ public class JWTDecoderServiceImpl implements JWTDecoderService {
 		    DecodedJWT jwt = JWT.decode(token);
 		    claims = jwt.getClaims();
 		    
-		    for (Claim name : claims.values()) {
-		    	log.debug("Value " + name.asString());
-	        }
-		    for (String name : claims.keySet()) {
-		    	log.debug("Key " + name);
-	        }
-		    
 		} catch (JWTDecodeException jwte){
 			log.error("An error of type " + jwte.getClass() + " occurred while trying to run decode(). "
 					+ "Invalid on decoding token.");
@@ -46,8 +39,8 @@ public class JWTDecoderServiceImpl implements JWTDecoderService {
 			Map<String, Claim> claims = this.decode(token);
 			String username = claims.get("usr").asString();
 			String role = claims.get("rle").asString();
-		    log.debug("this is the role : " + role);
-		    log.debug("this is the username : " + username);
+		    log.debug("token role : " + role);
+		    log.debug("token username : " + username);
 		    return new TokenUser(username, role);
 		} catch(Exception e) {
 			log.debug("Security exception @getTokenUser");
