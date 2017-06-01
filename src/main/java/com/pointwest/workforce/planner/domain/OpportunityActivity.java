@@ -99,4 +99,5 @@ public class OpportunityActivity {
 		this.activity = activity;
 	}
 	
+	
 }
