@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -89,11 +90,15 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		resourceSpecification.setDurationInWeeks(durationInWeeks);
 		
 		List<WeeklyFTE> ftes = resourceSpecification.getResourceSchedule();
-		Double totalFTE = 0.0;
+		BigDecimal pCurFTE = new BigDecimal("0.0");
+		BigDecimal ptotalFTE = new BigDecimal("0.0").setScale(5, BigDecimal.ROUND_HALF_UP);
+		
 		for(WeeklyFTE fte : ftes) {
-			totalFTE = totalFTE + fte.getResourceScheduleFTE();
+			pCurFTE = new BigDecimal(Double.toString(fte.getResourceScheduleFTE())).setScale(5, BigDecimal.ROUND_HALF_UP);
+			ptotalFTE = ptotalFTE.add(pCurFTE);
 		}
-		resourceSpecification.setTotalFTE(totalFTE);
+		ptotalFTE.setScale(5, BigDecimal.ROUND_HALF_UP);
+		resourceSpecification.setTotalFTE(ptotalFTE.doubleValue());
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
 	
