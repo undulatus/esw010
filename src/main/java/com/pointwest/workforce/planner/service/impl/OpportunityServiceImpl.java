@@ -37,6 +37,12 @@ public class OpportunityServiceImpl implements OpportunityService {
 	
 	@Value("${month.to.week.multiplier}")
 	private Integer WEEKSINMONTH;
+	
+	/*@Value("${granularity.week}")
+	private String WEEKLY;
+	
+	@Value("${granularity.month}")
+	private String MONTHLY;*/
 
 	private static final Logger log = LoggerFactory.getLogger(WorkforcePlannerApplication.class);
 
@@ -54,6 +60,9 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Override
 	public Opportunity saveOpportunity(Opportunity opportunity) {
+		/*if(opportunity.getDurationGranularity() == WEEKLY) {
+			opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
+		}*/
 		Opportunity saved = opportunityRepository.save(opportunity);
 		return saved;
 	}
@@ -73,8 +82,13 @@ public class OpportunityServiceImpl implements OpportunityService {
 			opportunity.setServiceType(previousOpportunity.getServiceType());
 		if (opportunity.getDurationGranularity() == null)
 			opportunity.setDurationGranularity(previousOpportunity.getDurationGranularity());
-		if (opportunity.getDurationInWeeks() == null)
-			opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks());
+		if (opportunity.getDurationInWeeks() == null) {
+			opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks()); 
+		} else {
+			/*if(opportunity.getDurationGranularity() == WEEKLY) {
+				opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
+			}*/
+		}
 		if (opportunity.getProjectStartDate() == null)
 			opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());
 		if (opportunity.getOpportunityStatus() == null)
