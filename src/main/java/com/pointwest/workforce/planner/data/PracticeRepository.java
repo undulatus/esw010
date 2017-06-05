@@ -13,8 +13,11 @@ public interface PracticeRepository extends CrudRepository<Practice, Integer> {
 			" SELECT p.practice_id, p.practice_name" +
 			" FROM ref_practice p" +
 			" LEFT JOIN tmpl_role_practice rp ON p.practice_id = rp.practice_id" +
-			" WHERE rp.role_id = ?1"
+			" WHERE rp.role_id = ?1" +
+			" ORDER BY p.practice_name ASC"
 			, nativeQuery=true)
-	public List<Practice> findPracticesByRoleId(int roleId);
+	public List<Practice> findPracticesByRoleIdOrderByPracticeNameAsc(int roleId);
+	
+	public List<Practice> findAllByOrderByPracticeNameAsc();
 
 }

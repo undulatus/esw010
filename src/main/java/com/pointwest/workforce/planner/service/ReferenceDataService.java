@@ -18,16 +18,12 @@ public interface ReferenceDataService {
 	public BusinessUnit fetchBusinessUnit(int businessUnitId);
 
 	public int addBusinessUnit(BusinessUnit businessUnit);
-
-	public int updateBusinessUnit(int businessUnitId, BusinessUnit businessUnit);
 	
 	public List<ServiceType> fetchAllServiceType();
 
 	public ServiceType fetchServiceType(int serviceTypeId);
 
 	public int addServiceType(ServiceType serviceType);
-
-	public int updateServiceType(int serviceTypeId, ServiceType serviceType);
 	
 	public List<Activity> fetchAllActivity();
 

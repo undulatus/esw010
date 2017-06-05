@@ -13,7 +13,10 @@ public interface OrganizationRoleRepository extends CrudRepository<OrganizationR
 			" SELECT o.org_role_id, o.org_role_name" +
 			" FROM ref_org_role o" +
 			" LEFT JOIN tmpl_service_type_org_role slor ON o.org_role_id = slor.org_role_id" +
-			" WHERE slor.service_type_id = ?1"
+			" WHERE slor.service_type_id = ?1" +
+			" ORDER BY o.org_role_name ASC"
 			, nativeQuery=true)
-	public List<OrganizationRole> findOrgRolesByServiceTypeId(int serviceTypeId);
+	public List<OrganizationRole> findOrgRolesByServiceTypeIdOrderByOrgRoleNameAsc(int serviceTypeId);
+	
+	public List<OrganizationRole> findAllByOrderByOrgRoleNameAsc();
 }

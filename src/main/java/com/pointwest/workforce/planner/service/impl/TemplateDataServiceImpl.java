@@ -42,18 +42,20 @@ public class TemplateDataServiceImpl implements TemplateDataService {
 			return activities;
 		}
 
+		//
 		@Override
 		public List<Role> fetchRolesByServiceTypeId(int serviceTypeId) {
 			log.debug("MCI >> fetchRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
-			List<Role> roles = (List<Role>) roleRepository.findRolesByServiceTypeId(serviceTypeId);
+			List<Role> roles = (List<Role>) roleRepository.findRolesByServiceTypeIdOrderByOrgRoleNameAsc(serviceTypeId);
 			log.debug("MCO >> fetchRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
 			return roles;
 		}
 
+		
 		@Override
 		public List<Practice> fetchPracticesByRoleId(int roleId) {
 			log.debug("MCI >> fetchPracticesByRoleId with roleId: " + roleId);
-			List<Practice> practices = (List<Practice>) practiceRepository.findPracticesByRoleId(roleId);
+			List<Practice> practices = (List<Practice>) practiceRepository.findPracticesByRoleIdOrderByPracticeNameAsc(roleId);
 			log.debug("MCO >> fetchPracticesByRoleId with roleId: " + roleId);
 			return practices;
 		}
@@ -61,7 +63,7 @@ public class TemplateDataServiceImpl implements TemplateDataService {
 		@Override
 		public List<OrganizationRole> fetchOrgRolesByServiceTypeId(int serviceTypeId) {
 			log.debug("MCI >> fetchOrgRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
-			List<OrganizationRole> orgRoles = (List<OrganizationRole>) orgRoleRepository.findOrgRolesByServiceTypeId(serviceTypeId);
+			List<OrganizationRole> orgRoles = (List<OrganizationRole>) orgRoleRepository.findOrgRolesByServiceTypeIdOrderByOrgRoleNameAsc(serviceTypeId);
 			log.debug("MCO >> fetchOrgRolesByServiceTypeId with serviceTypeId: " + serviceTypeId);
 			return orgRoles;
 		}

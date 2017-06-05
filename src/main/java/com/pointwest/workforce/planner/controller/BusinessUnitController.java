@@ -46,10 +46,5 @@ public class BusinessUnitController {
     public void addBusinessUnit(@RequestBody BusinessUnit businessUnit) {
 		referenceDataService.addBusinessUnit(businessUnit);
     }
-	
-	@RequestMapping(method=RequestMethod.PUT, value="/businessunits/{businessUnitId}")
-    public void updateBusinessUnit(@RequestBody BusinessUnit businessUnit, Integer businessUnitId) {
-		referenceDataService.updateBusinessUnit(businessUnitId, businessUnit);
-    }
 
 }

@@ -57,7 +57,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		@Override
 		public List<BusinessUnit> fetchAllBusinessUnit() {
 			log.debug("MCI >> fetchAllBusinessUnit");
-			List<BusinessUnit> businessUnits = (List<BusinessUnit>) businessUnitRepository.findAll();
+			List<BusinessUnit> businessUnits = (List<BusinessUnit>) businessUnitRepository.findAllByOrderByBusinessUnitNameAsc();
 			log.debug("MCO >> fetchAllBusinessUnit");
 			return businessUnits;
 		}
@@ -78,16 +78,11 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 			log.debug("MCO >> addBusinessUnit result " + result);
 			return result;
 		}
-		
-		@Override
-		public int updateBusinessUnit(int businessUnitId, BusinessUnit businessUnit) {
-			return 0;
-		}
 
 		@Override
 		public List<ServiceType> fetchAllServiceType() {
 			log.debug("MCI >> fetchAllServiceType");
-			List<ServiceType> serviceTypes = (List<ServiceType>) serviceTypeRepository.findAll();
+			List<ServiceType> serviceTypes = (List<ServiceType>) serviceTypeRepository.findAllByOrderByServiceTypeNameAsc();
 			log.debug("MCO >> fetchAllServiceType");
 			return serviceTypes;
 			
@@ -108,12 +103,6 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 			int result = saved != null ?  1 : 0;
 			log.debug("MCO >> addServiceType result " + result);
 			return result;
-		}
-
-		@Override
-		public int updateServiceType(int serviceTypeId, ServiceType serviceType) {
-			// TODO Auto-generated method stub
-			return 0;
 		}
 
 		@Override
@@ -176,7 +165,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		@Override
 		public List<Practice> fetchAllPractice() {
 			log.debug("MCI >> fetchAllPractice");
-			List<Practice> practices = (List<Practice>) practiceRepository.findAll();
+			List<Practice> practices = (List<Practice>) practiceRepository.findAllByOrderByPracticeNameAsc();
 			log.debug("MCO >> fetchAllPractice");
 			return practices;
 		}
@@ -192,7 +181,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		@Override
 		public List<Role> fetchAllRole() {
 			log.debug("MCI >> fetchAllRole");
-			List<Role> roles = (List<Role>) roleRepository.findAll();
+			List<Role> roles = (List<Role>) roleRepository.findAllByOrderByRoleNameAsc();
 			log.debug("MCO >> fetchAllRole");
 			return roles;
 		}
@@ -208,7 +197,7 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		@Override
 		public List<OrganizationRole> fetchAllOrgRole() {
 			log.debug("MCI >> fetchAllOrgRole with id: ");
-			List<OrganizationRole> orgRole = (List<OrganizationRole>) orgRoleRepository.findAll();
+			List<OrganizationRole> orgRole = (List<OrganizationRole>) orgRoleRepository.findAllByOrderByOrgRoleNameAsc();
 			log.debug("MCI >> fetchAllOrgRole with id: ");
 			return orgRole;
 		}
