@@ -82,10 +82,16 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 		Integer maxWeek = resourceSpecificationRepository.findEndWeekOfResourceSpecification(resourceSpecificationId);
 		
 		//Timestamp roleStartDate = Timestamp.valueOf(opportunityStartLocalDate.plusWeeks(minWeek - 1).atStartOfDay());
+		Date roleStartDate;
+		Double durationInWeeks;
+		if(minWeek != null) {
+			roleStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
+			durationInWeeks = (maxWeek - minWeek) + 1.0;
+		} else {
+			roleStartDate = Date.valueOf(startLocalDate);
+			durationInWeeks = new Double(0);
+		}
 		
-		Date roleStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
-		
-		Double durationInWeeks = (maxWeek - minWeek) + 1.0;
 		resourceSpecification.setRoleStartDate(roleStartDate);
 		resourceSpecification.setDurationInWeeks(durationInWeeks);
 		
