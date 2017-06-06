@@ -13,6 +13,8 @@ public interface VersionNoDataProjection {
 	
 	public Timestamp getDateCreated();
 	
+	public Boolean getIsActive();
+	
 	public Date getLastModifiedDate();
 
 }

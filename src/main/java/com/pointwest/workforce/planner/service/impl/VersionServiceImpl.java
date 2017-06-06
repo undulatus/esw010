@@ -45,6 +45,7 @@ public class VersionServiceImpl implements VersionService {
 	
 	@Override
 	public void activateVersion(Long opportunityId, String versionName) {
+		versionRepository.noActiveVersion(opportunityId);
 		versionRepository.activateVersion(opportunityId, versionName);
 	}
 

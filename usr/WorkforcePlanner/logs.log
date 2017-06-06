@@ -25167,4 +25167,9 @@ Using default security password: 8e924f14-8c07-446d-91a5-36ddbbed62cb
 ""2017-06-06 16:49:15 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - MCO << decode
 ""2017-06-06 16:49:15 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - token role : ROLE_BUSINESS_LEAD
 ""2017-06-06 16:49:15 [http-nio-8080-exec-2] DEBUG c.p.w.p.s.JWTDecoderServiceImpl - token username : christian.dy
+""2017-06-06 17:41:56 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+""2017-06-06 17:41:56 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7b98f307: startup date [Tue Jun 06 16:48:32 PHT 2017]; root of context hierarchy
+""2017-06-06 17:41:56 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.c.s.DefaultLifecycleProcessor - Stopping beans in phase 0
+""2017-06-06 17:41:56 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.j.e.a.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+""2017-06-06 17:41:56 [RMI TCP Connection(2)-192.168.43.148] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 "
