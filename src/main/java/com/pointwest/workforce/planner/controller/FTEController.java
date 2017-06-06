@@ -216,29 +216,35 @@ public class FTEController {
 			else if(granularity.equals(MONTHLY)) {
 				List<Long> weeks = getWeeksInMonth(monthOrWeekNumber, WEEKSINMONTH);
 				int deleteCount = 0;
+				WeeklyFTEKey key = null;
 				for(Long week : weeks) {
 					
 					if(FTE == 0) {
-						savedWeeklyFTE = new WeeklyFTE(resourceSpecificationId, monthOrWeekNumber, FTE);
-						deleteCount = 0;
+						//savedWeeklyFTE = new WeeklyFTE(resourceSpecificationId, week, FTE);
+						key = new WeeklyFTEKey(resourceSpecificationId, week);
+						
 						try {
-							deleteCount = weeklyFTEService.deleteWeeklyFTE(savedWeeklyFTE.getKey());
+							deleteCount = deleteCount + weeklyFTEService.deleteWeeklyFTE(key);
+							//deleteCount = weeklyFTEService.deleteWeeklyFTE(key);
+							log.debug("KEY FTE : " + key.getResourceScheduleWeekNumber() + " res id " + key.getResourceSpecificationId());
 						} catch (Exception e) {
 							return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
 						}
-						if(deleteCount == 0) {
-							return new ResponseEntity<>(new CustomError("not deleted FTE in week number " + week), HttpStatus.BAD_REQUEST);
-						}
+						/*if(deleteCount == 0) {
+							return new ResponseEntity<>(new CustomError("not deleted FTE after trying delete at week " + week), HttpStatus.BAD_REQUEST);
+						}*/
 					} else {
 						savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
 						if(savedWeeklyFTE==null)  {
 							return new ResponseEntity<>(new CustomError("not saved FTE in week number " + week), HttpStatus.BAD_REQUEST);
 						}
 					}
-					//sprint 2
-					datePostUpdateProcessing(resourceSpecificationId);
 				}
-				
+				//sprint 2
+				datePostUpdateProcessing(resourceSpecificationId);
+				if(deleteCount > 0) {
+					return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+				}
 				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
