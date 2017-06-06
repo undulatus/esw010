@@ -37,6 +37,7 @@ import com.pointwest.workforce.planner.service.TemplateDataService;
 import com.pointwest.workforce.planner.service.VersionService;
 import com.pointwest.workforce.planner.service.WeeklyFTEService;
 import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
+import com.pointwest.workforce.planner.ui.domain.VersionSimplePojo;
 
 @RestController
 public class VersionController {
@@ -129,7 +130,7 @@ public class VersionController {
 	 * @return saved opportunity version based on parameters
 	 */
 	@RequestMapping(method=RequestMethod.POST, value="/opportunities/{opportunityId}/versions")
-    public ResponseEntity<Object> saveVersion(@RequestBody(required=true) String versionName, @PathVariable Long opportunityId) {
+    public ResponseEntity<Object> saveVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId) {
 
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
@@ -145,7 +146,49 @@ public class VersionController {
 		} else {
 			try {
 				jsonData = mapper.writeValueAsString(opportunity);
-				versionService.saveVersion(opportunityId, versionName, jsonData);
+				
+				//PREVENT SAVING TO EXISTING
+				Version.VersionKey key = new Version.VersionKey();
+				key.setOpportunityId(opportunityId);
+				key.setVersionName(versionSimple.getVersionName());
+			    Version existingVersion = versionService.fetchOpportunityVersion(key);
+			    if(existingVersion != null) {
+			    	return new ResponseEntity<>(new CustomError("This version name already exists please use update"), HttpStatus.BAD_REQUEST);
+			    }
+			    
+				versionService.saveVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData);
+				
+			} catch (JsonProcessingException e) {
+				e.printStackTrace();
+				return new ResponseEntity<>(new CustomError("Error in saving version"), HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			return new ResponseEntity<>(opportunity, HttpStatus.OK);
+		}
+	}
+	
+	/**
+	 * @param versionName
+	 * @param opportunityId
+	 * @return saved opportunity version based on parameters
+	 */
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/versions")
+    public ResponseEntity<Object> updateVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId) {
+
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonData;
+		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);		
+		if(opportunity == null) {
+			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
+		} else {
+			try {
+				jsonData = mapper.writeValueAsString(opportunity);
+				versionService.updateVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData);
 				
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
@@ -238,6 +281,8 @@ public class VersionController {
 			currentOpportunity = opportunityService.saveOpportunity(currentOpportunity);
 			return new ResponseEntity<>(new CustomError("Error version not applied"), HttpStatus.BAD_REQUEST);
 		} else {
+			//sprint 2 set as active version
+			versionService.activateVersion(opportunityId, versionName);
 			return new ResponseEntity<>(versionedOpportunity, HttpStatus.OK);
 		}
 	}

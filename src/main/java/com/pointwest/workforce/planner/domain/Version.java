@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="version")
-public class Version implements Serializable {
+public class Version extends Auditable implements Serializable {
 
 	/**
 	 * 
@@ -23,23 +23,45 @@ public class Version implements Serializable {
 		super();
 	}
 	
-	public Version(Long opportunityId, String versionName, String versionData) {
+	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, boolean isNew, boolean isActive) {
 		Version.VersionKey key = new Version.VersionKey();
 		key.setOpportunityId(opportunityId);
 		key.setVersionName(versionName);
 		this.key = key;
+		this.versionDescription = versionDescription;
 		this.versionData = versionData;
-		this.setDateCreated(Timestamp.from(Instant.now()));
+		if(isNew) {			
+			this.setDateCreated(Timestamp.from(Instant.now()));
+		}
+		this.isActive = isActive;
+	}
+	
+	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, boolean isNew) {
+		Version.VersionKey key = new Version.VersionKey();
+		key.setOpportunityId(opportunityId);
+		key.setVersionName(versionName);
+		this.key = key;
+		this.versionDescription = versionDescription;
+		this.versionData = versionData;
+		if(isNew) {			
+			this.setDateCreated(Timestamp.from(Instant.now()));
+		}
 	}
 
 	@EmbeddedId
 	private VersionKey key;
+	
+	@Column(name="version_description")
+	private String  versionDescription;
 	
 	@Column(name="version_data")
 	private String versionData;
 	
 	@Column(name="version_date_created")
 	private Timestamp dateCreated;
+	
+	@Column(name="version_is_active", columnDefinition="INT(1)")
+	private Boolean isActive;
 
 	public VersionKey getKey() {
 		return key;
@@ -47,6 +69,14 @@ public class Version implements Serializable {
 
 	public void setKey(VersionKey key) {
 		this.key = key;
+	}
+
+	public String getVersionDescription() {
+		return versionDescription;
+	}
+
+	public void setVersionDescription(String versionDescription) {
+		this.versionDescription = versionDescription;
 	}
 
 	public String getVersionData() {
@@ -63,6 +93,14 @@ public class Version implements Serializable {
 
 	public void setDateCreated(Timestamp dateCreated) {
 		this.dateCreated = dateCreated;
+	}
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	@Embeddable

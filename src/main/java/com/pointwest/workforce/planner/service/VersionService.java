@@ -8,11 +8,15 @@ import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 public interface VersionService {
 
-	public Version saveVersion(Long opportunityId, String versionName, String versionData);
+	public Version saveVersion(Long opportunityId, String versionName, String versionDescription, String versionData);
 
 	public List<VersionNoDataProjection> fetchVersions(Long opportunityId);
 	
 	public Version fetchOpportunityVersion(VersionKey key);
+
+	public Version updateVersion(Long opportunityId, String versionName, String versionDescription, String versionData);
+
+	public void activateVersion(Long opportunityId, String versionName);
 	
 	/**
 	 * This will discard any current data for the opportunity with the opportunityId

@@ -18,8 +18,18 @@ public class VersionServiceImpl implements VersionService {
 	VersionRepository versionRepository;
 
 	@Override
-	public Version saveVersion(Long opportunityId, String versionName, String versionData) {
-		Version version = new Version(opportunityId, versionName, versionData);
+	public Version saveVersion(Long opportunityId, String versionName, String versionDescription, String versionData) {
+		Version version = new Version(opportunityId, versionName, versionDescription, versionData, true, true);
+		versionRepository.noActiveVersion(opportunityId);
+		return versionRepository.save(version);
+	}
+	
+	@Override
+	public Version updateVersion(Long opportunityId, String versionName, String versionDescription, String versionData) {
+		Version version = new Version(opportunityId, versionName, versionDescription, versionData, false);
+		Version prevVersion = versionRepository.findOne(version.getKey());
+		if (version.getDateCreated() == null) version.setDateCreated(prevVersion.getDateCreated());
+		if (version.getIsActive() == null) version.setIsActive(prevVersion.getIsActive());
 		return versionRepository.save(version);
 	}
 
@@ -31,6 +41,11 @@ public class VersionServiceImpl implements VersionService {
 	@Override
 	public Version fetchOpportunityVersion(VersionKey key) {
 		return versionRepository.findOne(key);
+	}
+	
+	@Override
+	public void activateVersion(Long opportunityId, String versionName) {
+		versionRepository.activateVersion(opportunityId, versionName);
 	}
 
 	/*@Override
