@@ -162,12 +162,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	public Opportunity updateOpportunityDates(Long opportunityId) {
 		Opportunity opportunity = opportunityRepository.findOne(opportunityId);
 		LocalDate startDate = opportunity.getProjectStartDate().toLocalDate();
-		
-		int durationInWeeks = 0;
-
-		if(opportunity.getDurationInWeeks() != null) {
-		durationInWeeks = opportunity.getDurationInWeeks().intValue();
-		}
+		int durationInWeeks = opportunity.getDurationInWeeks().intValue();
 		
 		Date endDate = DateUtil.adjustDateExclusive(startDate, durationInWeeks, WEEKSINMONTH);
 		opportunity.setProjectEndDate(endDate);
