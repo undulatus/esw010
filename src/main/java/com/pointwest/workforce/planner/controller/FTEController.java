@@ -155,11 +155,13 @@ public class FTEController {
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
 					//sprint 2
-					datePostUpdateProcessing(resourceSpecificationId);
+					//datePostUpdateProcessing(resourceSpecificationId);
 					if(savedWeeklyFTE==null)  {
 						return new ResponseEntity<>(new CustomError("not saved FTE in week number " + week), HttpStatus.BAD_REQUEST);
 					}
 				}
+				//sprint 2
+				datePostUpdateProcessing(resourceSpecificationId);
 				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
