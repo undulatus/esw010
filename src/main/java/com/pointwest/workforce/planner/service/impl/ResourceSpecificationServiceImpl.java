@@ -88,7 +88,7 @@ public class ResourceSpecificationServiceImpl implements ResourceSpecificationSe
 			roleStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
 			durationInWeeks = (maxWeek - minWeek) + 1.0;
 		} else {
-			roleStartDate = Date.valueOf(startLocalDate);
+			roleStartDate = null;
 			durationInWeeks = new Double(0);
 		}
 		

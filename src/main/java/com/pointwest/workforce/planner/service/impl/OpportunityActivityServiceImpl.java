@@ -84,7 +84,7 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 			activityStartDate = DateUtil.adjustDateInclusive(startLocalDate, minWeek, WEEKSINMONTH);
 			durationInWeeks = (maxWeek - minWeek) + 1.0;
 		} else {
-			activityStartDate = Date.valueOf(startLocalDate);
+			activityStartDate = null;
 			durationInWeeks = new Double(0);
 		}
 		
