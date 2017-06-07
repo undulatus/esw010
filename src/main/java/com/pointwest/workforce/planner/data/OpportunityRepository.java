@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.data;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -113,5 +114,15 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 		" AND username = ?2" 
 		, nativeQuery=true)
 	public int countUsernameWithOpportunityId(long opportunityId, String username);
+	
+	
+	@Query(value= 
+		" SELECT rsp.resource_specification_id" +
+		" FROM opportunity o " +
+		" RIGHT JOIN opportunity_activity oa ON o.opportunity_id = oa.opportunity_id" +
+		" RIGHT JOIN resource_specification rsp ON oa.opportunity_activity_id = rsp.opportunity_activity_id" +
+		" WHERE o.opportunity_id =?1"
+		, nativeQuery=true)
+	public List<BigInteger> findResourceSpecificationIdsUnderOpportunityId(Long opportunityId);
 	
 }

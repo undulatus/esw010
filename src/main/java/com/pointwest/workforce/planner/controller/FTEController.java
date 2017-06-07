@@ -106,8 +106,11 @@ public class FTEController {
 		return weekNumbers;
 	}
 	
+	//bmab candidate for regrouping
 	private void datePostUpdateProcessing(Long resourceSpecificationId) {
+		//handle role start date, duration, total fte all in weeks 
 		ResourceSpecification resourceSpecification = resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
+		//handle activity start date, duration in weeks
 		OpportunityActivity opportunityActivity = opportunityActivityService.updateOpportunityActivityDates(resourceSpecificationId);
 		log.debug("updated resource dates : " + resourceSpecification.getRoleStartDate() + " , " + resourceSpecification.getDurationInWeeks());
 		log.debug("updated activity dates : " + opportunityActivity.getActivityStartDate() + " , " + opportunityActivity.getDurationInWeeks());

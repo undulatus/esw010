@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.math.BigInteger;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,7 +17,11 @@ import com.pointwest.workforce.planner.data.OpportunityLockEntityRepository;
 import com.pointwest.workforce.planner.data.OpportunityRepository;
 import com.pointwest.workforce.planner.domain.Opportunity;
 import com.pointwest.workforce.planner.domain.OpportunityLockEntity;
+import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
+import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
+import com.pointwest.workforce.planner.service.ResourceSpecificationService;
+import com.pointwest.workforce.planner.service.WeeklyFTEService;
 import com.pointwest.workforce.planner.ui.adapter.OpportunityDashboardProjection;
 import com.pointwest.workforce.planner.util.DateUtil;
 
@@ -28,6 +33,16 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Autowired
 	public OpportunityLockEntityRepository opportunityEntityRepository;
+	
+	//bmab for regrouping
+	@Autowired
+	OpportunityActivityService opportunityActivityService;
+	
+	@Autowired
+	ResourceSpecificationService resourceSpecificationService;
+	
+	@Autowired
+	WeeklyFTEService weeklyFTEService;
 
 	@Value("${opportunity.documentstatus.locked}")
 	private String LOCKED;
@@ -69,6 +84,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Override
 	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId) {
+		
 		// if id not supplied in body then set it
 		if (opportunity.getOpportunityId() == null)
 			opportunity.setOpportunityId(opportunityId);
@@ -85,9 +101,17 @@ public class OpportunityServiceImpl implements OpportunityService {
 		if (opportunity.getDurationInWeeks() == null) {
 			opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks()); 
 		} else {
+			//conversion weekly to monthly currently front naghahandle
 			/*if(opportunity.getDurationGranularity() == WEEKLY) {
 				opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
 			}*/
+			//handle possibly affected fte's
+			try {
+				handleTruncatedFte(opportunityId,opportunity.getDurationInWeeks(), previousOpportunity.getDurationInWeeks());
+			} catch (Exception e) {
+				//rethrow next time
+				log.error("error in handling truncated ftes " + e.getMessage());
+			}
 		}
 		if (opportunity.getProjectStartDate() == null)
 			opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());
@@ -179,5 +203,46 @@ public class OpportunityServiceImpl implements OpportunityService {
 	public boolean isUsernameOwner(long opportunityId, String username) {
 		boolean isOwner = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
 		return isOwner;
+	}
+	
+	//bmab candidate for regrouping
+	private void datePostUpdateProcessing(Long resourceSpecificationId) {
+		//handle role start date, duration, total fte all in weeks 
+		resourceSpecificationService.updateResourceSpecificationDates(resourceSpecificationId);
+		//handle activity start date, duration in weeks
+		opportunityActivityService.updateOpportunityActivityDates(resourceSpecificationId);
+		
+	}
+	
+	private void handleTruncatedFte(Long opportunityId, Double newDurationInWeeks, Double previousDurationInWeeks) throws Exception {
+		
+		if(newDurationInWeeks < previousDurationInWeeks) {
+			log.debug("now truncating fte schedule that is out of duration range");
+			List<BigInteger> rsIdsraw = opportunityRepository.findResourceSpecificationIdsUnderOpportunityId(opportunityId);
+			WeeklyFTEKey key = null;
+			
+			//get duration range
+			Long truncateFromWeek = Math.round(newDurationInWeeks) + 1;
+			Long truncateToWeek = Math.round(previousDurationInWeeks);
+			
+			int fteDeleteCount = 0;
+			Long resourceSpecificationId = null;
+			log.debug("under opp id : " + opportunityId);
+			for(BigInteger rsId : rsIdsraw) {
+				resourceSpecificationId = rsId.longValue();
+				log.debug(" \t rsid : " + resourceSpecificationId);
+				for(Long week=truncateFromWeek; week <= truncateToWeek; week ++) {
+					key = new WeeklyFTEKey(resourceSpecificationId, week);
+					fteDeleteCount = fteDeleteCount + weeklyFTEService.deleteWeeklyFTE(key);
+				}
+				//bmab candidate
+				datePostUpdateProcessing(resourceSpecificationId);
+			}
+			log.debug("all deleted fte count = " + fteDeleteCount);
+			
+		} else {
+			log.debug("no truncated fte schedule due to duration change");
+		}
+		
 	}
 }
