@@ -144,18 +144,18 @@ public class VersionController {
 		if(opportunity == null) {
 			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
 		} else {
-			try {
-				jsonData = mapper.writeValueAsString(opportunity);
-				
+			try {				
 				//PREVENT SAVING TO EXISTING
 				Version.VersionKey key = new Version.VersionKey();
 				key.setOpportunityId(opportunityId);
 				key.setVersionName(versionSimple.getVersionName());
-			    Version existingVersion = versionService.fetchOpportunityVersion(key);
+				Version existingVersion = versionService.fetchOpportunityVersion(key);
+				
 			    if(existingVersion != null) {
 			    	return new ResponseEntity<>(new CustomError("This version name already exists please use update"), HttpStatus.BAD_REQUEST);
 			    }
 			    
+			    jsonData = mapper.writeValueAsString(opportunity);
 				versionService.saveVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData);
 				
 			} catch (JsonProcessingException e) {
