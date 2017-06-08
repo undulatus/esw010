@@ -334,7 +334,8 @@ public class FTEController {
 		if(deleteCount > 0) {
 			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(new CustomError("Nothing deleted"), HttpStatus.BAD_REQUEST);
+			//nothing deleted
+			return new ResponseEntity<>("no existing ftes", HttpStatus.OK);
 		}
 	}
 	
