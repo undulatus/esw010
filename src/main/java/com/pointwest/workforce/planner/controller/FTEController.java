@@ -137,7 +137,7 @@ public class FTEController {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
-		} else if(FTE > 1 || FTE < 0) {
+		} else if(FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(granularity.equals(WEEKLY)) {
@@ -147,7 +147,9 @@ public class FTEController {
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
-					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+					//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+					//sprint 2 hardening
+					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 				}
 			}
 			else if(granularity.equals(MONTHLY)) {
@@ -162,7 +164,9 @@ public class FTEController {
 				}
 				//sprint 2
 				datePostUpdateProcessing(resourceSpecificationId);
-				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+				//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+				//sprint 2 hardening
+				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
 			}
@@ -191,7 +195,7 @@ public class FTEController {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
-		} else if(FTE > 1 || FTE < 0) {
+		} else if(FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(granularity.equals(WEEKLY)) {
@@ -215,7 +219,9 @@ public class FTEController {
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
-					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+					//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+					//sprint 2 hardening
+					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 				}
 			}
 			else if(granularity.equals(MONTHLY)) {
@@ -248,9 +254,13 @@ public class FTEController {
 				//sprint 2
 				datePostUpdateProcessing(resourceSpecificationId);
 				if(deleteCount > 0) {
-					return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+					//return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+					//sprint 2 hardening
+					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 				}
-				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+				//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
+				//sprint 2 hardening
+				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
 			}
@@ -298,9 +308,13 @@ public class FTEController {
 			}
 			
 			if(deleteCount == 1 || deleteCount == WEEKSINMONTH.intValue()) {
-				return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+				//return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+				//sprint 2 hardening
+				log.debug("delete success w/ count : " + deleteCount);
+				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 			} else {
-				return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
+				log.debug("deleted ftes : " + deleteCount);
+				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
 			}
 		} catch(Exception e) {
 			return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
