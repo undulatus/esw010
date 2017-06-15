@@ -137,7 +137,7 @@ public class FTEController {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
-		} else if(FTE < 0) {
+		} else if(FTE > 1 || FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(granularity.equals(WEEKLY)) {
@@ -147,9 +147,7 @@ public class FTEController {
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
-					//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
-					//sprint 2 hardening
-					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 				}
 			}
 			else if(granularity.equals(MONTHLY)) {
@@ -157,16 +155,12 @@ public class FTEController {
 				for(Long week : weeks) {
 					savedWeeklyFTE = weeklyFTEService.saveWeeklyFTE(new WeeklyFTE(resourceSpecificationId, week, FTE));
 					//sprint 2
-					//datePostUpdateProcessing(resourceSpecificationId);
+					datePostUpdateProcessing(resourceSpecificationId);
 					if(savedWeeklyFTE==null)  {
 						return new ResponseEntity<>(new CustomError("not saved FTE in week number " + week), HttpStatus.BAD_REQUEST);
 					}
 				}
-				//sprint 2
-				datePostUpdateProcessing(resourceSpecificationId);
-				//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
-				//sprint 2 hardening
-				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
 			}
@@ -195,7 +189,7 @@ public class FTEController {
 			return new ResponseEntity<>(new CustomError("Invalid Id's"), HttpStatus.BAD_REQUEST);
 		} else if( !(FTE instanceof Double) ) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
-		} else if(FTE < 0) {
+		} else if(FTE > 1 || FTE < 0) {
 			return new ResponseEntity<>(new CustomError("Invalid Body"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(granularity.equals(WEEKLY)) {
@@ -219,9 +213,7 @@ public class FTEController {
 				if(savedWeeklyFTE==null) {
 					return new ResponseEntity<>(new CustomError("not saved FTE in week " + monthOrWeekNumber), HttpStatus.BAD_REQUEST);
 				} else {
-					//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
-					//sprint 2 hardening
-					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+					return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 				}
 			}
 			else if(granularity.equals(MONTHLY)) {
@@ -254,14 +246,9 @@ public class FTEController {
 				//sprint 2
 				datePostUpdateProcessing(resourceSpecificationId);
 				if(deleteCount > 0) {
-					//return new ResponseEntity<>(deleteCount, HttpStatus.OK);
-					//sprint 2 hardening
-					log.debug("deleted fte count : " + deleteCount );
-					return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+					return new ResponseEntity<>(deleteCount, HttpStatus.OK);
 				}
-				//return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
-				//sprint 2 hardening
-				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+				return new ResponseEntity<>(savedWeeklyFTE, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<>(new CustomError("Invalid url"), HttpStatus.BAD_REQUEST);
 			}
@@ -309,13 +296,9 @@ public class FTEController {
 			}
 			
 			if(deleteCount == 1 || deleteCount == WEEKSINMONTH.intValue()) {
-				//return new ResponseEntity<>(deleteCount, HttpStatus.OK);
-				//sprint 2 hardening
-				log.debug("delete success w/ count : " + deleteCount);
-				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+				return new ResponseEntity<>(deleteCount, HttpStatus.OK);
 			} else {
-				log.debug("deleted ftes : " + deleteCount);
-				return new ResponseEntity<>(resourceSpecificationService.fetchResourceSpecification(resourceSpecificationId), HttpStatus.OK);
+				return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
 			}
 		} catch(Exception e) {
 			return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -349,8 +332,7 @@ public class FTEController {
 		if(deleteCount > 0) {
 			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
 		} else {
-			//nothing deleted
-			return new ResponseEntity<>("no existing ftes", HttpStatus.OK);
+			return new ResponseEntity<>(new CustomError("Nothing deleted"), HttpStatus.BAD_REQUEST);
 		}
 	}
 	
