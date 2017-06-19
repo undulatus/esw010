@@ -110,8 +110,10 @@ public class OpportunityActivityServiceImpl implements OpportunityActivityServic
 	@Override
 	public List<OpportunityActivity> saveOpportunityActivity(List<Activity> activities, Long opportunityId) {
 		List<OpportunityActivity> opportunityActivities = new ArrayList<OpportunityActivity>();
+		int count = 0;
 		for(Activity activity : activities) {
-			opportunityActivities.add(new OpportunityActivity(activity, opportunityId));
+			count++;
+			opportunityActivities.add(new OpportunityActivity(activity, opportunityId, count));
 		}
 		opportunityActivityRepository.save(opportunityActivities);
 		return (List<OpportunityActivity>) opportunityActivityRepository.save(opportunityActivities);
