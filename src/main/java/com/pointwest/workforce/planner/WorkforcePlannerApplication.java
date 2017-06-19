@@ -46,7 +46,7 @@ public class WorkforcePlannerApplication extends SpringBootServletInitializer {
         return application.sources(WorkforcePlannerApplication.class);
     }
 	
-	@Bean
+	/*@Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
             @Override
@@ -54,5 +54,5 @@ public class WorkforcePlannerApplication extends SpringBootServletInitializer {
                 registry.addMapping("/**").allowedOrigins("*");
             }
         };
-    }
+    }*/
 }

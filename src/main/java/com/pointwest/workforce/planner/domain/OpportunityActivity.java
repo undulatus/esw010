@@ -47,6 +47,9 @@ public class OpportunityActivity {
 	@Column(name="opportunity_activity_start_date")
 	private Date activityStartDate;
 	
+	@Column(name="opportunity_activity_sequence_no")
+	private Integer sequenceNo;
+	
 	//@OneToMany(FetchType.LAZY, mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
 	@OneToMany(mappedBy = "opportunityActivityId", cascade = CascadeType.ALL)
 	private List<ResourceSpecification> resourceSpecificationList;
@@ -98,6 +101,13 @@ public class OpportunityActivity {
 	public void setActivity(Activity activity) {
 		this.activity = activity;
 	}
-	
+
+	public Integer getSequenceNo() {
+		return sequenceNo;
+	}
+
+	public void setSequenceNo(Integer sequenceNo) {
+		this.sequenceNo = sequenceNo;
+	}
 	
 }

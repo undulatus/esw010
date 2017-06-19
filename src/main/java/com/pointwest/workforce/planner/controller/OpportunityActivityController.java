@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
@@ -110,8 +111,26 @@ public class OpportunityActivityController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunityactivities")
+    public ResponseEntity<Object> updateSequenceOpportunityActivity(@RequestBody(required=true) List<OpportunityActivity> opportunityActivities,
+    		@RequestParam(required=false) String option) {
+		
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		try {
+			if(!accessService.hasPermissionToEditOaId(opportunityActivities.get(0).getOpportunityActivityId(), username)) {
+				return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+			}
+		} catch(Exception e) {
+			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+		}
+		
+		return this.updateOpportunityActivities(opportunityActivities);
+    }
+	
 	@RequestMapping(method=RequestMethod.DELETE, value="/opportunityactivities/{opportunityActivityId}")
-    public ResponseEntity<Object> deleteOpportunityActivity(@PathVariable Long opportunityActivityId) {
+    public ResponseEntity<Object> deleteOpportunityActivity(@RequestBody(required=false) List<OpportunityActivity> opportunityActivities,
+    		@PathVariable Long opportunityActivityId) {
 		
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
@@ -125,11 +144,31 @@ public class OpportunityActivityController {
 		
 		int deleteCount = opportunityActivityService.deleteOpportunityActivity(opportunityActivityId);
 		if(deleteCount > 0) {
-			return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+			if(opportunityActivities != null) {
+				return this.updateOpportunityActivities(opportunityActivities);
+			} else {
+				return new ResponseEntity<>(deleteCount, HttpStatus.OK);
+			}
 		} else {
 			return new ResponseEntity<>(new CustomError("Nothing deleted"), HttpStatus.BAD_REQUEST);
 		}
     }
+	
+	private ResponseEntity<Object> updateOpportunityActivities(List<OpportunityActivity> opportunityActivities) {
+		OpportunityActivity savedOpportunityActivity = null;
+		for(OpportunityActivity opportunityActivity : opportunityActivities) {			
+			savedOpportunityActivity = opportunityActivityService.updateOpportunityActivity(opportunityActivity, opportunityActivity.getOpportunityActivityId());
+			if(savedOpportunityActivity==null) {
+				break;
+			}
+		}
+
+		if(savedOpportunityActivity==null) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		} else {
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+	}
 	
 	
 }
