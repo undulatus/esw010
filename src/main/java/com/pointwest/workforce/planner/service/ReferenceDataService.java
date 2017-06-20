@@ -5,6 +5,7 @@ import java.util.List;
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.Group;
+import com.pointwest.workforce.planner.domain.OpportunityStatus;
 import com.pointwest.workforce.planner.domain.OrganizationRole;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
@@ -51,5 +52,8 @@ public interface ReferenceDataService {
 
 	public OrganizationRole fetchOrgRole(int orgRoleId);
 	
+	public List<OpportunityStatus> fetchAllOpportunityStatus();
+
+	public OpportunityStatus fetchOpportunityStatus(int opportunityStatusId);
 
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.pointwest.workforce.planner.data.ActivityRepository;
 import com.pointwest.workforce.planner.data.BusinessUnitRepository;
 import com.pointwest.workforce.planner.data.GroupRepository;
+import com.pointwest.workforce.planner.data.OpportunityStatusRepository;
 import com.pointwest.workforce.planner.data.OrganizationRoleRepository;
 import com.pointwest.workforce.planner.data.PayLevelRepository;
 import com.pointwest.workforce.planner.data.PracticeRepository;
@@ -18,6 +19,7 @@ import com.pointwest.workforce.planner.data.ServiceTypeRepository;
 import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.BusinessUnit;
 import com.pointwest.workforce.planner.domain.Group;
+import com.pointwest.workforce.planner.domain.OpportunityStatus;
 import com.pointwest.workforce.planner.domain.OrganizationRole;
 import com.pointwest.workforce.planner.domain.PayLevel;
 import com.pointwest.workforce.planner.domain.Practice;
@@ -51,6 +53,9 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 		
 		@Autowired
 		public OrganizationRoleRepository orgRoleRepository;
+		
+		@Autowired
+		public OpportunityStatusRepository opportunityStatusRepository;
 		
 		private static final Logger log = LoggerFactory.getLogger(ReferenceDataServiceImpl.class);
 		
@@ -208,6 +213,22 @@ public class ReferenceDataServiceImpl implements ReferenceDataService {
 			OrganizationRole orgRole = orgRoleRepository.findOne(orgRoleId);
 			log.debug("MCI >> fetchRole with id: " + orgRoleId);
 			return orgRole;
+		}
+		
+		@Override
+		public List<OpportunityStatus> fetchAllOpportunityStatus() {
+			log.debug("MCI >> fetchAllOpportunityStatus");
+			List<OpportunityStatus> opportunityStatus = (List<OpportunityStatus>) opportunityStatusRepository.findAllByOrderByOpportunityStatusNameAsc();
+			log.debug("MCO >> fetchAllOpportunityStatus");
+			return opportunityStatus;
+		}
+		
+		@Override
+		public OpportunityStatus fetchOpportunityStatus(int opportunityStatusId) {
+			log.debug("MCI >> fetchOpportunityStatus with id : " + opportunityStatusId);
+			OpportunityStatus opportunityStatus = opportunityStatusRepository.findOne(opportunityStatusId);
+			log.debug("MCO >> fetchOpportunityStatus with id : " + opportunityStatusId);
+			return opportunityStatus;
 		}
 		
 		
