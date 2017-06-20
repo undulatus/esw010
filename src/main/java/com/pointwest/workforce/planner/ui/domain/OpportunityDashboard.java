@@ -1,7 +1,10 @@
 package com.pointwest.workforce.planner.ui.domain;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import com.pointwest.workforce.planner.domain.OpportunityCollaborator;
@@ -20,9 +23,15 @@ public class OpportunityDashboard implements Serializable {
 	
 	public OpportunityDashboard(Long opportunityId, String opportunityName,
 			String businessUnitName, String serviceTypeName,
-			Date projectStartDate, String opportunityStatus, String documentStatus,
-			String clientName, List<OpportunityCollaborator> opportunityCollaborators) {
+			java.sql.Date projectStartDate, String opportunityStatus, String documentStatus,
+			String clientName, List<OpportunityCollaborator> opportunityCollaborators, 
+			java.util.Date lastModifiedDate) {
 		super();
+		Instant instant = lastModifiedDate.toInstant();
+		ZoneId zoneId = ZoneId.of ( "Asia/Shanghai" );
+		ZonedDateTime zdt = ZonedDateTime.ofInstant ( instant , zoneId );
+		LocalDate localDate = zdt.toLocalDate();
+
 		this.opportunityId = opportunityId;
 		this.opportunityName = opportunityName;
 		this.businessUnitName = businessUnitName;
@@ -32,6 +41,7 @@ public class OpportunityDashboard implements Serializable {
 		this.documentStatus = documentStatus;
 		this.clientName = clientName;
 		this.opportunityCollaborators = opportunityCollaborators;
+		this.lastModifiedDate = java.sql.Date.valueOf(localDate);
 		//this.user = user;
 	}
 
@@ -43,7 +53,7 @@ public class OpportunityDashboard implements Serializable {
 	
 	private String serviceTypeName;
 	
-	private Date projectStartDate;
+	private java.sql.Date projectStartDate;
 	
 	private String opportunityStatus;
 	
@@ -54,6 +64,8 @@ public class OpportunityDashboard implements Serializable {
 	private List<OpportunityCollaborator> opportunityCollaborators;
 	
 	private String userPermission;
+	
+	private java.sql.Date lastModifiedDate;
 
 	public Long getOpportunityId() {
 		return opportunityId;
@@ -71,11 +83,11 @@ public class OpportunityDashboard implements Serializable {
 		this.opportunityName = opportunityName;
 	}
 
-	public Date getProjectStartDate() {
+	public java.sql.Date getProjectStartDate() {
 		return projectStartDate;
 	}
 
-	public void setProjectStartDate(Date projectStartDate) {
+	public void setProjectStartDate(java.sql.Date projectStartDate) {
 		this.projectStartDate = projectStartDate;
 	}
 
@@ -126,6 +138,14 @@ public class OpportunityDashboard implements Serializable {
 				break;
 			}
 		}
+	}
+
+	public java.sql.Date getLastModifiedDate() {
+		return lastModifiedDate;
+	}
+
+	public void setLastModifiedDate(java.sql.Date lastModifiedDate) {
+		this.lastModifiedDate = lastModifiedDate;
 	}
 	
 	

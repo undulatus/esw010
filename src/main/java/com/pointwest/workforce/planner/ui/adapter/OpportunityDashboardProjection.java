@@ -1,6 +1,5 @@
 package com.pointwest.workforce.planner.ui.adapter;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -20,7 +19,7 @@ public interface OpportunityDashboardProjection {
 	@Value("#{target.serviceType != null ? target.serviceType.serviceTypeName : null }")
 	public String getServiceTypeName();
 	
-	public Date getProjectStartDate();
+	public java.sql.Date getProjectStartDate();
 
 	public String getOpportunityStatus();
 
@@ -29,5 +28,7 @@ public interface OpportunityDashboardProjection {
 	public String getClientName();
 	
 	public List<OpportunityCollaborator> getOpportunityCollaborators();
+	
+	public java.util.Date getLastModifiedDate();
 	
 }

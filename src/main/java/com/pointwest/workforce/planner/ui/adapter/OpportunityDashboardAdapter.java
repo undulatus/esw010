@@ -31,7 +31,8 @@ public class OpportunityDashboardAdapter extends OpportunityDashboard {
 					entry.getOpportunityStatus(),
 					entry.getDocumentStatus(),
 					entry.getClientName(),
-					entry.getOpportunityCollaborators());
+					entry.getOpportunityCollaborators(),
+					entry.getLastModifiedDate());
 			this.opportunityDashboards.add(opportunityDashboard);
 		}
 	}
@@ -49,7 +50,8 @@ public class OpportunityDashboardAdapter extends OpportunityDashboard {
 					entry.getOpportunityStatus(),
 					entry.getDocumentStatus(),
 					entry.getClientName(),
-					entry.getOpportunityCollaborators());
+					entry.getOpportunityCollaborators(),
+					entry.getLastModifiedDate());
 			opportunityDashboard.setUserPermission(username);
 			this.opportunityDashboards.add(opportunityDashboard);
 		}

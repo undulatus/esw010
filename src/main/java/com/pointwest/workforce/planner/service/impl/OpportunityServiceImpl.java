@@ -154,7 +154,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Override
 	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsername(String username) {
 		List<OpportunityDashboardProjection> oppList;
-		oppList = opportunityRepository.findByUsername(username.trim());
+		oppList = opportunityRepository.findByUsernameOrderByLastModifiedDateDesc(username.trim());
 		/*for (Opportunity opp : oppList) {
 
 			log.debug("my opp : " + opp.toString());
@@ -178,7 +178,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Override
 	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsername(String username) {
 		List<OpportunityDashboardProjection> oppList;
-		oppList = opportunityRepository.findByOpportunityCollaboratorsKeyUsername(username);
+		oppList = opportunityRepository.findByOpportunityCollaboratorsKeyUsernameOrderByLastModifiedDateDesc(username);
 		return oppList;
 	}
 
