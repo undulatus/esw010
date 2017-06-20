@@ -31,4 +31,6 @@ public interface OpportunityDashboardProjection {
 	
 	public java.util.Date getLastModifiedDate();
 	
+	public String getUsername();
+	
 }

@@ -25,7 +25,7 @@ public class OpportunityDashboard implements Serializable {
 			String businessUnitName, String serviceTypeName,
 			java.sql.Date projectStartDate, String opportunityStatus, String documentStatus,
 			String clientName, List<OpportunityCollaborator> opportunityCollaborators, 
-			java.util.Date lastModifiedDate) {
+			java.util.Date lastModifiedDate, String username) {
 		super();
 		Instant instant = lastModifiedDate.toInstant();
 		ZoneId zoneId = ZoneId.of ( "Asia/Shanghai" );
@@ -43,6 +43,7 @@ public class OpportunityDashboard implements Serializable {
 		this.opportunityCollaborators = opportunityCollaborators;
 		this.lastModifiedDate = java.sql.Date.valueOf(localDate);
 		//this.user = user;
+		this.username = username;
 	}
 
 	private Long opportunityId;
@@ -66,6 +67,8 @@ public class OpportunityDashboard implements Serializable {
 	private String userPermission;
 	
 	private java.sql.Date lastModifiedDate;
+	
+	private String username;
 
 	public Long getOpportunityId() {
 		return opportunityId;
@@ -146,6 +149,14 @@ public class OpportunityDashboard implements Serializable {
 
 	public void setLastModifiedDate(java.sql.Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	
 	
