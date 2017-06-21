@@ -11,5 +11,7 @@ public interface AccessService {
 	public boolean hasPermissionToEditOaId(long opportunityActivityId, String username);
 
 	public boolean hasPermissionToEditRsId(long resourceSpecificationId, String username);
+
+	public boolean isOwner(long opportunityId, String username);
 	
 }

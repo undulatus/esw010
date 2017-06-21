@@ -20,7 +20,7 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 			" AND username = ?2" +
 			" AND opportunity_collaborator_permission = ?3"
 			, nativeQuery=true)
-	public int countUsernameWithEdit(long opportunityId, String username, String permission);
+	public int countUsernameWithPermission(long opportunityId, String username, String permission);
 	
 	@Query(value= 
 			//" SELECT system_role, system_role_access_module, system_role_access_action," +
@@ -34,7 +34,7 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 			" AND username = ?2" +
 			" AND opportunity_collaborator_permission = ?3"
 			, nativeQuery=true)
-	public int countUsernameWithEditOaId(long opportunityActivityId, String username, String permission);
+	public int countUsernameWithPermissionOaId(long opportunityActivityId, String username, String permission);
 	
 	@Query(value= 
 			//" SELECT system_role, system_role_access_module, system_role_access_action," +
@@ -49,7 +49,7 @@ public interface OpportunityCollaboratorRepository extends CrudRepository<Opport
 			" AND username = ?2" +
 			" AND opportunity_collaborator_permission = ?3"
 			, nativeQuery=true)
-	public int countUsernameWithEditRsId(long opportunityActivityId, String username, String permission);
+	public int countUsernameWithPermissionRsId(long opportunityActivityId, String username, String permission);
 	
 	public int countByKeyOpportunityId(Long opportunityId);
 	

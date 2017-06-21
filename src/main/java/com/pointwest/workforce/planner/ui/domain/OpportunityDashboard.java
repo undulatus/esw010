@@ -26,11 +26,17 @@ public class OpportunityDashboard implements Serializable {
 			java.sql.Date projectStartDate, String opportunityStatus, String documentStatus,
 			String clientName, List<OpportunityCollaborator> opportunityCollaborators, 
 			java.util.Date lastModifiedDate, String username) {
+		
 		super();
-		Instant instant = lastModifiedDate.toInstant();
-		ZoneId zoneId = ZoneId.of ( "Asia/Shanghai" );
-		ZonedDateTime zdt = ZonedDateTime.ofInstant ( instant , zoneId );
-		LocalDate localDate = zdt.toLocalDate();
+		java.sql.Date modDate = null;
+		
+		if(lastModifiedDate != null) {
+			Instant instant = lastModifiedDate.toInstant();
+			ZoneId zoneId = ZoneId.of ( "Asia/Shanghai" );
+			ZonedDateTime zdt = ZonedDateTime.ofInstant ( instant , zoneId );
+			LocalDate localDate = zdt.toLocalDate();
+			modDate = java.sql.Date.valueOf(localDate);
+		}
 
 		this.opportunityId = opportunityId;
 		this.opportunityName = opportunityName;
@@ -41,7 +47,7 @@ public class OpportunityDashboard implements Serializable {
 		this.documentStatus = documentStatus;
 		this.clientName = clientName;
 		this.opportunityCollaborators = opportunityCollaborators;
-		this.lastModifiedDate = java.sql.Date.valueOf(localDate);
+		this.lastModifiedDate = modDate;
 		//this.user = user;
 		this.username = username;
 	}

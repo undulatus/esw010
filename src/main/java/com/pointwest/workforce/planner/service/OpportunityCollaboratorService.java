@@ -12,4 +12,6 @@ public interface OpportunityCollaboratorService {
 	
 	public int deleteByOpportunityIdAndPermission(Long opportunityId, String permission);
 
+	public OpportunityCollaborator saveOpportunityEditor(String username, Long opportunityId);
+
 }

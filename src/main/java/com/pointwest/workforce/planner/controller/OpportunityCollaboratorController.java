@@ -90,5 +90,24 @@ public class OpportunityCollaboratorController {
 		}
     }
 	
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/opportunityowner")
+    public ResponseEntity<Object> changeOpportunityOwner(@RequestBody(required=true) String username, @PathVariable Long opportunityId) {
+		
+		//2nd level checker for ownership
+		String user = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.isOwner(opportunityId, user)) {
+			return new ResponseEntity<>(new CustomError("Not owner of opportunity"), HttpStatus.FORBIDDEN);
+		}
+		Opportunity opp = new Opportunity();
+		opp.setUsername(username);
+		try {
+			opp = opportunityService.updateOpportunity(opp, opportunityId);
+			opportunityCollaboratorService.saveOpportunityEditor(user, opportunityId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(new CustomError("error in changing owner"), HttpStatus.BAD_REQUEST);
+		}
+    }
+	
 	
 }

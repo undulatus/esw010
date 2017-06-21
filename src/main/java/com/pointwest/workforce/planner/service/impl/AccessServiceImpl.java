@@ -40,17 +40,22 @@ public class AccessServiceImpl implements AccessService {
 
 	@Override
 	public boolean hasPermission(long opportunityId, String username, String permission) {
-		boolean allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, permission) > 0 ? true : false;
+		boolean allowed = opportunityCollaboratorRepository.countUsernameWithPermission(opportunityId, username, permission) > 0 ? true : false;
 		return allowed;
+	}
+
+	@Override
+	public boolean isOwner(long opportunityId, String username) {
+		return opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
 	}
 	
 	@Override
 	public boolean hasPermissionToEdit(long opportunityId, String username) {
 		//first check if owner
-		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		boolean allowed = this.isOwner(opportunityId, username);
 		//if not user check if editor
 		if(!allowed) {
-			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+			allowed = opportunityCollaboratorRepository.countUsernameWithPermission(opportunityId, username, EDIT) > 0 ? true : false;
 		}
 		/*Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		Set<String> authorities= AuthorityUtils.authorityListToSet(auth.getAuthorities());
@@ -67,10 +72,10 @@ public class AccessServiceImpl implements AccessService {
 	public boolean hasPermissionToEditOaId(long opportunityActivityId, String username) {
 		long opportunityId = opportunityActivityRepository.findOpportunityId(opportunityActivityId);
 		//first check if owner
-		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		boolean allowed = this.isOwner(opportunityId, username);
 		//if not user check if editor
 		if(!allowed) {
-			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+			allowed = opportunityCollaboratorRepository.countUsernameWithPermission(opportunityId, username, EDIT) > 0 ? true : false;
 		}
 		
 		return allowed;
@@ -80,10 +85,10 @@ public class AccessServiceImpl implements AccessService {
 	public boolean hasPermissionToEditRsId(long resourceSpecificationId, String username) {
 		long opportunityId = resourceSpecificationRepository.findOpportunityId(resourceSpecificationId);
 		//first check if owner
-		boolean allowed = opportunityRepository.countUsernameWithOpportunityId(opportunityId, username) > 0 ? true : false;
+		boolean allowed = this.isOwner(opportunityId, username);
 		//if not user check if editor
 		if(!allowed) {
-			allowed = opportunityCollaboratorRepository.countUsernameWithEdit(opportunityId, username, EDIT) > 0 ? true : false;
+			allowed = opportunityCollaboratorRepository.countUsernameWithPermission(opportunityId, username, EDIT) > 0 ? true : false;
 		}
 		
 		return allowed;
