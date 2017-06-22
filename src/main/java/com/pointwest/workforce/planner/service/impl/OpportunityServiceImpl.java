@@ -53,11 +53,11 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Value("${month.to.week.multiplier}")
 	private Integer WEEKSINMONTH;
 	
-	/*@Value("${granularity.week}")
+	@Value("${granularity.week}")
 	private String WEEKLY;
 	
 	@Value("${granularity.month}")
-	private String MONTHLY;*/
+	private String MONTHLY;
 
 	private static final Logger log = LoggerFactory.getLogger(WorkforcePlannerApplication.class);
 
@@ -75,7 +75,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Override
 	public Opportunity saveOpportunity(Opportunity opportunity) {
-		/*if(opportunity.getDurationGranularity() == WEEKLY) {
+		/*if(opportunity.getDurationGranularity().equals(MONTHLY)) {
 			opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
 		}*/
 		Opportunity saved = opportunityRepository.save(opportunity);
@@ -84,7 +84,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Override
 	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId) {
-		
+		boolean dateChanged = false;
 		// if id not supplied in body then set it
 		if (opportunity.getOpportunityId() == null)
 			opportunity.setOpportunityId(opportunityId);
@@ -102,9 +102,12 @@ public class OpportunityServiceImpl implements OpportunityService {
 			opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks()); 
 		} else {
 			//conversion weekly to monthly currently front naghahandle
-			/*if(opportunity.getDurationGranularity() == WEEKLY) {
+			log.debug("granularity " + opportunity.getDurationGranularity());
+			if(opportunity.getDurationGranularity().equals(MONTHLY)) {
+				log.debug("granularity pasok sa monthly");
 				opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
-			}*/
+			}
+			if(opportunity.getDurationInWeeks() != previousOpportunity.getDurationInWeeks()) dateChanged = true;
 			//handle possibly affected fte's
 			try {
 				handleTruncatedFte(opportunityId,opportunity.getDurationInWeeks(), previousOpportunity.getDurationInWeeks());
@@ -113,8 +116,17 @@ public class OpportunityServiceImpl implements OpportunityService {
 				log.error("error in handling truncated ftes " + e.getMessage());
 			}
 		}
-		if (opportunity.getProjectStartDate() == null)
+		if (opportunity.getProjectStartDate() == null) {
 			opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());
+		} else {
+			if(opportunity.getProjectStartDate() != previousOpportunity.getProjectStartDate()) dateChanged = true;
+		}
+		//handle end date changed
+		if(dateChanged) {
+			opportunity.setProjectEndDate(deriveOpportunityEndDate(opportunity));
+		} else {
+			opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
+		}
 		if (opportunity.getOpportunityStatus() == null)
 			opportunity.setOpportunityStatus(previousOpportunity.getOpportunityStatus());
 		if (opportunity.getDocumentStatus() == null)
@@ -125,7 +137,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 			opportunity.setProjectAlias(previousOpportunity.getProjectAlias());
 		if (opportunity.getUsername() == null)
 			opportunity.setUsername(previousOpportunity.getUsername());
-		if (opportunity.getProjectEndDate() == null) opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
+		//if (opportunity.getProjectEndDate() == null) opportunity.setProjectEndDate(previousOpportunity.getProjectEndDate());
 		if (opportunity.getLastModifiedDate() == null) opportunity.setLastModifiedDate(previousOpportunity.getLastModifiedDate());
 		return opportunityRepository.save(opportunity);
 	}
@@ -183,8 +195,8 @@ public class OpportunityServiceImpl implements OpportunityService {
 	}
 
 	@Override
-	public Opportunity updateOpportunityDates(Long opportunityId) {
-		Opportunity opportunity = opportunityRepository.findOne(opportunityId);
+	public Date deriveOpportunityEndDate(Opportunity opportunity) {
+		
 		LocalDate startDate = opportunity.getProjectStartDate().toLocalDate();
 		
 		int durationInWeeks = 0;
@@ -196,7 +208,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 		Date endDate = DateUtil.adjustDateExclusive(startDate, durationInWeeks, WEEKSINMONTH);
 		opportunity.setProjectEndDate(endDate);
 		
-		return opportunityRepository.save(opportunity);
+		return endDate;
 	}
 
 	@Override

@@ -34,5 +34,15 @@ public interface VersionRepository extends CrudRepository<Version, VersionKey> {
 			" WHERE version_name = ?2 AND opportunity_id = ?1"
 			, nativeQuery=true)
 	public void activateVersion(Long opportunityId, String versionName);
+	
+	@Transactional
+	@Modifying
+	@Query(value= 
+			" UPDATE version" +
+			" SET" +
+			" 	version_name = ?3" +
+			" WHERE version_name = ?2 AND opportunity_id = ?1"
+			, nativeQuery=true)
+	public void renameVersion(Long opportunityId, String versionName, String versionNewName);
 
 }

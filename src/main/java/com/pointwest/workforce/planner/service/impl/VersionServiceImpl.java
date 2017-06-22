@@ -25,12 +25,18 @@ public class VersionServiceImpl implements VersionService {
 	}
 	
 	@Override
-	public Version updateVersion(Long opportunityId, String versionName, String versionDescription, String versionData) {
+	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData) {
 		Version version = new Version(opportunityId, versionName, versionDescription, versionData, false);
 		Version prevVersion = versionRepository.findOne(version.getKey());
+		 
 		if (version.getDateCreated() == null) version.setDateCreated(prevVersion.getDateCreated());
 		if (version.getIsActive() == null) version.setIsActive(prevVersion.getIsActive());
-		return versionRepository.save(version);
+		if(versionNewName != null) {
+			versionRepository.renameVersion(opportunityId, versionName, versionNewName);
+			return new Version(opportunityId, versionNewName, versionDescription, null, false);
+		} else {			
+			return versionRepository.save(version);
+		}
 	}
 
 	@Override

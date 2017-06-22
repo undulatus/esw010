@@ -4,6 +4,8 @@ public class VersionSimplePojo {
 
 	private String versionName;
 	
+	private String versionNewName;
+	
 	private String versionDescription;
 
 	public String getVersionName() {
@@ -12,6 +14,14 @@ public class VersionSimplePojo {
 
 	public void setVersionName(String versionName) {
 		this.versionName = versionName;
+	}
+
+	public String getVersionNewName() {
+		return versionNewName;
+	}
+
+	public void setVersionNewName(String versionNewName) {
+		this.versionNewName = versionNewName;
 	}
 
 	public String getVersionDescription() {

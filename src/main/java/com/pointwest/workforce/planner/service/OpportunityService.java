@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import com.pointwest.workforce.planner.domain.Opportunity;
@@ -25,7 +26,7 @@ public interface OpportunityService {
 
 	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsername(String username);
 	
-	public Opportunity updateOpportunityDates(Long opportunityId);
+	public Date deriveOpportunityEndDate(Opportunity opportunity);
 
 	public boolean isUsernameOwner(long opportunityId, String username);
 	

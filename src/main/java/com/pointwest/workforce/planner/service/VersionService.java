@@ -14,7 +14,7 @@ public interface VersionService {
 	
 	public Version fetchOpportunityVersion(VersionKey key);
 
-	public Version updateVersion(Long opportunityId, String versionName, String versionDescription, String versionData);
+	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData);
 
 	public void activateVersion(Long opportunityId, String versionName);
 	

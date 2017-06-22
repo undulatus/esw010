@@ -149,9 +149,9 @@ public class OpportunityController {
 					HttpStatus.BAD_REQUEST);
 		}
 		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
-		if(dateChanged != null && dateChanged == true) {
+		/*if(dateChanged != null && dateChanged == true) {
 			savedOpportunity = opportunityService.updateOpportunityDates(opportunityId);
-		}
+		}*/
 		if (savedOpportunity == null) {
 			return new ResponseEntity<>(opportunity, HttpStatus.BAD_REQUEST);
 		} else {

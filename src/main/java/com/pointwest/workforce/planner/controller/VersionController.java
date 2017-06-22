@@ -188,7 +188,8 @@ public class VersionController {
 		} else {
 			try {
 				jsonData = mapper.writeValueAsString(opportunity);
-				versionService.updateVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData);
+				versionService.updateVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionNewName(),
+						versionSimple.getVersionDescription(), jsonData);
 				
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
