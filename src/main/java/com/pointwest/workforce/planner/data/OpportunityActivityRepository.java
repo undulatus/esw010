@@ -28,7 +28,8 @@ public interface OpportunityActivityRepository extends CrudRepository<Opportunit
 	public LocalDate findOpportunityStartDate(Long opportunityActivityId);
 
 	@Query(value= 
-		" SELECT oa.opportunity_activity_id, oa.opportunity_id, oa.activity_id, oa.opportunity_activity_duration_week, oa.opportunity_activity_start_date" +
+		" SELECT oa.opportunity_activity_id, oa.opportunity_id, oa.activity_id, oa.opportunity_activity_duration_week," +
+		" oa.opportunity_activity_start_date, opportunity_activity_sequence_no" +
 		" FROM resource_specification rs" +
 		" LEFT JOIN opportunity_activity oa ON rs.opportunity_activity_id = oa.opportunity_activity_id " +
 		" WHERE resource_specification_id = ?1"
