@@ -1,6 +1,7 @@
 package com.pointwest.workforce.planner.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -20,10 +21,16 @@ public class WeeklyFTE implements Serializable {
 		super();
 	}
 	
+	/**
+	 * constructor wich limits fte to 5 decimals.
+	 * @param resourceSpecificationId
+	 * @param resourceScheduleWeekNumber
+	 * @param resourceScheduleFTE
+	 */
 	public WeeklyFTE(Long resourceSpecificationId, Long resourceScheduleWeekNumber, Double resourceScheduleFTE) {
 		super();
 		this.key = new WeeklyFTEKey(resourceSpecificationId, resourceScheduleWeekNumber);
-		this.resourceScheduleFTE = resourceScheduleFTE;
+		this.setResourceScheduleFTE(resourceScheduleFTE);
 	}
 	
 	@EmbeddedId
@@ -45,7 +52,12 @@ public class WeeklyFTE implements Serializable {
 	}
 
 	public void setResourceScheduleFTE(double resourceScheduleFTE) {
-		this.resourceScheduleFTE = resourceScheduleFTE;
+		
+		//this.resourceScheduleFTE = resourceScheduleFTE;
+		BigDecimal fte = new BigDecimal(Double.toString(resourceScheduleFTE)).setScale(5, BigDecimal.ROUND_HALF_UP);
+		String sFte = fte.toString();
+		this.resourceScheduleFTE = Double.parseDouble(sFte);
+		
 	}
 	
 
