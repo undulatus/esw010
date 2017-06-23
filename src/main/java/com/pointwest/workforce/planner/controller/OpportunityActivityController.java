@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pointwest.workforce.planner.domain.Activity;
 import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
+import com.pointwest.workforce.planner.service.ReferenceDataService;
 
 @RestController
 public class OpportunityActivityController {
@@ -26,6 +28,9 @@ public class OpportunityActivityController {
 	
 	@Autowired
 	AccessService accessService;
+	
+	@Autowired
+	ReferenceDataService referenceDataService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/opportunityactivities")
     public ResponseEntity<Object> fetchAllOpportunities() {
@@ -77,6 +82,11 @@ public class OpportunityActivityController {
 			return new ResponseEntity<>(new CustomError("Incorrect inputs, not saved"), HttpStatus.BAD_REQUEST);
 		} else {
 			if(isNew) {
+				int id = savedOpportunityActivity.getActivity().getActivityId();
+				Activity newActivity = new Activity();
+				newActivity = referenceDataService.fetchActivity(id);
+				savedOpportunityActivity.setActivity(newActivity);
+
 				return new ResponseEntity<>(savedOpportunityActivity, HttpStatus.CREATED);
 			} else {
 				return new ResponseEntity<>(savedOpportunityActivity, HttpStatus.OK);
