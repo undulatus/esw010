@@ -160,7 +160,7 @@ public class OpportunityActivityController {
 				return new ResponseEntity<>(deleteCount, HttpStatus.OK);
 			}
 		} else {
-			return new ResponseEntity<>(new CustomError("Nothing deleted"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(deleteCount, HttpStatus.BAD_REQUEST);
 		}
     }
 	

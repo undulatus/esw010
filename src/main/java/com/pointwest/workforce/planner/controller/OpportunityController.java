@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.controller;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -68,9 +69,16 @@ public class OpportunityController {
 		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);
 		if (opportunity == null) {
 			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
-		} else {
-			return new ResponseEntity<>(opportunity, HttpStatus.OK);
+		} else {	
+			try {
+				List<OpportunityActivity> opportunityActivities = opportunity.getOpportunityActivities();
+				opportunityActivities.sort(Comparator.comparingLong(OpportunityActivity::getSequenceNo));
+			} catch(Exception e) {
+				log.error("Error in sorting opportunityActivities");
+			}
 		}
+		return new ResponseEntity<>(opportunity, HttpStatus.OK);
+		
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/public/opportunities/{opportunityId}")
@@ -152,6 +160,7 @@ public class OpportunityController {
 		/*if(dateChanged != null && dateChanged == true) {
 			savedOpportunity = opportunityService.updateOpportunityDates(opportunityId);
 		}*/
+		// no joined tables returned on updates except if excplicitly called
 		if (savedOpportunity == null) {
 			return new ResponseEntity<>(opportunity, HttpStatus.BAD_REQUEST);
 		} else {
