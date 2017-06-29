@@ -211,7 +211,7 @@ public class VersionController {
 		
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
-		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+		if(!accessService.isOwner(opportunityId, username)) {
 			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
 		}
 		

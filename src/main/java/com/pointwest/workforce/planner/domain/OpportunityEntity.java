@@ -10,12 +10,12 @@ import org.hibernate.annotations.DynamicUpdate;
 @Entity
 @Table(name="opportunity")
 @DynamicUpdate
-public class OpportunityLockEntity {
+public class OpportunityEntity {
 	
-	public OpportunityLockEntity() {
+	public OpportunityEntity() {
 		super();
 	}
-	public OpportunityLockEntity(long opportunityId, String documentStatus) {
+	public OpportunityEntity(long opportunityId, String documentStatus) {
 		this.opportunityId = opportunityId;
 		this.documentStatus = documentStatus;
 	}

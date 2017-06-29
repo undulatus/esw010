@@ -22,12 +22,16 @@ public interface OpportunityService {
 	
 	public List<Opportunity> fetchNotOwnedOpportunitiesByUsername(String username);
 	
-	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsername(String username);
+	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsernameAndStatusNot(String username, String documentStatus);
 
-	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsername(String username);
+	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsernameAndStatusNot(String username, String documentStatus);
 	
 	public Date deriveOpportunityEndDate(Opportunity opportunity);
 
 	public boolean isUsernameOwner(long opportunityId, String username);
+
+	public int deleteOpportunity(long opportunityId);
+	
+	public int finalizeOpportunity(long opportunityId);
 	
 }

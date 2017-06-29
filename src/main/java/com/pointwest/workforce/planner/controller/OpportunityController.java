@@ -6,6 +6,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -45,6 +46,9 @@ public class OpportunityController {
 
 	@Autowired
 	TemplateDataService templateDataService;
+	
+	@Value("${opportunity.documentstatus.deleted}")
+	private String DELETED;
 	
 	private static final Logger log = LoggerFactory.getLogger(OpportunityController.class);
 
@@ -93,7 +97,7 @@ public class OpportunityController {
 
 	@RequestMapping(method = RequestMethod.GET, value = "/users/{username}/opportunities")
 	public ResponseEntity<Object> fetchUserOwnedOpportunity(@PathVariable String username) {
-		List<OpportunityDashboardProjection> projections = opportunityService.fetchOpportunitiesByUsername(username);
+		List<OpportunityDashboardProjection> projections = opportunityService.fetchOpportunitiesByUsernameAndStatusNot(username, DELETED);
 		List<OpportunityDashboard> opportunities = new OpportunityDashboardAdapter(projections).getOpportunityDashboards();
 		if (opportunities == null || opportunities.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("No opportunities retrieved"), HttpStatus.NOT_FOUND);
@@ -169,9 +173,8 @@ public class OpportunityController {
 	}
 
 	@PreAuthorize("hasAnyRole('MANAGER', 'BUSINESS_LEAD')") 
-	@RequestMapping(method = RequestMethod.POST, value = "/opportunities/{opportunityId}/lock/{lock}")
-	public ResponseEntity<Object> updateOpportunityLock(@PathVariable long opportunityId, @PathVariable boolean lock) {
-
+	@RequestMapping(method = RequestMethod.PUT, value = "/opportunities/{opportunityId}/status/{statusName}")
+	public ResponseEntity<Object> updateOpportunityLock(@PathVariable long opportunityId, @PathVariable String statusName) {
 		
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
@@ -179,15 +182,29 @@ public class OpportunityController {
 		if(!opportunityService.isUsernameOwner(opportunityId, username)) {
 			return new ResponseEntity<>(new CustomError("Only opportunity owners can lock the document"), HttpStatus.FORBIDDEN);
 		}
-		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
-			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		int success = 0;
+		switch (statusName.toLowerCase().trim()) {
+			case "lock" : case "locked" :
+				success = opportunityService.lockOpportunity(opportunityId, true);
+			break;
+			case "unlock" : case "unlocked" :
+				success = opportunityService.lockOpportunity(opportunityId, false);
+			break;
+			case "delete" : case "deleted" :
+				success = opportunityService.deleteOpportunity(opportunityId);
+			break;
+			case "finalize" : case "finalized" :
+				success = opportunityService.finalizeOpportunity(opportunityId);
+			break;
+			default: 
+				success = 0;
+				break;
 		}
 		
-		int success = opportunityService.lockOpportunity(opportunityId, lock);
 		if (success == 1) {
 			return new ResponseEntity<>(success, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(new CustomError("Opportunity lock unchanged"), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(new CustomError("Opportunity document status unchanged"), HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -242,7 +259,7 @@ public class OpportunityController {
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/users/{username}/opportunities/shared")
 	public ResponseEntity<Object> fetchSharedOpportunities(@PathVariable String username) { 
-		List<OpportunityDashboardProjection> projections = opportunityService.fetchSharedOpportunitiesByUsername(username);
+		List<OpportunityDashboardProjection> projections = opportunityService.fetchSharedOpportunitiesByUsernameAndStatusNot(username, DELETED);
 		List<OpportunityDashboard> opportunities = new OpportunityDashboardAdapter(projections, username).getOpportunityDashboards();
 		for(OpportunityDashboard opp : opportunities) {
 			log.debug("permission " + opp.getUserPermission() + " id : " + opp.getOpportunityId());

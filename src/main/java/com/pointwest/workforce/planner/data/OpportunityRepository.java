@@ -103,9 +103,9 @@ public interface OpportunityRepository extends CrudRepository<Opportunity, Long>
 	, nativeQuery=true)
 	public List<OpportunityDashboardProjection> findSharedOpportunitiesByUsername(String username);
 	
-	public List<OpportunityDashboardProjection> findByUsernameOrderByLastModifiedDateDesc(String username);
+	public List<OpportunityDashboardProjection> findByUsernameAndDocumentStatusNotOrderByLastModifiedDateDesc(String username, String documentStatus);
 	
-	public List<OpportunityDashboardProjection> findByOpportunityCollaboratorsKeyUsernameOrderByLastModifiedDateDesc(String username);
+	public List<OpportunityDashboardProjection> findByOpportunityCollaboratorsKeyUsernameAndDocumentStatusNotOrderByLastModifiedDateDesc(String username, String documentStatus);
 	
 	@Query(value= 
 		" SELECT count(username)" +

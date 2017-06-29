@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.pointwest.workforce.planner.WorkforcePlannerApplication;
-import com.pointwest.workforce.planner.data.OpportunityLockEntityRepository;
+import com.pointwest.workforce.planner.data.OpportunityEntityRepository;
 import com.pointwest.workforce.planner.data.OpportunityRepository;
 import com.pointwest.workforce.planner.domain.Opportunity;
-import com.pointwest.workforce.planner.domain.OpportunityLockEntity;
+import com.pointwest.workforce.planner.domain.OpportunityEntity;
 import com.pointwest.workforce.planner.domain.WeeklyFTEKey;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
 import com.pointwest.workforce.planner.service.OpportunityService;
@@ -32,7 +32,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	public OpportunityRepository opportunityRepository;
 
 	@Autowired
-	public OpportunityLockEntityRepository opportunityEntityRepository;
+	public OpportunityEntityRepository opportunityEntityRepository;
 	
 	//bmab for regrouping
 	@Autowired
@@ -49,6 +49,12 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Value("${opportunity.documentstatus.unlocked}")
 	private String UNLOCKED;
+	
+	@Value("${opportunity.documentstatus.deleted}")
+	private String DELETED;
+
+	@Value("${opportunity.documentstatus.finalized}")
+	private String FINALIZED;
 	
 	@Value("${month.to.week.multiplier}")
 	private Integer WEEKSINMONTH;
@@ -157,16 +163,32 @@ public class OpportunityServiceImpl implements OpportunityService {
 
 	@Override
 	public int lockOpportunity(long opportunityId, boolean lock) {
-		String documentStatus = (lock == true ? UNLOCKED : LOCKED);
-		OpportunityLockEntity opportunity = new OpportunityLockEntity(opportunityId, documentStatus);
-		OpportunityLockEntity saved = opportunityEntityRepository.save(opportunity);
+		String documentStatus = (lock == true ? LOCKED : UNLOCKED);
+		OpportunityEntity opportunity = new OpportunityEntity(opportunityId, documentStatus);
+		OpportunityEntity saved = opportunityEntityRepository.save(opportunity);
+		return saved != null ? 1 : 0;
+	}
+	
+	@Override
+	public int deleteOpportunity(long opportunityId) {
+		String documentStatus = DELETED;
+		OpportunityEntity opportunity = new OpportunityEntity(opportunityId, documentStatus);
+		OpportunityEntity saved = opportunityEntityRepository.save(opportunity);
+		return saved != null ? 1 : 0;
+	}
+	
+	@Override
+	public int finalizeOpportunity(long opportunityId) {
+		String documentStatus = FINALIZED;
+		OpportunityEntity opportunity = new OpportunityEntity(opportunityId, documentStatus);
+		OpportunityEntity saved = opportunityEntityRepository.save(opportunity);
 		return saved != null ? 1 : 0;
 	}
 
 	@Override
-	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsername(String username) {
+	public List<OpportunityDashboardProjection> fetchOpportunitiesByUsernameAndStatusNot(String username, String documentStatus) {
 		List<OpportunityDashboardProjection> oppList;
-		oppList = opportunityRepository.findByUsernameOrderByLastModifiedDateDesc(username.trim());
+		oppList = opportunityRepository.findByUsernameAndDocumentStatusNotOrderByLastModifiedDateDesc(username.trim(), documentStatus);
 		/*for (Opportunity opp : oppList) {
 
 			log.debug("my opp : " + opp.toString());
@@ -188,9 +210,9 @@ public class OpportunityServiceImpl implements OpportunityService {
 	}
 
 	@Override
-	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsername(String username) {
+	public List<OpportunityDashboardProjection> fetchSharedOpportunitiesByUsernameAndStatusNot(String username, String documentStatus) {
 		List<OpportunityDashboardProjection> oppList;
-		oppList = opportunityRepository.findByOpportunityCollaboratorsKeyUsernameOrderByLastModifiedDateDesc(username);
+		oppList = opportunityRepository.findByOpportunityCollaboratorsKeyUsernameAndDocumentStatusNotOrderByLastModifiedDateDesc(username, documentStatus);
 		return oppList;
 	}
 
