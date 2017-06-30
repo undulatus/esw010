@@ -122,8 +122,7 @@ public class OpportunityActivityController {
     }
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/opportunityactivities")
-    public ResponseEntity<Object> updateSequenceOpportunityActivity(@RequestBody(required=true) List<OpportunityActivity> opportunityActivities,
-    		@RequestParam(required=false) String option) {
+    public ResponseEntity<Object> updateSequenceOpportunityActivity(@RequestBody(required=true) List<OpportunityActivity> opportunityActivities) {
 		
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();

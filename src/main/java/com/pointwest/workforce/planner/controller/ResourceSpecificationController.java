@@ -10,11 +10,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.CustomError;
+import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.domain.ResourceSpecification;
+import com.pointwest.workforce.planner.domain.Role;
 import com.pointwest.workforce.planner.service.AccessService;
+import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ResourceSpecificationService;
 
 @RestController
@@ -22,6 +26,10 @@ public class ResourceSpecificationController {
 	
 	@Autowired
 	ResourceSpecificationService resourceSpecificationService;
+	
+	//Sprint 3 overhaul
+	@Autowired
+	OpportunityService opportunityService;
 	
 	@Autowired
 	AccessService accessService;
@@ -48,8 +56,9 @@ public class ResourceSpecificationController {
 	
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications")
-    public ResponseEntity<Object> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification) {
-		
+    public ResponseEntity<Object> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification,
+    		@RequestParam(required=true) String option, @RequestParam(required=true) Integer sequenceNo, @RequestParam(required=true) Long opportunityId) {
+		// options -- all, this, succeeding
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
 		try {
@@ -60,12 +69,12 @@ public class ResourceSpecificationController {
 			return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
 		}
 		
-		ResourceSpecification savedResourceSpecification = null;
+		/*ResourceSpecification savedResourceSpecification = null;
 		boolean isNew = false;
-		/*if(resourceSpecification==null) {
+		if(resourceSpecification==null) {
 			savedResourceSpecification = resourceSpecificationService.saveResourceSpecification(new ResourceSpecification());
 			isNew = true;
-		} else*/ if(resourceSpecification.getResourceSpecificationId() == null) {
+		} else if(resourceSpecification.getResourceSpecificationId() == null) {
 			savedResourceSpecification = resourceSpecificationService.saveResourceSpecification(resourceSpecification);
 			isNew = true;
 		} else {
@@ -80,7 +89,47 @@ public class ResourceSpecificationController {
 			} else {
 				return new ResponseEntity<>(savedResourceSpecification, HttpStatus.OK);
 			}
+		}*/
+		//Sprint 3 overhaul
+		List<OpportunityActivity> opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
+		long opportunityActivityId = 0;
+		int roleId = resourceSpecification.getRole().getRoleId();
+		Role role = null;
+		switch (option.toLowerCase().trim()) {
+			case "this" :
+				resourceSpecificationService.saveResourceSpecification(resourceSpecification);
+				break;
+			case "succeeding" : 
+				for(OpportunityActivity opportunityActivity : opportunityActivities) {
+					if(opportunityActivity.getSequenceNo() >= sequenceNo) {
+						opportunityActivityId = opportunityActivity.getOpportunityActivityId();
+						resourceSpecification = new ResourceSpecification();
+						role = new Role();
+						role.setRoleId(roleId);
+						resourceSpecification.setRole(role);
+						resourceSpecification.setOpportunityActivityId(opportunityActivityId);
+						resourceSpecificationService.saveResourceSpecification(resourceSpecification);	
+					}
+				}
+				break;
+			case "all" :
+				for(OpportunityActivity opportunityActivity : opportunityActivities) {
+					opportunityActivityId = opportunityActivity.getOpportunityActivityId();
+					resourceSpecification = new ResourceSpecification();
+					role = new Role();
+					role.setRoleId(roleId);
+					resourceSpecification.setRole(role);
+					resourceSpecification.setOpportunityActivityId(opportunityActivityId);
+					resourceSpecificationService.saveResourceSpecification(resourceSpecification);	
+				}
+				break;
+			default:
+				return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
+				
 		}
+		opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
+		return new ResponseEntity<>(opportunityActivities, HttpStatus.CREATED);
+		
     }
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/resourcespecifications/{resourceSpecificationId}")
