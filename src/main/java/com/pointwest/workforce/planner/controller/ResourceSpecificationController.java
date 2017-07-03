@@ -57,7 +57,7 @@ public class ResourceSpecificationController {
 
 	@RequestMapping(method=RequestMethod.POST, value="/resourcespecifications")
     public ResponseEntity<Object> saveResourceSpecification(@RequestBody(required=false) ResourceSpecification resourceSpecification,
-    		@RequestParam(required=true) String option, @RequestParam(required=true) Integer sequenceNo, @RequestParam(required=true) Long opportunityId) {
+    		@RequestParam(required=false) String option, @RequestParam(required=false) Integer sequenceNo, @RequestParam(required=false) Long opportunityId) {
 		// options -- all, this, succeeding
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
@@ -91,15 +91,20 @@ public class ResourceSpecificationController {
 			}
 		}*/
 		//Sprint 3 overhaul
-		List<OpportunityActivity> opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
+		List<OpportunityActivity> opportunityActivities = null;
 		long opportunityActivityId = 0;
 		int roleId = resourceSpecification.getRole().getRoleId();
 		Role role = null;
-		switch (option.toLowerCase().trim()) {
-			case "this" :
+		//bmab kept old to prevent issues
+		if(option == null) {
+			ResourceSpecification savedResourceSpecification = resourceSpecificationService.saveResourceSpecification(resourceSpecification);
+			return new ResponseEntity<>(savedResourceSpecification, HttpStatus.CREATED);
+		} else {
+			option = option.toLowerCase().trim();
+			if(option.equals("this")) {
 				resourceSpecificationService.saveResourceSpecification(resourceSpecification);
-				break;
-			case "succeeding" : 
+			} else if(option.equals("succeeding")  && opportunityId != null && sequenceNo != null) {
+				opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
 				for(OpportunityActivity opportunityActivity : opportunityActivities) {
 					if(opportunityActivity.getSequenceNo() >= sequenceNo) {
 						opportunityActivityId = opportunityActivity.getOpportunityActivityId();
@@ -111,8 +116,8 @@ public class ResourceSpecificationController {
 						resourceSpecificationService.saveResourceSpecification(resourceSpecification);	
 					}
 				}
-				break;
-			case "all" :
+			} else if(option.equals("all") && opportunityId != null) {
+				opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
 				for(OpportunityActivity opportunityActivity : opportunityActivities) {
 					opportunityActivityId = opportunityActivity.getOpportunityActivityId();
 					resourceSpecification = new ResourceSpecification();
@@ -122,11 +127,11 @@ public class ResourceSpecificationController {
 					resourceSpecification.setOpportunityActivityId(opportunityActivityId);
 					resourceSpecificationService.saveResourceSpecification(resourceSpecification);	
 				}
-				break;
-			default:
+			} else {
 				return new ResponseEntity<>(new CustomError("Invalid inputs"), HttpStatus.BAD_REQUEST);
-				
+			}
 		}
+		
 		opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
 		return new ResponseEntity<>(opportunityActivities, HttpStatus.CREATED);
 		
