@@ -76,7 +76,7 @@ public class OpportunityController {
 		} else {	
 			try {
 				List<OpportunityActivity> opportunityActivities = opportunity.getOpportunityActivities();
-				opportunityActivities.sort(Comparator.comparingLong(OpportunityActivity::getSequenceNo));
+				opportunityActivities.sort(Comparator.comparingInt(OpportunityActivity::getSequenceNo));
 			} catch(Exception e) {
 				log.error("Error in sorting opportunityActivities");
 			}
