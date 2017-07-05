@@ -15,6 +15,8 @@ public interface VersionNoDataProjection {
 	
 	public Boolean getIsActive();
 	
+	public String getUsername();
+	
 	public Date getLastModifiedDate();
 
 }
