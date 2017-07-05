@@ -1,5 +1,7 @@
 package com.pointwest.workforce.planner.service.impl;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,23 +27,34 @@ public class VersionServiceImpl implements VersionService {
 	}
 	
 	@Override
-	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData) {
-		Version version = new Version(opportunityId, versionName, versionDescription, versionData, false);
+	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData,
+			Boolean isDeleted) {
+		Version version = new Version(opportunityId, versionName, versionDescription, versionData, false, null, isDeleted);
 		Version prevVersion = versionRepository.findOne(version.getKey());
-		 
 		if (version.getDateCreated() == null) version.setDateCreated(prevVersion.getDateCreated());
 		if (version.getIsActive() == null) version.setIsActive(prevVersion.getIsActive());
+		if (version.getUsername() == null) version.setUsername(prevVersion.getUsername());
+		if (version.getIsDeleted() == null) version.setIsDeleted(prevVersion.getIsDeleted());
+		if (version.getIsDeleted() == true) {
+			versionNewName = versionName + "*" + Timestamp.from(Instant.now()).toString();
+		}
 		if(versionNewName != null) {
 			versionRepository.renameVersion(opportunityId, versionName, versionNewName);
-			return new Version(opportunityId, versionNewName, versionDescription, null, false);
-		} else {			
-			return versionRepository.save(version);
+			
 		}
+		if(versionNewName != null && isDeleted != null && isDeleted == true) {
+			version.getKey().setVersionName(versionNewName);
+			return versionRepository.save(version);
+		} /*else if(versionNewName != null && isDeleted == null) {
+			return versionRepository.save(version);
+		} */
+		return new Version(opportunityId, versionNewName, versionDescription, null, false);
+		
 	}
 
 	@Override
-	public List<VersionNoDataProjection> fetchVersions(Long opportunityId) {
-		return versionRepository.findByKeyOpportunityIdOrderByDateCreatedDesc(opportunityId);
+	public List<VersionNoDataProjection> fetchVersions(Long opportunityId, Boolean isDeleted) {
+		return versionRepository.findByKeyOpportunityIdAndIsDeletedOrderByDateCreatedDesc(opportunityId, isDeleted);
 	}
 	
 	@Override

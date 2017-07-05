@@ -13,7 +13,7 @@ import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 public interface VersionRepository extends CrudRepository<Version, VersionKey> {
 
-	public List<VersionNoDataProjection> findByKeyOpportunityIdOrderByDateCreatedDesc(Long opportunityId);
+	public List<VersionNoDataProjection> findByKeyOpportunityIdAndIsDeletedOrderByDateCreatedDesc(Long opportunityId, Boolean isDeleted);
 	
 	@Transactional
 	@Modifying

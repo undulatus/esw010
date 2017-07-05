@@ -10,11 +10,11 @@ public interface VersionService {
 
 	public Version saveVersion(Long opportunityId, String versionName, String versionDescription, String versionData);
 
-	public List<VersionNoDataProjection> fetchVersions(Long opportunityId);
+	public List<VersionNoDataProjection> fetchVersions(Long opportunityId, Boolean isDeleted);
 	
 	public Version fetchOpportunityVersion(VersionKey key);
 
-	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData);
+	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData, Boolean isDeleted);
 
 	public void activateVersion(Long opportunityId, String versionName);
 	

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -78,7 +79,7 @@ public class VersionController {
 	@RequestMapping(method=RequestMethod.GET, value="opportunities/{opportunityId}/versions")
 	public ResponseEntity<Object> fetchOpportunityVersions(@PathVariable Long opportunityId) {
 		
-        List<VersionNoDataProjection> versions = versionService.fetchVersions(opportunityId);
+        List<VersionNoDataProjection> versions = versionService.fetchVersions(opportunityId, false);
        
 		if( versions == null || versions.isEmpty()) {
 			return new ResponseEntity<>(new CustomError("Versions not found for supplied opportunity id"), HttpStatus.NOT_FOUND);
@@ -170,9 +171,11 @@ public class VersionController {
 	 * @param versionName
 	 * @param opportunityId
 	 * @return saved opportunity version based on parameters
+	 * used for renaming and tagging as deleted version
 	 */
 	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/versions")
-    public ResponseEntity<Object> updateVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId) {
+    public ResponseEntity<Object> updateVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId, 
+    		 @RequestParam(required=false) Boolean isDeleted) {
 
 		//2nd level checker for editing permission
 		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
@@ -189,7 +192,7 @@ public class VersionController {
 			try {
 				jsonData = mapper.writeValueAsString(opportunity);
 				versionService.updateVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionNewName(),
-						versionSimple.getVersionDescription(), jsonData);
+						versionSimple.getVersionDescription(), jsonData, isDeleted);
 				
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();

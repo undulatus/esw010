@@ -23,7 +23,7 @@ public class Version extends Auditable implements Serializable {
 		super();
 	}
 	
-	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, boolean isNew, boolean isActive) {
+	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, Boolean isNew, Boolean isActive) {
 		Version.VersionKey key = new Version.VersionKey();
 		key.setOpportunityId(opportunityId);
 		key.setVersionName(versionName);
@@ -36,7 +36,7 @@ public class Version extends Auditable implements Serializable {
 		this.isActive = isActive;
 	}
 	
-	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, boolean isNew) {
+	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, Boolean isNew) {
 		Version.VersionKey key = new Version.VersionKey();
 		key.setOpportunityId(opportunityId);
 		key.setVersionName(versionName);
@@ -46,6 +46,20 @@ public class Version extends Auditable implements Serializable {
 		if(isNew) {			
 			this.setDateCreated(Timestamp.from(Instant.now()));
 		}
+	}
+	
+	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, Boolean isNew, Boolean isActive, Boolean isDeleted) {
+		Version.VersionKey key = new Version.VersionKey();
+		key.setOpportunityId(opportunityId);
+		key.setVersionName(versionName);
+		this.key = key;
+		this.versionDescription = versionDescription;
+		this.versionData = versionData;
+		if(isNew) {			
+			this.setDateCreated(Timestamp.from(Instant.now()));
+		}
+		this.isActive = isActive;
+		this.isDeleted = isDeleted;
 	}
 
 	@EmbeddedId
@@ -62,6 +76,12 @@ public class Version extends Auditable implements Serializable {
 	
 	@Column(name="version_is_active", columnDefinition="INT(1)")
 	private Boolean isActive;
+	
+	@Column(name="username")
+	private String username;
+	
+	@Column(name="version_is_deleted", columnDefinition="INT(1)")
+	private Boolean isDeleted;
 
 	public VersionKey getKey() {
 		return key;
@@ -101,6 +121,22 @@ public class Version extends Auditable implements Serializable {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public Boolean getIsDeleted() {
+		return isDeleted;
+	}
+
+	public void setIsDeleted(Boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 
 	@Embeddable
