@@ -32,6 +32,6 @@ public interface OpportunityService {
 
 	public int deleteOpportunity(long opportunityId);
 	
-	public int finalizeOpportunity(long opportunityId);
+	public int publishOpportunity(long opportunityId);
 	
 }

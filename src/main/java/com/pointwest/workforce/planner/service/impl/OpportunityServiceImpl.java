@@ -53,8 +53,8 @@ public class OpportunityServiceImpl implements OpportunityService {
 	@Value("${opportunity.documentstatus.deleted}")
 	private String DELETED;
 
-	@Value("${opportunity.documentstatus.finalized}")
-	private String FINALIZED;
+	@Value("${opportunity.documentstatus.published}")
+	private String PUBLISHED;
 	
 	@Value("${month.to.week.multiplier}")
 	private Integer WEEKSINMONTH;
@@ -178,8 +178,8 @@ public class OpportunityServiceImpl implements OpportunityService {
 	}
 	
 	@Override
-	public int finalizeOpportunity(long opportunityId) {
-		String documentStatus = FINALIZED;
+	public int publishOpportunity(long opportunityId) {
+		String documentStatus = PUBLISHED;
 		OpportunityEntity opportunity = new OpportunityEntity(opportunityId, documentStatus);
 		OpportunityEntity saved = opportunityEntityRepository.save(opportunity);
 		return saved != null ? 1 : 0;

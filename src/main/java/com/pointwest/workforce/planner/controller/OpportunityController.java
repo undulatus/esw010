@@ -193,8 +193,8 @@ public class OpportunityController {
 			case "delete" : case "deleted" :
 				success = opportunityService.deleteOpportunity(opportunityId);
 			break;
-			case "finalize" : case "finalized" :
-				success = opportunityService.finalizeOpportunity(opportunityId);
+			case "publish" : case "published" :
+				success = opportunityService.publishOpportunity(opportunityId);
 			break;
 			default: 
 				success = 0;
