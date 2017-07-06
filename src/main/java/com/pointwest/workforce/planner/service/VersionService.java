@@ -8,7 +8,7 @@ import com.pointwest.workforce.planner.ui.adapter.VersionNoDataProjection;
 
 public interface VersionService {
 
-	public Version saveVersion(Long opportunityId, String versionName, String versionDescription, String versionData);
+	public Version saveVersion(Version version);
 
 	public List<VersionNoDataProjection> fetchVersions(Long opportunityId, Boolean isDeleted);
 	

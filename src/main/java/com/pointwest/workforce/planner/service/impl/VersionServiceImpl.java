@@ -20,9 +20,8 @@ public class VersionServiceImpl implements VersionService {
 	VersionRepository versionRepository;
 
 	@Override
-	public Version saveVersion(Long opportunityId, String versionName, String versionDescription, String versionData) {
-		Version version = new Version(opportunityId, versionName, versionDescription, versionData, true, true, false);
-		versionRepository.noActiveVersion(opportunityId);
+	public Version saveVersion(Version version) {
+		versionRepository.noActiveVersion(version.getKey().getOpportunityId());
 		return versionRepository.save(version);
 	}
 	

@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.controller;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -133,6 +134,7 @@ public class ResourceSpecificationController {
 		}
 		
 		opportunityActivities = opportunityService.fetchOpportunity(opportunityId).getOpportunityActivities();
+		opportunityActivities.sort(Comparator.comparingInt(OpportunityActivity::getSequenceNo));
 		return new ResponseEntity<>(opportunityActivities, HttpStatus.CREATED);
 		
     }

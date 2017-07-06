@@ -157,7 +157,9 @@ public class VersionController {
 			    }
 			    
 			    jsonData = mapper.writeValueAsString(opportunity);
-				versionService.saveVersion(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData);
+			    Version version = new Version(opportunityId, versionSimple.getVersionName(), versionSimple.getVersionDescription(), jsonData, true, true, false);
+			    version.setUsername(username);
+				versionService.saveVersion(version);
 				
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
