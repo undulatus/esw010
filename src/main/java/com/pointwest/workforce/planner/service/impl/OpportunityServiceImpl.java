@@ -89,7 +89,7 @@ public class OpportunityServiceImpl implements OpportunityService {
 	}
 
 	@Override
-	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId) {
+	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId) throws Exception {
 		boolean dateChanged = false;
 		// if id not supplied in body then set it
 		if (opportunity.getOpportunityId() == null)
@@ -107,20 +107,27 @@ public class OpportunityServiceImpl implements OpportunityService {
 		if (opportunity.getDurationInWeeks() == null) {
 			opportunity.setDurationInWeeks(previousOpportunity.getDurationInWeeks()); 
 		} else {
-			//conversion weekly to monthly currently front naghahandle
-			log.debug("granularity " + opportunity.getDurationGranularity());
-			if(opportunity.getDurationGranularity().equals(MONTHLY)) {
-				log.debug("granularity pasok sa monthly");
-				opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
+			Double oppDurationInWeeks = opportunity.getDurationInWeeks();
+			if((oppDurationInWeeks == Math.floor(oppDurationInWeeks)) && !Double.isInfinite(oppDurationInWeeks)) {
+				
+				log.debug("granularity " + opportunity.getDurationGranularity());
+				if(opportunity.getDurationGranularity().equals(MONTHLY)) {
+					log.debug("granularity pasok sa monthly");
+					opportunity.setDurationInWeeks(opportunity.getDurationInWeeks() * WEEKSINMONTH);
+				}
+				if(opportunity.getDurationInWeeks() != previousOpportunity.getDurationInWeeks()) dateChanged = true;
+				//handle possibly affected fte's
+				try {
+					handleTruncatedFte(opportunityId,opportunity.getDurationInWeeks(), previousOpportunity.getDurationInWeeks());
+				} catch (Exception e) {
+					//rethrow next time
+					log.error("error in handling truncated ftes " + e.getMessage());
+					throw new Exception("error in handling truncated ftes " + e.getMessage());
+				}
+			} else {
+				throw new Exception("not an integer exception");
 			}
-			if(opportunity.getDurationInWeeks() != previousOpportunity.getDurationInWeeks()) dateChanged = true;
-			//handle possibly affected fte's
-			try {
-				handleTruncatedFte(opportunityId,opportunity.getDurationInWeeks(), previousOpportunity.getDurationInWeeks());
-			} catch (Exception e) {
-				//rethrow next time
-				log.error("error in handling truncated ftes " + e.getMessage());
-			}
+			
 		}
 		if (opportunity.getProjectStartDate() == null) {
 			opportunity.setProjectStartDate(previousOpportunity.getProjectStartDate());

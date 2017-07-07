@@ -129,8 +129,12 @@ public class OpportunityController {
 			savedOpportunity = opportunityService.saveOpportunity(opportunity);
 			isNew = true;
 		} else {
-			savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunity.getOpportunityId());
-			isNew = false;
+			try {
+				savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunity.getOpportunityId());
+				isNew = false;
+			} catch (Exception e) {
+				return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.BAD_REQUEST);
+			}
 		}
 		if (savedOpportunity == null) {
 			return new ResponseEntity<>(new CustomError("Incorrect inputs, not saved"), HttpStatus.BAD_REQUEST);
@@ -160,7 +164,11 @@ public class OpportunityController {
 			return new ResponseEntity<>(new CustomError("Unmatched ID's in RequestBody and URL"),
 					HttpStatus.BAD_REQUEST);
 		}
-		savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
+		try {
+			savedOpportunity = opportunityService.updateOpportunity(opportunity, opportunityId);
+		} catch (Exception e) {
+			return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.BAD_REQUEST);
+		}
 		/*if(dateChanged != null && dateChanged == true) {
 			savedOpportunity = opportunityService.updateOpportunityDates(opportunityId);
 		}*/
@@ -250,7 +258,11 @@ public class OpportunityController {
 			} else {
 				Opportunity opportunityForServiceType = new Opportunity();
 				opportunityForServiceType.setServiceType(new ServiceType(serviceTypeId));
-				opportunityService.updateOpportunity(opportunityForServiceType, opportunityId);
+				try {
+					opportunityService.updateOpportunity(opportunityForServiceType, opportunityId);
+				} catch (Exception e) {
+					return new ResponseEntity<>(new CustomError(e.getMessage()), HttpStatus.BAD_REQUEST);
+				}
 				log.debug("MCO >> updateOpportunityWithLoadedActivities");
 				return new ResponseEntity<>(opportunityActivities, HttpStatus.OK);
 			}

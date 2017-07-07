@@ -1,5 +1,6 @@
 package com.pointwest.workforce.planner.controller;
 
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pointwest.workforce.planner.domain.Activity;
@@ -18,6 +18,7 @@ import com.pointwest.workforce.planner.domain.CustomError;
 import com.pointwest.workforce.planner.domain.OpportunityActivity;
 import com.pointwest.workforce.planner.service.AccessService;
 import com.pointwest.workforce.planner.service.OpportunityActivityService;
+import com.pointwest.workforce.planner.service.OpportunityService;
 import com.pointwest.workforce.planner.service.ReferenceDataService;
 
 @RestController
@@ -25,6 +26,9 @@ public class OpportunityActivityController {
 	
 	@Autowired
 	OpportunityActivityService opportunityActivityService;
+	
+	@Autowired
+	OpportunityService opportunityService;
 	
 	@Autowired
 	AccessService accessService;
@@ -171,11 +175,13 @@ public class OpportunityActivityController {
 				break;
 			}
 		}
-
+		
 		if(savedOpportunityActivity==null) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		} else {
-			return new ResponseEntity<>(HttpStatus.OK);
+			List<OpportunityActivity> savedOpportunityActivities = opportunityService.fetchOpportunity(savedOpportunityActivity.getOpportunityId()).getOpportunityActivities();
+			savedOpportunityActivities.sort(Comparator.comparingInt(OpportunityActivity::getSequenceNo));
+			return new ResponseEntity<>(savedOpportunityActivities, HttpStatus.OK);
 		}
 	}
 	

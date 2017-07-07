@@ -14,7 +14,7 @@ public interface OpportunityService {
 
 	public Opportunity saveOpportunity(Opportunity opportunity);
 
-	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId);
+	public Opportunity updateOpportunity(Opportunity opportunity, Long opportunityId) throws Exception;
 
 	public List<Opportunity> fetchOpportunityList();
 	
