@@ -21,6 +21,7 @@ public interface OpportunityDashboardProjection {
 	
 	public java.sql.Date getProjectStartDate();
 
+	@Value("#{target.opportunityStatus != null ? target.opportunityStatus.opportunityStatusName : null }")
 	public String getOpportunityStatus();
 
 	public String getDocumentStatus();
