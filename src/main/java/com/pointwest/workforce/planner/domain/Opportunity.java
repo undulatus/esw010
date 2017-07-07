@@ -61,8 +61,11 @@ public class Opportunity extends Auditable implements Serializable {
 	@Column(name="opportunity_start_date")
 	private Date projectStartDate;
 	
-	@Column(name="opportunity_status")
-	private String opportunityStatus;
+	/*@Column(name="opportunity_status")
+	private String opportunityStatus;*/
+	@OneToOne
+	@JoinColumn(name="opportunity_status_id")
+	private OpportunityStatus opportunityStatus;
 	
 	@Column(name="opportunity_document_status")
 	private String documentStatus;
@@ -146,12 +149,12 @@ public class Opportunity extends Auditable implements Serializable {
 	public void setProjectStartDate(Date projectStartDate) {
 		this.projectStartDate = projectStartDate;
 	}
-
-	public String getOpportunityStatus() {
+	
+	public OpportunityStatus getOpportunityStatus() {
 		return opportunityStatus;
 	}
 
-	public void setOpportunityStatus(String opportunityStatus) {
+	public void setOpportunityStatus(OpportunityStatus opportunityStatus) {
 		this.opportunityStatus = opportunityStatus;
 	}
 
