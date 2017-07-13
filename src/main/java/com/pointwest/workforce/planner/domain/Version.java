@@ -23,6 +23,13 @@ public class Version extends Auditable implements Serializable {
 		super();
 	}
 	
+	public Version(Long opportunityId, String versionName) {
+		Version.VersionKey key = new Version.VersionKey();
+		key.setOpportunityId(opportunityId);
+		key.setVersionName(versionName);
+		this.key = key;
+	}
+	
 	public Version(Long opportunityId, String versionName, String versionDescription, String versionData, Boolean isNew, Boolean isActive) {
 		Version.VersionKey key = new Version.VersionKey();
 		key.setOpportunityId(opportunityId);

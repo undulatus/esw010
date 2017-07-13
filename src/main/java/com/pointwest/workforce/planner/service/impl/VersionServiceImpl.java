@@ -26,6 +26,23 @@ public class VersionServiceImpl implements VersionService {
 	}
 	
 	@Override
+	public List<VersionNoDataProjection> fetchVersions(Long opportunityId, Boolean isDeleted) {
+		return versionRepository.findByKeyOpportunityIdAndIsDeletedOrderByDateCreatedDesc(opportunityId, isDeleted);
+	}
+	
+	@Override
+	public Version fetchOpportunityVersion(VersionKey key) {
+		return versionRepository.findOne(key);
+	}
+	
+	@Override
+	public void activateVersion(Long opportunityId, String versionName) {
+		versionRepository.noActiveVersion(opportunityId);
+		versionRepository.activateVersion(opportunityId, versionName);
+	}
+	
+	//DEPRECATED BMAB
+	@Override
 	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData,
 			Boolean isDeleted) {
 		Version version = new Version(opportunityId, versionName, versionDescription, versionData, false, null, isDeleted);
@@ -52,19 +69,33 @@ public class VersionServiceImpl implements VersionService {
 	}
 
 	@Override
-	public List<VersionNoDataProjection> fetchVersions(Long opportunityId, Boolean isDeleted) {
-		return versionRepository.findByKeyOpportunityIdAndIsDeletedOrderByDateCreatedDesc(opportunityId, isDeleted);
+	public Version updateVersion(Version version) {
+		Version prevVersion = versionRepository.findOne(version.getKey());
+		if(version.getVersionDescription() == null) version.setVersionDescription(prevVersion.getVersionDescription());
+		if(version.getVersionData() == null) version.setVersionData(prevVersion.getVersionData());
+		if(version.getDateCreated() == null) version.setDateCreated(prevVersion.getDateCreated());
+		if(version.getIsActive() == null) version.setIsActive(prevVersion.getIsActive());
+		if(version.getUsername() == null) version.setUsername(prevVersion.getUsername());;
+		if(version.getIsDeleted() == null) version.setIsDeleted(prevVersion.getIsDeleted());
+		return versionRepository.save(version);
 	}
-	
+
 	@Override
-	public Version fetchOpportunityVersion(VersionKey key) {
-		return versionRepository.findOne(key);
+	public Version renameVersion(Version version, String versionNewName) {
+		Long opportunityId = version.getKey().getOpportunityId();
+		String versionName = version.getKey().getVersionName(); 
+		Version renamedVersion = new Version(opportunityId, versionNewName);
+		versionRepository.renameVersion(opportunityId, versionName, versionNewName);
+		return versionRepository.findOne(renamedVersion.getKey());
 	}
-	
+
 	@Override
-	public void activateVersion(Long opportunityId, String versionName) {
-		versionRepository.noActiveVersion(opportunityId);
-		versionRepository.activateVersion(opportunityId, versionName);
+	public Version tagVersionAsDeleted(Version version) {
+		String versionName = version.getKey().getVersionName(); 
+		String versionNewName = versionName + "*" + Timestamp.from(Instant.now()).toString();
+		Version renamedVersion = this.renameVersion(version, versionNewName);
+		renamedVersion.setIsDeleted(true);
+		return this.updateVersion(renamedVersion);
 	}
 
 	/*@Override

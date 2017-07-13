@@ -175,8 +175,8 @@ public class VersionController {
 	 * @return saved opportunity version based on parameters
 	 * used for renaming and tagging as deleted version
 	 */
-	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/versions")
-    public ResponseEntity<Object> updateVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId, 
+	/*@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/versions")
+    public ResponseEntity<Object> updateVersiona(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId, 
     		 @RequestParam(required=false) Boolean isDeleted) {
 
 		//2nd level checker for editing permission
@@ -202,6 +202,51 @@ public class VersionController {
 			}
 			return new ResponseEntity<>(opportunity, HttpStatus.OK);
 		}
+	}*/
+	@RequestMapping(method=RequestMethod.PUT, value="/opportunities/{opportunityId}/versions")
+    public ResponseEntity<Object> updateVersion(@RequestBody(required=true) VersionSimplePojo versionSimple, @PathVariable Long opportunityId, 
+    		 @RequestParam(required=false) Boolean isDeleted) {
+
+		//2nd level checker for editing permission
+		String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+		if(!accessService.hasPermissionToEdit(opportunityId, username)) {
+			return new ResponseEntity<>(new CustomError("Not allowed to edit this opportunity"), HttpStatus.FORBIDDEN);
+		}
+		
+		Opportunity opportunity = opportunityService.fetchOpportunity(opportunityId);		
+		Version updatedVersion = null;
+		
+		if(opportunity == null) {
+			return new ResponseEntity<>(new CustomError("Opportunity not found"), HttpStatus.NOT_FOUND);
+		} else {
+			Version version = new Version(opportunityId ,versionSimple.getVersionName());
+			String versionNewName = versionSimple.getVersionNewName();
+			
+			if(isDeleted != null && isDeleted) {
+				updatedVersion = versionService.tagVersionAsDeleted(version);
+			} else {
+				if(versionNewName != null) {
+					updatedVersion = versionService.renameVersion(version, versionNewName);
+					//return new ResponseEntity<>(version, HttpStatus.OK);
+				} else {
+					String jsonData;
+					ObjectMapper mapper = new ObjectMapper();
+					try {
+						jsonData = mapper.writeValueAsString(opportunity);
+						version.setVersionData(jsonData);
+						updatedVersion = versionService.updateVersion(version);
+					} catch (JsonProcessingException e) {
+						log.debug("error parsing opportunity json");
+						updatedVersion = null;
+					}
+					
+				}
+			}
+		}
+		if(updatedVersion == null) {
+			return new ResponseEntity<>(new CustomError("Error in updating deleting version. Version might not exist"), HttpStatus.INTERNAL_SERVER_ERROR);
+		} 
+		return new ResponseEntity<>(updatedVersion, HttpStatus.OK);
 	}
 	
 	

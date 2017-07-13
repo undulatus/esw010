@@ -15,6 +15,12 @@ public interface VersionService {
 	public Version fetchOpportunityVersion(VersionKey key);
 
 	public Version updateVersion(Long opportunityId, String versionName, String versionNewName, String versionDescription, String versionData, Boolean isDeleted);
+	
+	public Version updateVersion(Version version);
+	
+	public Version renameVersion(Version version, String versionNewName);
+	
+	public Version tagVersionAsDeleted(Version version);
 
 	public void activateVersion(Long opportunityId, String versionName);
 	
